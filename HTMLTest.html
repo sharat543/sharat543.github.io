@@ -27,7 +27,7 @@
     <h1><center>Deloitte Dashboard</center></h1>
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
-	<h3><center>Say "<i>Select A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
+	<h3><center>Say "<i>Filter A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -41,11 +41,11 @@ if (annyang) {
   var commands = {
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
-  	'Select A': function() { selectMAS(); responsiveVoice.speak('selecting Product A','UK English Male'); },
-  	'Select B': function() { selectMBS(); responsiveVoice.speak('selecting Product B','UK English Male'); },
-  	'Select C': function() { selectMCS(); responsiveVoice.speak('selecting Product C','UK English Male'); },
-  	'Select D': function() { selectMDS(); responsiveVoice.speak('selecting Product D','UK English Male'); },
-  	'Select E': function() { selectMES(); responsiveVoice.speak('selecting Product E','UK English Male'); },  
+  	'Filter A': function() { selectMAS(); responsiveVoice.speak('filtering Product A','UK English Male'); },
+  	'Filter B': function() { selectMBS(); responsiveVoice.speak('filtering Product B','UK English Male'); },
+  	'Filter C': function() { selectMCS(); responsiveVoice.speak('filtering Product C','UK English Male'); },
+  	'Filter D': function() { selectMDS(); responsiveVoice.speak('filtering Product D','UK English Male'); },
+  	'Filter E': function() { selectMES(); responsiveVoice.speak('filtering Product E','UK English Male'); },  
  };
   
   // Add commands to annyang
@@ -77,25 +77,25 @@ responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK En
 // Select Product 
 function selectMAS()
 	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'A', 'REPLACE'); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'A', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	  
 function selectMBS()
 	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'B', 'REPLACE'); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'B', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	  
    
 function selectMCS()
 	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'C', 'REPLACE'); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'C', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	    
   
 function selectMDS()
 	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'D', 'REPLACE'); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'D', tableauSoftware.FilterUpdateType.REPLACE);  
 	}	   
 function selectMES()
 	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'E', 'REPLACE'); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'E', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	    
   
  
