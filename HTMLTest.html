@@ -39,7 +39,6 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-  	'show all': function() { startover(); responsiveVoice.speak('showing all','UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
   	'Select A': function() { selectMAS(); responsiveVoice.speak('selecting Product A','UK English Male'); },
@@ -60,7 +59,7 @@ if (annyang) {
 var viz, workbook, activeSheet, Worksheet, worksheet;;
 function initializeViz(){
 var placeholderDiv = document.getElementById("tableauViz");
-var url = "https://public.tableau.com/views/Sample2_75/Sheet1?:embed=y&:display_count=yes&publish=yes";
+var url = "https://public.tableau.com/views/Sample2_76/Sheet1?:embed=y&:display_count=yes";
 var options = {
    width: "1004px",   
    height: "869px",
