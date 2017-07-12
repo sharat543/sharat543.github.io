@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 
-<title>Medical Dashboard</title>
+<title>Deloitte Dashboard</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
     <h1><center>Deloitte Dashboard</center></h1>
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
-	<h3><center>Say "<i>Filter Product A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
+	<h3><center>Say "<i>Select A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -39,20 +39,14 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-  'show all': function() { startover(); responsiveVoice.speak('showing all','UK English Male'); },
+  	'show all': function() { startover(); responsiveVoice.speak('showing all','UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
-	'Filter Product A': function() { filterMA(); responsiveVoice.speak('filtering Product A','UK English Male'); },
-	'Filter Product B': function() { filterMB(); responsiveVoice.speak('filtering Product B','UK English Male'); },
-	'Filter Product C': function() { filterMC(); responsiveVoice.speak('filtering Product C','UK English Male'); },
-	'Filter Product D': function() { filterMD(); responsiveVoice.speak('filtering Product D','UK English Male'); },
-  	'Filter Product E': function() { filterME(); responsiveVoice.speak('filtering Product E','UK English Male'); },
-  	'Select Product A': function() { selectMAS(); responsiveVoice.speak('selecting Product A','UK English Male'); },
-  	'Select Product B': function() { selectMBS(); responsiveVoice.speak('selecting Product B','UK English Male'); },
-  	'Select Product C': function() { selectMCS(); responsiveVoice.speak('selecting Product C','UK English Male'); },
-  	'Select Product D': function() { selectMDS(); responsiveVoice.speak('selecting Product D','UK English Male'); },
-  	'Select Product E': function() { selectMES(); responsiveVoice.speak('selecting Product E','UK English Male'); },  
-	'remove filter': function() { removeFilter(); responsiveVoice.speak('removing filter','UK English Male'); },
+  	'Select A': function() { selectMAS(); responsiveVoice.speak('selecting Product A','UK English Male'); },
+  	'Select B': function() { selectMBS(); responsiveVoice.speak('selecting Product B','UK English Male'); },
+  	'Select C': function() { selectMCS(); responsiveVoice.speak('selecting Product C','UK English Male'); },
+  	'Select D': function() { selectMDS(); responsiveVoice.speak('selecting Product D','UK English Male'); },
+  	'Select E': function() { selectMES(); responsiveVoice.speak('selecting Product E','UK English Male'); },  
  };
   
   // Add commands to annyang
@@ -82,10 +76,6 @@ var options = {
   }
 responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK English Male');
 // Select Product 
-function showAll()
-{
-	activeSheet.getWorksheets()[0].applyFilterAsync("Product", "", tableauSoftware.FilterUpdateType.REPLACE);
-}
 function selectMAS()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'A', 'REPLACE'); 
@@ -109,33 +99,7 @@ function selectMES()
 	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'E', 'REPLACE'); 
 	}	    
   
-//Filter Product
-function filterMA()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'A', tableauSoftware.FilterUpdateType.REPLACE); 
-}
-function filterMB()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'B', tableauSoftware.FilterUpdateType.REPLACE); 
-}
-function filterMC()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'C', tableauSoftware.FilterUpdateType.REPLACE); 
-}
-function filterMD()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'D', tableauSoftware.FilterUpdateType.REPLACE); 
-}
-function filterME()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'E', tableauSoftware.FilterUpdateType.REPLACE); 
-}  
-  
-function removeFilter()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', ['A', 'B', 'C', 'D','E'],tableauSoftware.FilterUpdateType.ALL); 
-}
-  
+ 
 //UI Control
 function exportPDF()
 {
