@@ -1,8 +1,11 @@
-﻿<html>
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 
-<title>Deloitte Dashboard</title>
+<title>Medical Dashboard</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +27,7 @@
     <h1><center>Deloitte Dashboard</center></h1>
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
-	<h3><center>Say "<i>Filter Product A</i>","<i>Start Over</i>","<i>Export</i><i>..... for more Voice commands, hover on information button.</i>"</center></h3>
+	<h3><center>Say "<i>Filter Product A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -32,6 +35,9 @@
 
 <script>
 if (annyang) {
+  //<h5><i>Visualization Created by <a href="https://twitter.com/hemangbhavasar" target="_blank"><span class="Name"><i>HEMANG //BHAVASAR	</i></span></a> 
+	//</i></h5> Previous Heading
+  // These are the voice commands in quotes followed by the function
   var commands = {
   'show all': function() { startover(); responsiveVoice.speak('showing all','UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
@@ -40,32 +46,27 @@ if (annyang) {
 	'Filter Product B': function() { filterMB(); responsiveVoice.speak('filtering Product B','UK English Male'); },
 	'Filter Product C': function() { filterMC(); responsiveVoice.speak('filtering Product C','UK English Male'); },
 	'Filter Product D': function() { filterMD(); responsiveVoice.speak('filtering Product D','UK English Male'); },
-	'Filter Product E': function() { filterME(); responsiveVoice.speak('filtering Product E','UK English Male'); },
-  'Select Medicine A': function() { selectMAS(); responsiveVoice.speak('selecting Product A','UK English Male'); },
-  'Select Medicine B': function() { selectMBS(); responsiveVoice.speak('selecting Product B','UK English Male'); },
-  'Select Medicine C': function() { selectMCS(); responsiveVoice.speak('selecting Product C','UK English Male'); },
-  'Select Medicine D': function() { selectMDS(); responsiveVoice.speak('selecting Product D','UK English Male'); },
-  'Select Medicine E': function() { selectMES(); responsiveVoice.speak('selecting Product E','UK English Male'); },  
+  	'Filter Product E': function() { filterME(); responsiveVoice.speak('filtering Product E','UK English Male'); },
+  	'Select Product A': function() { selectMAS(); responsiveVoice.speak('selecting Product A','UK English Male'); },
+  	'Select Product B': function() { selectMBS(); responsiveVoice.speak('selecting Product B','UK English Male'); },
+  	'Select Product C': function() { selectMCS(); responsiveVoice.speak('selecting Product C','UK English Male'); },
+  	'Select Product D': function() { selectMDS(); responsiveVoice.speak('selecting Product D','UK English Male'); },
+  	'Select Product E': function() { selectMES(); responsiveVoice.speak('selecting Product E','UK English Male'); },  
 	'remove filter': function() { removeFilter(); responsiveVoice.speak('removing filter','UK English Male'); },
  };
   
   // Add commands to annyang
   annyang.addCommands(commands);
-
   // Start listening.
   annyang.start();
 }
 </script>
 
 <script>
-
 var viz, workbook, activeSheet, Worksheet, worksheet;;
 function initializeViz(){
-
 var placeholderDiv = document.getElementById("tableauViz");
-
 var url = "https://public.tableau.com/views/Sample2_75/Sheet1?:embed=y&:display_count=yes&publish=yes";
-
 var options = {
    width: "1004px",   
    height: "869px",
@@ -79,22 +80,16 @@ var options = {
   viz = new tableauSoftware.Viz(placeholderDiv, url, options);
   
   }
-
-responsiveVoice.speak('Hi. My name is Sarat. Welcome to the dashboard. How can I help you?','UK English Male');
-
-
-// Select Product
-
+responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK English Male');
+// Select Product 
 function showAll()
 {
-activeSheet.getWorksheets()[0].applyFilterAsync("Product", "", tableauSoftware.FilterUpdateType.REPLACE);
+	activeSheet.getWorksheets()[0].applyFilterAsync("Product", "", tableauSoftware.FilterUpdateType.REPLACE);
 }
-
 function selectMAS()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'A', 'REPLACE'); 
 	}	  
-
 function selectMBS()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'B', 'REPLACE'); 
@@ -109,34 +104,28 @@ function selectMDS()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'D', 'REPLACE'); 
 	}	   
-
 function selectMES()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Product', 'E', 'REPLACE'); 
 	}	    
   
 //Filter Product
-
 function filterMA()
 {
 activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'A', tableauSoftware.FilterUpdateType.REPLACE); 
 }
-
 function filterMB()
 {
 activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'B', tableauSoftware.FilterUpdateType.REPLACE); 
 }
-
 function filterMC()
 {
 activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'C', tableauSoftware.FilterUpdateType.REPLACE); 
 }
-
 function filterMD()
 {
 activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'D', tableauSoftware.FilterUpdateType.REPLACE); 
 }
-
 function filterME()
 {
 activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'E', tableauSoftware.FilterUpdateType.REPLACE); 
@@ -144,23 +133,18 @@ activeSheet.getWorksheets()[0].applyFilterAsync('Product', 'E', tableauSoftware.
   
 function removeFilter()
 {
-activeSheet.getWorksheets()[0].applyFilterAsync('Product', ['A', 'B', 'C', 'D'],tableauSoftware.FilterUpdateType.ALL); 
+activeSheet.getWorksheets()[0].applyFilterAsync('Product', ['A', 'B', 'C', 'D','E'],tableauSoftware.FilterUpdateType.ALL); 
 }
   
 //UI Control
-
 function exportPDF()
 {
-
 viz.showExportPDFDialog();
 }
-
 function startover()
 {
-
 viz.revertAllAsync();
 }
-
 </script>
 
   </body>
