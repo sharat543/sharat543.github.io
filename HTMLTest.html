@@ -22,12 +22,12 @@
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   </head>
 
-  <body>
+  <body onload=initializeViz();>
 	
     <h1><center>Deloitte Dashboard</center></h1>
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
-	<h3><center>Say "<i>Open Dashboard</i>","<i>Filter A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
+	<h3><center>Say "<i>Filter A</i>","<i>Start Over</i>","<i>Export</i>"</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -39,14 +39,14 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-	'Open Dashboard': function() { initializeViz(); responsiveVoice.speak('initializing dashboard for you', "UK English Male"); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
   	'Filter A': function() { selectMAS(); responsiveVoice.speak('filtering Product A','UK English Male'); },
   	'Filter B': function() { selectMBS(); responsiveVoice.speak('filtering Product B','UK English Male'); },
   	'Filter C': function() { selectMCS(); responsiveVoice.speak('filtering Product C','UK English Male'); },
   	'Filter D': function() { selectMDS(); responsiveVoice.speak('filtering Product D','UK English Male'); },
-  	'Filter E': function() { selectMES(); responsiveVoice.speak('filtering Product E','UK English Male'); },  
+  	'Filter E': function() { selectMES(); responsiveVoice.speak('filtering Product E','UK English Male'); }, 
+	'Reset filter': function() { resetfilter(); responsiveVoice.speak('Resetting filters','UK English Male'); },
  };
   
   // Add commands to annyang
@@ -105,9 +105,13 @@ function exportPDF()
 {
 viz.showExportPDFDialog();
 }
-function startover()
+function resetfilter()
 {
 viz.revertAllAsync();
+}
+function startover()
+{
+window.location.replace("https://sharat543.github.io/initial.html");
 }
 </script>
 
