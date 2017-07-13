@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<title>Deloitte Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="When birds and planes collide...">
+    <meta name="author" content="Jeffrey Shaffer">
+
+  <!-- <link rel="stylesheet" href="leapstrap.css" /> -->
+  <!-- <link rel="stylesheet" href="example.css" /> -->
+	
+	<script src="annyang.min.js"></script>
+	<script src="responsivevoice.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  </head>
+
+  <body>
+	
+    <h1><center>Initial Dashboard</center></h1>
+	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
+	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
+	<h3><center>Say any one of the dashboard listed below</center></h3>
+	<h3><center>1.Deloitte Dashboard</center></h3>
+	<h3><center>2.Storm Dashboard</center></h3>
+	<br>
+<div id="audio"></div>
+
+<script>
+if (annyang) {
+  //<h5><i>Visualization Created by <a href="https://twitter.com/hemangbhavasar" target="_blank"><span class="Name"><i>Sarat //Varanasi	</i></span></a> 
+	//</i></h5> Previous Heading
+  // These are the voice commands in quotes followed by the function
+  var commands = {
+	'Deloitte Dashboard': function() { DD(); responsiveVoice.speak('opening Deloitte dashboard for you', "UK English Male"); },
+	'Storm Dashboard': function() { SD(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
+ };
+  
+  // Add commands to annyang
+  annyang.addCommands(commands);
+  // Start listening.
+  annyang.start();
+}
+</script>
+
+<script>
+// Select Product 
+function DD()
+	{
+	window.location.replace("http://stackoverflow.com");
+	}	  
+function SD()
+	{
+	window.location.replace("http://google.com");
+	}	  
+ </script>
+
+  </body>
+</html>
