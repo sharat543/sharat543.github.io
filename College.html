@@ -116,17 +116,17 @@ function selectPH()
 	
 function filterArts()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('College', 'Arts', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('College', 'Arts', tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 	
 function filterBusiness()
    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('College', 'Business', tableauSoftware.FilterUpdateType.REPLACE); 
+   	activeSheet.getWorksheets()[0].applyFilterAsync('College', 'Business', tableauSoftware.FilterUpdateType.REPLACE); 
    	}
 	
 function filterCommunication()
     	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('College', 'Communication', tableauSoftware.FilterUpdateType.REPLACE); 
+   	activeSheet.getWorksheets()[0].applyFilterAsync('College', 'Communication', tableauSoftware.FilterUpdateType.REPLACE); 
    	}
 	
 function removeFilter()
