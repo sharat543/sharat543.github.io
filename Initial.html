@@ -26,8 +26,9 @@
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
 	<h3><center>Say any one of the dashboard listed below</center></h3>
-	<h3><center>1.Stocks Dashboard</center></h3>
+	<h3><center>1.College Dashboard</center></h3>
 	<h3><center>2.Storm Dashboard</center></h3>
+	<h3><center>3.Stocks Dashboard</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -37,8 +38,9 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-	'Stocks Dashboard': function() { DD(); responsiveVoice.speak('opening Stocks dashboard for you', "UK English Male"); },
-	'Storm Dashboard': function() { SD(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
+	'Stocks Dashboard': function() { Stocks(); responsiveVoice.speak('opening Stocks dashboard for you', "UK English Male"); },
+	'Storm Dashboard': function() { Storm(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
+	'College Dashboard': function() { College(); responsiveVoice.speak('opening College dashboard for you', "UK English Male"); },
  };
   
   // Add commands to annyang
@@ -50,14 +52,18 @@ if (annyang) {
 
 <script>
 // Select Dashboard
-function DD()
+function Stocks()
 	{
 	window.location.replace("https://sharat543.github.io/Stocks.html");
 	}	  
-function SD()
+function Storm()
 	{
 	window.location.replace("https://sharat543.github.io/StormTracking.html");
-	}	  
+	}	
+function College()
+	{
+	window.location.replace("https://sharat543.github.io/College.html");
+	}  
 </script>
 </body>
 </html>
