@@ -26,7 +26,53 @@ Say: <b><i>"Select Ohio"</i>,<i>"Export"</i>,<i>"Remove selections"</i>,<i>"Star
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-	'Select Ohio': function() { selectOhio(); responsiveVoice.speak('selecting Ohio', 'UK English Male'); },
+	'select Alabama': function() { selectAlabama(); responsiveVoice.speak('selecting Alabama', 'UK English Male'); },
+	'select Arizona': function() { selectArizona(); responsiveVoice.speak('selecting Arizona', 'UK English Male'); },
+	'select Arkansas': function() { selectArkansas(); responsiveVoice.speak('selecting Arkansas', 'UK English Male'); },
+	'select California': function() { selectCalifornia(); responsiveVoice.speak('selecting California', 'UK English Male'); },
+	'select Colorado': function() { selectColorado(); responsiveVoice.speak('selecting Colorado', 'UK English Male'); },
+	'select Connecticut': function() { selectConnecticut(); responsiveVoice.speak('selecting Connecticut', 'UK English Male'); },
+	'select Delaware': function() { selectDelaware(); responsiveVoice.speak('selecting Delaware', 'UK English Male'); },
+	'select District of Columbia': function() { selectDistrict of Columbia(); responsiveVoice.speak('selecting District of Columbia', 'UK English Male'); },
+	'select Florida': function() { selectFlorida(); responsiveVoice.speak('selecting Florida', 'UK English Male'); },
+	'select Georgia': function() { selectGeorgia(); responsiveVoice.speak('selecting Georgia', 'UK English Male'); },
+	'select Idaho': function() { selectIdaho(); responsiveVoice.speak('selecting Idaho', 'UK English Male'); },
+	'select Illinois': function() { selectIllinois(); responsiveVoice.speak('selecting Illinois', 'UK English Male'); },
+	'select Indiana': function() { selectIndiana(); responsiveVoice.speak('selecting Indiana', 'UK English Male'); },
+	'select Iowa': function() { selectIowa(); responsiveVoice.speak('selecting Iowa', 'UK English Male'); },
+	'select Kansas': function() { selectKansas(); responsiveVoice.speak('selecting Kansas', 'UK English Male'); },
+	'select Kentucky': function() { selectKentucky(); responsiveVoice.speak('selecting Kentucky', 'UK English Male'); },
+	'select Louisiana': function() { selectLouisiana(); responsiveVoice.speak('selecting Louisiana', 'UK English Male'); },
+	'select Maryland': function() { selectMaryland(); responsiveVoice.speak('selecting Maryland', 'UK English Male'); },
+	'select Massachusetts': function() { selectMassachusetts(); responsiveVoice.speak('selecting Massachusetts', 'UK English Male'); },
+	'select Michigan': function() { selectMichigan(); responsiveVoice.speak('selecting Michigan', 'UK English Male'); },
+	'select Minnesota': function() { selectMinnesota(); responsiveVoice.speak('selecting Minnesota', 'UK English Male'); },
+	'select Mississippi': function() { selectMississippi(); responsiveVoice.speak('selecting Mississippi', 'UK English Male'); },
+	'select Missouri': function() { selectMissouri(); responsiveVoice.speak('selecting Missouri', 'UK English Male'); },
+	'select Montana': function() { selectMontana(); responsiveVoice.speak('selecting Montana', 'UK English Male'); },
+	'select Nebraska': function() { selectNebraska(); responsiveVoice.speak('selecting Nebraska', 'UK English Male'); },
+	'select Nevada': function() { selectNevada(); responsiveVoice.speak('selecting Nevada', 'UK English Male'); },
+	'select New Hampshire': function() { selectNew Hampshire(); responsiveVoice.speak('selecting New Hampshire', 'UK English Male'); },
+	'select New Jersey': function() { selectNew Jersey(); responsiveVoice.speak('selecting New Jersey', 'UK English Male'); },
+	'select New Mexico': function() { selectNew Mexico(); responsiveVoice.speak('selecting New Mexico', 'UK English Male'); },
+	'select New York': function() { selectNew York(); responsiveVoice.speak('selecting New York', 'UK English Male'); },
+	'select North Carolina': function() { selectNorth Carolina(); responsiveVoice.speak('selecting North Carolina', 'UK English Male'); },
+	'select North Dakota': function() { selectNorth Dakota(); responsiveVoice.speak('selecting North Dakota', 'UK English Male'); },
+	'select Ohio': function() { selectOhio(); responsiveVoice.speak('selecting Ohio', 'UK English Male'); },
+	'select Oklahoma': function() { selectOklahoma(); responsiveVoice.speak('selecting Oklahoma', 'UK English Male'); },
+	'select Oregon': function() { selectOregon(); responsiveVoice.speak('selecting Oregon', 'UK English Male'); },
+	'select Pennsylvania': function() { selectPennsylvania(); responsiveVoice.speak('selecting Pennsylvania', 'UK English Male'); },
+	'select Rhode Island': function() { selectRhode Island(); responsiveVoice.speak('selecting Rhode Island', 'UK English Male'); },
+	'select South Carolina': function() { selectSouth Carolina(); responsiveVoice.speak('selecting South Carolina', 'UK English Male'); },
+	'select South Dakota': function() { selectSouth Dakota(); responsiveVoice.speak('selecting South Dakota', 'UK English Male'); },
+	'select Tennessee': function() { selectTennessee(); responsiveVoice.speak('selecting Tennessee', 'UK English Male'); },
+	'select Texas': function() { selectTexas(); responsiveVoice.speak('selecting Texas', 'UK English Male'); },
+	'select Utah': function() { selectUtah(); responsiveVoice.speak('selecting Utah', 'UK English Male'); },
+	'select Vermont': function() { selectVermont(); responsiveVoice.speak('selecting Vermont', 'UK English Male'); },
+	'select Virginia': function() { selectVirginia(); responsiveVoice.speak('selecting Virginia', 'UK English Male'); },
+	'select Washington': function() { selectWashington(); responsiveVoice.speak('selecting Washington', 'UK English Male'); },
+	'select West Virginia': function() { selectWest Virginia(); responsiveVoice.speak('selecting West Virginia', 'UK English Male'); },
+	'select Wisconsin': function() { selectWisconsin(); responsiveVoice.speak('selecting Wisconsin', 'UK English Male'); },
 	'Remove Selections': function() { removeFilter();responsiveVoice.speak('Removing selections', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over', 'UK English Male'); }
@@ -49,7 +95,7 @@ var placeholderDiv = document.getElementById("tableauViz");
 var url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 var options = {
    width: "1200",   
-   height: "1000",
+   height: "1500",
    hideTabs: true,
    hideToolbar: true,
   onFirstInteractive: function () {
@@ -64,10 +110,54 @@ var options = {
 responsiveVoice.speak('Hi. How may I help you?','UK English Male');
 
 //Make state selection
-function selectOhio()
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Ohio', 'REPLACE'); 
-	}
+function selectAlabama(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Alabama', 'REPLACE');}
+function selectArizona(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Arizona', 'REPLACE');}
+function selectArkansas(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Arkansas', 'REPLACE');}
+function selectCalifornia(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'California', 'REPLACE');}
+function selectColorado(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Colorado', 'REPLACE');}
+function selectConnecticut(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Connecticut', 'REPLACE');}
+function selectDelaware(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Delaware', 'REPLACE');}
+function selectDistrict of Columbia(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'District of Columbia', 'REPLACE');}
+function selectFlorida(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Florida', 'REPLACE');}
+function selectGeorgia(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Georgia', 'REPLACE');}
+function selectIdaho(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Idaho', 'REPLACE');}
+function selectIllinois(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Illinois', 'REPLACE');}
+function selectIndiana(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Indiana', 'REPLACE');}
+function selectIowa(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Iowa', 'REPLACE');}
+function selectKansas(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Kansas', 'REPLACE');}
+function selectKentucky(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Kentucky', 'REPLACE');}
+function selectLouisiana(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Louisiana', 'REPLACE');}
+function selectMaryland(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Maryland', 'REPLACE');}
+function selectMassachusetts(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Massachusetts', 'REPLACE');}
+function selectMichigan(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Michigan', 'REPLACE');}
+function selectMinnesota(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Minnesota', 'REPLACE');}
+function selectMississippi(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Mississippi', 'REPLACE');}
+function selectMissouri(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Missouri', 'REPLACE');}
+function selectMontana(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Montana', 'REPLACE');}
+function selectNebraska(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Nebraska', 'REPLACE');}
+function selectNevada(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Nevada', 'REPLACE');}
+function selectNew Hampshire(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'New Hampshire', 'REPLACE');}
+function selectNew Jersey(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'New Jersey', 'REPLACE');}
+function selectNew Mexico(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'New Mexico', 'REPLACE');}
+function selectNew York(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'New York', 'REPLACE');}
+function selectNorth Carolina(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'North Carolina', 'REPLACE');}
+function selectNorth Dakota(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'North Dakota', 'REPLACE');}
+function selectOhio(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Ohio', 'REPLACE');}
+function selectOklahoma(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Oklahoma', 'REPLACE');}
+function selectOregon(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Oregon', 'REPLACE');}
+function selectPennsylvania(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Pennsylvania', 'REPLACE');}
+function selectRhode Island(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Rhode Island', 'REPLACE');}
+function selectSouth Carolina(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'South Carolina', 'REPLACE');}
+function selectSouth Dakota(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'South Dakota', 'REPLACE');}
+function selectTennessee(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Tennessee', 'REPLACE');}
+function selectTexas(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Texas', 'REPLACE');}
+function selectUtah(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Utah', 'REPLACE');}
+function selectVermont(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Vermont', 'REPLACE');}
+function selectVirginia(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Virginia', 'REPLACE');}
+function selectWashington(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Washington', 'REPLACE');}
+function selectWest Virginia(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'West Virginia', 'REPLACE');}
+function selectWisconsin(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Wisconsin', 'REPLACE');}
+
 function removeFilter()
 	{
 	viz.revertAllAsync();
