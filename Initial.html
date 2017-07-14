@@ -28,8 +28,8 @@
 	<h3><center>Say any one of the dashboard listed below</center></h3>
 	<h3><center>1.Storm Dashboard</center></h3>
 	<h3><center>2.Transportation Dashboard</center></h3>
-	<h3><center>3.Stocks Dashboard</center></h3>
-	<h3><center>4.College Dashboard</center></h3>	
+	<h3><center>3.Sales Dashboard</center></h3>
+	<h3><center>4.Stocks Dashboard</center></h3>	
 <br>
 <div id="audio"></div>
 
@@ -39,10 +39,10 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-	'Stocks Dashboard': function() { Stocks(); responsiveVoice.speak('opening Stocks dashboard for you', "UK English Male"); },
 	'Storm Dashboard': function() { Storm(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
-	'College Dashboard': function() { College(); responsiveVoice.speak('opening College dashboard for you', "UK English Male"); },
 	'Transportation Dashboard': function() { Transport(); responsiveVoice.speak('opening Public Transportation dashboard for you', "UK English Male"); },
+	'Sales Dashboard': function() { Sales(); responsiveVoice.speak('opening Sales dashboard for you', "UK English Male"); },
+	'Stocks Dashboard': function() { Stocks(); responsiveVoice.speak('opening Stocks dashboard for you', "UK English Male"); },
  };
   
   // Add commands to annyang
@@ -62,9 +62,9 @@ function Storm()
 	{
 	window.location.replace("https://sharat543.github.io/StormTracking.html");
 	}	
-function College()
+function Sales()
 	{
-	window.location.replace("https://sharat543.github.io/College.html");
+	window.location.replace("https://sharat543.github.io/Sales.html");
 	}  
 function Transport()
 	{
