@@ -5,12 +5,12 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 
-<title>Deloitte Dashboard</title>
+<title>Landing Dashboard</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="When birds and planes collide...">
-    <meta name="author" content="Jeffrey Shaffer">
+    <meta name="description" content="Tableau with voice recognition...">
+    <meta name="author" content="Sarat Varanasi">
 
   <!-- <link rel="stylesheet" href="leapstrap.css" /> -->
   <!-- <link rel="stylesheet" href="example.css" /> -->
@@ -29,7 +29,8 @@
 	<h3><center>1.College Dashboard</center></h3>
 	<h3><center>2.Storm Dashboard</center></h3>
 	<h3><center>3.Stocks Dashboard</center></h3>
-	<br>
+	<h3><center>4.Transportation Dashboard</center></h3>	
+<br>
 <div id="audio"></div>
 
 <script>
@@ -41,6 +42,7 @@ if (annyang) {
 	'Stocks Dashboard': function() { Stocks(); responsiveVoice.speak('opening Stocks dashboard for you', "UK English Male"); },
 	'Storm Dashboard': function() { Storm(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
 	'College Dashboard': function() { College(); responsiveVoice.speak('opening College dashboard for you', "UK English Male"); },
+	'Transportation Dashboard': function() { Transport(); responsiveVoice.speak('opening Public Transportation dashboard for you', "UK English Male"); },
  };
   
   // Add commands to annyang
@@ -63,6 +65,10 @@ function Storm()
 function College()
 	{
 	window.location.replace("https://sharat543.github.io/College.html");
+	}  
+function Transport()
+	{
+	window.location.replace("https://sharat543.github.io/Transportation.html");
 	}  
 </script>
 </body>
