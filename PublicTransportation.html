@@ -85,7 +85,7 @@ function selectNorway()
 
 function selectAustria()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Austria', 'REPLACE'); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Country', 'Austria', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	
 
 function selectCzech()
