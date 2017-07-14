@@ -41,9 +41,9 @@ if (annyang) {
   var commands = {
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
-  	'Filter Amazon': function() { selectMAS(); responsiveVoice.speak('filtering Amazon','UK English Male'); },
-  	'Filter Apple': function() { selectMBS(); responsiveVoice.speak('filtering Apple','UK English Male'); },
-  	'Filter Biogen': function() { selectMCS(); responsiveVoice.speak('filtering biogen','UK English Male'); },
+  	'select Amazon': function() { selectMAS(); responsiveVoice.speak('filtering Amazon','UK English Male'); },
+  	'select Apple': function() { selectMBS(); responsiveVoice.speak('filtering Apple','UK English Male'); },
+  	'select Biogen': function() { selectMCS(); responsiveVoice.speak('filtering biogen','UK English Male'); },
 	'Reset filter': function() { resetfilter(); responsiveVoice.speak('Resetting filters','UK English Male'); },
  };
   
@@ -76,15 +76,15 @@ responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK En
 // Select Product 
 function selectMAS()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Amazon', 'REPLACE');
+	activeSheet.getWorksheets()[0].selectMarksAsync('Company', 'Amazon', 'REPLACE');
 	}	  
 function selectMBS()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Company', 'Apple', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Company', 'Apple', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	  
 function selectMCS()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Company', 'Biogen Idec', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[0].applyFilterAsync('Company', 'Biogen Idec', tableauSoftware.FilterUpdateType.REPLACE); 
 	}	    
 
 //UI Control
