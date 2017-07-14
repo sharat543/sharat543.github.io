@@ -27,7 +27,7 @@
     <h1><center>Stocks Dashboard</center></h1>
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
-	<h3><center>Say "<i>Select Apple</i>","<i>Start Over</i>","<i>Export</i>","<i>Reset Filter</i></center></h3>
+	<h3><center>Say "<i>Export</i>","<i>"Reset Filter"</i>,"<i>Start Over</i>"</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -41,10 +41,7 @@ if (annyang) {
   var commands = {
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
-  	'select Amazon': function() { selectMAS(); responsiveVoice.speak('filtering Amazon','UK English Male'); },
-  	'select Apple': function() { selectMBS(); responsiveVoice.speak('filtering Apple','UK English Male'); },
-  	'select Biogen': function() { selectMCS(); responsiveVoice.speak('filtering biogen','UK English Male'); },
-	'Reset filter': function() { resetfilter(); responsiveVoice.speak('Resetting filters','UK English Male'); },
+  	'Reset filter': function() { resetfilter(); responsiveVoice.speak('Resetting filters','UK English Male'); },
  };
   
   // Add commands to annyang
@@ -73,20 +70,6 @@ var options = {
   
   }
 responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK English Male');
-// Select Product 
-function selectMAS()
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Company', 'Amazon', 'REPLACE');
-	}	  
-function selectMBS()
-	{
-	activeSheet.getWorksheets()[0].applyFilterAsync('Company', 'Apple', tableauSoftware.FilterUpdateType.REPLACE); 
-	}	  
-function selectMCS()
-	{
-	activeSheet.getWorksheets()[0].applyFilterAsync('Company', 'Biogen Idec', tableauSoftware.FilterUpdateType.REPLACE); 
-	}	    
-
 //UI Control
 function exportPDF()
 {
