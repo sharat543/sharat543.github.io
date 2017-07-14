@@ -26,7 +26,7 @@
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
 	<h3><center>Say any one of the dashboard listed below</center></h3>
-	<h3><center>1.Deloitte Dashboard</center></h3>
+	<h3><center>1.Public Transportation Dashboard</center></h3>
 	<h3><center>2.Storm Dashboard</center></h3>
 	<br>
 <div id="audio"></div>
@@ -37,7 +37,7 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-	'Deloitte Dashboard': function() { DD(); responsiveVoice.speak('opening Deloitte dashboard for you', "UK English Male"); },
+	'Public Transportation Dashboard': function() { DD(); responsiveVoice.speak('opening Public Transportation dashboard for you', "UK English Male"); },
 	'Storm Dashboard': function() { SD(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
  };
   
@@ -49,16 +49,15 @@ if (annyang) {
 </script>
 
 <script>
-// Select Product 
+// Select Dashboard
 function DD()
 	{
-	window.location.replace("https://sharat543.github.io/HTMLTest.html");
+	window.location.replace("https://sharat543.github.io/PublicTransportation.html");
 	}	  
 function SD()
 	{
 	window.location.replace("https://sharat543.github.io/StormTracking.html");
 	}	  
- </script>
-
-  </body>
+</script>
+</body>
 </html>
