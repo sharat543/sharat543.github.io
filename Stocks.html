@@ -16,8 +16,8 @@
 </head>	
 
 <body onload=initializeViz();>
-<h1>Ozone Levels </h1>
-Say: <i>"Select South"</i>,<i>"Export"</i>,<i>"Start Over"</i>
+<h1>Stock Levels </h1>
+Say: <i>"Select Amazon"</i>,<i>"Export"</i>,<i>Remove selections</i>,<i>"Start Over"</i>
 <br>
 <br>
 <center><div id='tableauViz'></div></center>
@@ -26,10 +26,10 @@ Say: <i>"Select South"</i>,<i>"Export"</i>,<i>"Start Over"</i>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select Midwest': function() { selectMidwest(); responsiveVoice.speak('selecting Midwest', 'UK English Male'); },
- 	'Select Northeast': function() { selectNortheast(); responsiveVoice.speak('selecting Northeast'); },
- 	'Select South': function() { selectSouth(); responsiveVoice.speak('selecting South'); },
- 	'Select West': function() { selectWest(); responsiveVoice.speak('selecting West'); },
+  	'Select Amazon': function() { selectAmazon(); responsiveVoice.speak('selecting Amazon', 'UK English Male'); },
+ 	'Select Apple': function() { selectApple(); responsiveVoice.speak('selecting Apple','UK English Male'); },
+ 	'Select Biogen': function() { selectBiogen(); responsiveVoice.speak('selecting Biogen','UK English Male'); },
+	'Remove Selections': function() { RemoveSelections(); responsiveVoice.speak('removing selections', 'UK English Male');},
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
  };
@@ -48,7 +48,7 @@ function initializeViz(){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "https://public.tableau.com/views/AnnualOzoneLevels/Dashboard2?:embed=y&:display_count=yes";
+var url = "https://public.tableau.com/views/RegionalSampleWorkbook/Stocks?:embed=y&:display_count=yes";
 var options = {
    width: "1004",   
    height: "869",
@@ -65,28 +65,21 @@ var options = {
 //dashboard says hello
 responsiveVoice.speak('Hi. How may I help you?','UK English Male');
 
-//Make country selection
-function selectMidwest()
+//Make company selection
+function selectAmazon()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region', 'Midwest', tableauSoftware.FilterUpdateType.REPLACE);
+	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Amazon', 'REPLACE');
 	}
 
-function selectNortheast()
+function selectApple()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'Northeast', tableauSoftware.FilterUpdateType.REPLACE);
+	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Apple', 'REPLACE');
 	}
 
-function selectSouth()
+function selectBiogen()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'South', tableauSoftware.FilterUpdateType.REPLACE);
+	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Biogen Idec', 'REPLACE');
 	}	
-
-function selectWest()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'West', tableauSoftware.FilterUpdateType.REPLACE);
-	}
-		
-
 function exportPDF()
 {
 viz.showExportPDFDialog();
@@ -96,6 +89,10 @@ viz.showExportPDFDialog();
 function startover()
 {
 window.location.replace("https://sharat543.github.io/Initial.html");
+}
+function RemoveSelections()
+{
+viz.revertAllAsync();
 }
 </script>
 </body>
