@@ -76,7 +76,7 @@ responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK En
 // Select Product 
 function selectMAS()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Company', 'Amazon', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Amazon', 'REPLACE');
 	}	  
 function selectMBS()
 	{
