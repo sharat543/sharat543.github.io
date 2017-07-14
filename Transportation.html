@@ -17,7 +17,7 @@
 
 <body onload=initializeViz();>
 <h1>"Public Transportation Dashboard"</h1>
-Say: <i>"Select Austria"</i>,<i>"Export"</i>,<i>"Remove filters"</i>,<i>"Start Over"</i>
+Say: <b><i>"Select Austria"</i>,<i>"Export"</i>,<i>"Remove selections"</i>,<i>"Start Over"</i></b>
 <br>
 <br>
 <center><div id='tableauViz'></div></center>
@@ -26,9 +26,17 @@ Say: <i>"Select Austria"</i>,<i>"Export"</i>,<i>"Remove filters"</i>,<i>"Start O
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select Austria': function() { selectAustria(); responsiveVoice.speak('selecting Austria', 'UK English Male'); },
-	'Filter Austria': function() { filterAustria(); responsiveVoice.speak('filtering Austria', 'UK English Male'); },
-	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters', 'UK English Male'); },
+	'Select Switzerland': function() { selectSwitzerland(); responsiveVoice.speak('selecting Switzerland', 'UK English Male'); },
+	'Select Norway': function() { selectNorway(); responsiveVoice.speak('selecting Norway', 'UK English Male'); },
+	'Select Austria': function() { selectAustria(); responsiveVoice.speak('selecting Austria', 'UK English Male'); },
+	'Select Czech Republic': function() { selectCzech(); responsiveVoice.speak('selecting Czech Republic', 'UK English Male'); },
+	'Select Germany': function() { selectGermany(); responsiveVoice.speak('selecting Germany', 'UK English Male'); },
+	'Select Netherlands': function() { selectNetherlands(); responsiveVoice.speak('selecting Netherlands', 'UK English Male'); },
+	'Select Bulgaria': function() { selectBulgaria(); responsiveVoice.speak('selecting Bulgaria', 'UK English Male'); },
+	'Select Luxembourg': function() { selectLuxembourg(); responsiveVoice.speak('selecting Luxembourg', 'UK English Male'); },
+	'Select Poland': function() { selectPoland(); responsiveVoice.speak('selecting Poland', 'UK English Male'); },
+  	'Select France': function() { selectFrance(); responsiveVoice.speak('selecting France', 'UK English Male'); },
+	'Remove Selections': function() { removeFilter();responsiveVoice.speak('Removing Filters', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over', 'UK English Male'); }
  };
@@ -64,14 +72,46 @@ var options = {
 
 responsiveVoice.speak('Hi. How may I help you?','UK English Male');
 
-//Make College selection
+//Make Country selection
+function selectSwitzerland()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Switzerland', 'REPLACE'); 
+	}
+function selectNorway()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Norway', 'REPLACE'); 
+	}
 function selectAustria()
 	{
 	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Austria', 'REPLACE'); 
 	}
-function filterAustria()
+function selectCzech()
 	{
-	activeSheet.getWorksheets()[0].applyFilterAsync('Country', 'Austria', tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Czech Republic', 'REPLACE'); 
+	}
+function selectGermany()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Germany', 'REPLACE'); 
+	}
+function selectNetherlands()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Netherlands', 'REPLACE'); 
+	}
+function selectBulgaria()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Bulgaria', 'REPLACE'); 
+	}
+function selectLuxembourg()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Luxembourg', 'REPLACE'); 
+	}
+function selectPoland()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'Poland', 'REPLACE'); 
+	}
+function selectFrance()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Country', 'France', 'REPLACE'); 
 	}
 function removeFilter()
 	{
