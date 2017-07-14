@@ -27,7 +27,7 @@
     <h1><center>Stocks Dashboard</center></h1>
 	<!-- <h3><font color=#000000><center>Meeting Month: <i>"July 2017"</i></center></font></h3> -->
 	<h3><center><i>(Requires Chrome and Webcam or Microphone)</center></i></h3>
-	<h3><center>Say "<i>Select Amazon</i>","<i>Export</i>","<i>"Reset Filter"</i>,"<i>Start Over</i>"</center></h3>
+	<h3><center>Say "<i>Export</i>","<i>"Reset Filters"</i>,"<i>Start Over</i>"</center></h3>
 	<br>
 <div id="audio"></div>
 
@@ -39,13 +39,9 @@ if (annyang) {
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
   var commands = {
-	'Select Amazon': function() { selectAmazon(); responsiveVoice.speak('selecting Amazon', 'UK English Male'); },
- 	'Select Apple': function() { selectApple(); responsiveVoice.speak('selecting Apple', 'UK English Male'); },
- 	'Select Biogen': function() { selectBiogen(); responsiveVoice.speak('selecting Biogen', 'UK English Male'); },
-	'Filter Amazon': function() { filterAmazon; responsiveVoice.speak('filtering Amazon', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting','UK English Male'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over','UK English Male'); },
-  	'Reset filter': function() { resetfilter(); responsiveVoice.speak('Resetting filters','UK English Male'); },
+  	'Reset filters': function() { resetfilter(); responsiveVoice.speak('Resetting filters','UK English Male'); },
  };
   
   // Add commands to annyang
@@ -59,7 +55,7 @@ if (annyang) {
 var viz, workbook, activeSheet, Worksheet, worksheet;;
 function initializeViz(){
 var placeholderDiv = document.getElementById("tableauViz");
-var url = "https://public.tableau.com/views/RegionalSampleWorkbook_16/Stocks?:embed=y&:display_count=yes&publish=yes";
+var url = "https://public.tableau.com/views/RegionalSampleWorkbook/Stocks?:embed=y&:display_count=yes";
 var options = {
    width: "1004px",   
    height: "869px",
@@ -74,23 +70,6 @@ var options = {
   
   }
 responsiveVoice.speak('Hi. Welcome to the dashboard. How can I help you?','UK English Male');
-function selectAmazon()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Amazon', 'REPLACE'); 
-	}
-function selectApple()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Apple', 'REPLACE'); 
-	}
-function selectBiogen()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Company', 'Biogen Idec', 'REPLACE'); 
-	}
-	
-function filterAmazon()
-	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Company', 'Amazon', tableauSoftware.FilterUpdateType.REPLACE); 
-	}
 //UI Control
 function exportPDF()
 {
