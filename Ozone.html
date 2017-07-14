@@ -26,10 +26,10 @@ Say: <i>"Select South"</i>,<i>"Export"</i>,<i>"Start Over"</i>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select Midwest': function() { selectMidwest(); responsiveVoice.speak('selecting Switzerland', 'UK English Male'); },
- 	'Select Northeast': function() { selectNortheast(); responsiveVoice.speak('selecting Norway'); },
- 	'Select South': function() { selectSouth(); responsiveVoice.speak('selecting Austria'); },
- 	'Select West': function() { selectWest(); responsiveVoice.speak('selecting Czech Republic'); },
+  	'Select Midwest': function() { selectMidwest(); responsiveVoice.speak('selecting Midwest', 'UK English Male'); },
+ 	'Select Northeast': function() { selectNortheast(); responsiveVoice.speak('selecting Northeast'); },
+ 	'Select South': function() { selectSouth(); responsiveVoice.speak('selecting South'); },
+ 	'Select West': function() { selectWest(); responsiveVoice.speak('selecting West'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
  };
@@ -48,7 +48,7 @@ function initializeViz(){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "https://public.tableau.com/profile/singhrahul#!/vizhome/AnnualOzoneLevels/Dashboard2";
+var url = "https://public.tableau.com/views/AnnualOzoneLevels/Dashboard2?:embed=y&:display_count=yes";
 var options = {
    width: "1004",   
    height: "869",
@@ -68,22 +68,22 @@ responsiveVoice.speak('Hi. How may I help you?','UK English Male');
 //Make country selection
 function selectMidwest()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'Midwest', 'REPLACE'); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region', 'Midwest', tableauSoftware.FilterUpdateType.REPLACE);
 	}
 
 function selectNortheast()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'Northeast', 'REPLACE'); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'Northeast', tableauSoftware.FilterUpdateType.REPLACE);
 	}
 
 function selectSouth()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'South', 'REPLACE'); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'South', tableauSoftware.FilterUpdateType.REPLACE);
 	}	
 
 function selectWest()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'West', 'REPLACE'); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Region', 'West', tableauSoftware.FilterUpdateType.REPLACE);
 	}
 		
 
