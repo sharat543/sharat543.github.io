@@ -26,7 +26,7 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
-var selectStorm = function(storm) {activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE');}
+var selectStorm = function(storm) {Stormselect();responsiveVoice.speak('selecting storm');}
 
 
  var commands = {
@@ -68,9 +68,9 @@ var options = {
 responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English Male');
 
 //Make Storm selection
-function selectAlex()
+function Stormselect()
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE'); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', storm, 'REPLACE'); 
 	}
 
 function removeFilter()
