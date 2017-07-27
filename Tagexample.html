@@ -26,8 +26,11 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
+var selectStorm = function(storm) {window.location.replace("https://sharat543.github.io/Initial.html");}
+
+
  var commands = {
-  	'Select *tag': function(tag) { selectAlex(); responsiveVoice.speak('selecting storm', 'UK English Male'); },
+  	'Select *storm': selectStorm,
  	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
