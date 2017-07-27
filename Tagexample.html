@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Creating Vinzzy">
-		<meta name="author" content="Vinit Ganatra">
+		<meta name="author" content="Sarat Varanasi">
 
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
@@ -30,13 +30,9 @@ if (annyang) {
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); },
-	'Select *tag': showFlickr
+	'Select *tag': function() { selectstorm(tag);}
  };
-  
-var showFlickr = function(tag)
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE'); 
-	}
+
 
   // Add commands to annyang
   annyang.addCommands(commands);
@@ -70,7 +66,11 @@ var options = {
 responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English Male');
 
 //Make Storm selection
-
+  
+function selectstorm(tag)
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE'); 
+	}
 
 	
 function removeFilter()
@@ -82,8 +82,6 @@ function exportPDF()
 	{
 	viz.showExportPDFDialog();
 	}
-
-
 	
 //Start Viz Over
 function startover()
