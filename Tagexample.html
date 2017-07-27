@@ -44,7 +44,7 @@ var options = {
 };
   viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
-var selectStorm = function(storm) { window.location.replace("https://sharat543.github.io/Initial.html");}
+var selectStorm = function(storm) { activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');}
 
 var commands = {
   	'Select :storm': selectStorm,
