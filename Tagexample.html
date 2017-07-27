@@ -44,7 +44,7 @@ var options = {
 };
   viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
-var selectStorm = function(storm) { selectStorm(storm);}
+var selectStorm = function(storm) { window.location.replace("https://sharat543.github.io/Initial.html");}
 
 var commands = {
   	'Select :storm': selectStorm,
@@ -66,11 +66,11 @@ var commands = {
 responsiveVoice.speak('Hi. My name is A. How may I help you?','UK English Male');
 
 //Make Storm selection
-function selectStorm(storm)
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
+//function selectStorm(storm)
+	//{
+	//activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
 	//window.location.replace("https://sharat543.github.io/Initial.html");
-	}
+	//}
 
 
 function removeFilter()
