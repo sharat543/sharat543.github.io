@@ -47,7 +47,7 @@ var options = {
 var selectStorm = function(storm) { activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', storm, 'REPLACE');}
 
 var commands = {
-  	'Select :storm': selectStorm,
+  	'Select *storm': selectStorm,
  	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
