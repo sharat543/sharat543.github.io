@@ -29,8 +29,8 @@ if (annyang) {
  var commands = {
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
-	'start over': function() { startover(); responsiveVoice.speak('starting over',); },
-	'Select :storm': selectStorm
+	'start over': function() { startover(); responsiveVoice.speak('starting over'); },
+	'Select :storm': function() { selectStorm(); responsiveVoice.speak('selecting Storm');}
  };
 
 
@@ -65,9 +65,9 @@ responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English M
 
 //Make Storm selection
 
-var selectStorm = function(storm)
+function selectStorm(storm)
 {
-activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
+activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', storm, 'REPLACE');
 } 
 
 	
