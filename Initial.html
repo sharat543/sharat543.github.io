@@ -38,11 +38,13 @@ if (annyang) {
   //<h5><i>Visualization Created by <a href="https://twitter.com/hemangbhavasar" target="_blank"><span class="Name"><i>Sarat //Varanasi	</i></span></a> 
 	//</i></h5> Previous Heading
   // These are the voice commands in quotes followed by the function
+  var errorhandler = function(errorhandler) { alert('Please provide correct input');}
   var commands = {
 	'Storm Dashboard': function() { Storm(); responsiveVoice.speak('opening Storm dashboard for you', "UK English Male"); },
 	'Transportation Dashboard': function() { Transport(); responsiveVoice.speak('opening Public Transportation dashboard for you', "UK English Male"); },
 	'Sales Dashboard': function() { Sales(); responsiveVoice.speak('opening Sales dashboard for you', "UK English Male"); },
 	'Stocks Dashboard': function() { Stocks(); responsiveVoice.speak('opening Stocks dashboard for you', "UK English Male"); },
+	'*anything':errorhandler
  };
   
   // Add commands to annyang
