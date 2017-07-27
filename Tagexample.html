@@ -30,7 +30,7 @@ if (annyang) {
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); },
-	'Select :storm': function() { selectstorm(storm);}
+	'Select :storm': selectStorm
  };
 
 
@@ -40,9 +40,7 @@ if (annyang) {
   // Start listening.
   annyang.start();
 }
-</script>
 
-<script>
 var viz, workbook, activeSheet, Worksheet, worksheet;
 function initializeViz(){
 
@@ -66,11 +64,11 @@ var options = {
 responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English Male');
 
 //Make Storm selection
-  
-function selectstorm(storm)
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', storm, 'REPLACE'); 
-	}
+
+var selectStorm = function(storm)
+{
+activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
+} 
 
 	
 function removeFilter()
