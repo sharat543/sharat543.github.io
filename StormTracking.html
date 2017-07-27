@@ -40,6 +40,9 @@ if (annyang) {
 	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
 	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
 	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
+	'Filter 2010': function() { filter2010(); responsiveVoice.speak('Filtering year 2010'); },
+	'Filter 2011': function() { filter2011(); responsiveVoice.speak('Filtering year 2011'); },
+	'Filter 2012': function() { filter2012(); responsiveVoice.speak('Filtering year 2012'); },
 	'Remove Selections': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
 	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
@@ -139,6 +142,18 @@ function filterBasinEastPacific()
 function filterBasinWestPacific()
     	{
    	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filter2010()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2010', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filter2011()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2011', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filter2012()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2012', tableauSoftware.FilterUpdateType.REPLACE); 
     	}
 function removeFilter()
 	{
