@@ -26,6 +26,7 @@
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
+ var errorhandler = function(errorhandler) { alert('Please provide correct input');}
  var commands = {
   	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
  	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
@@ -47,6 +48,7 @@ if (annyang) {
 	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); },
+	'*anything':errorhandler
  };
   
   // Add commands to annyang
