@@ -18,7 +18,7 @@
 
 <body onload=initializeViz();>
 <h1><center>"Storm Tracking" viz by National Oceanic and Atmospheric Administration</center></h1>
-<center>Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"</i></center>
+<center>Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Remove selections"</i>,<i>"Start Over"</i></center>
 <br>
 <br>
 <center><div id='tableauViz'></div></center>
@@ -39,6 +39,7 @@ if (annyang) {
 	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
 	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
 	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
+	'REMOVE SELECTIONS': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); },
@@ -133,8 +134,12 @@ function filterBasinWestPacific()
     	{
    	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
     	}
-	
 function removeFilter()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'], tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+	
+function removeSelection()
 	{
 	viz.revertAllAsync();
 	}
