@@ -28,7 +28,7 @@ if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
   	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
-	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
+ 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
  };
@@ -70,7 +70,6 @@ function selectAlex()
 	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
 	}
 
-	
 function removeFilter()
 	{
 	activeSheet.getWorksheets()[0].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'],tableauSoftware.FilterUpdateType.ALL); 
