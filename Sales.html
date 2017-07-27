@@ -18,7 +18,7 @@
 
 <body onload=initializeViz();>
 <h1><center>"Sales Dashboard"</center></h1>
-<center>Say: <b><i>"Select Ohio"</i>,<i>"Export"</i>,<i>"Remove selections"</i>,<i>"Start Over"</i></b></center>
+<center>Say: <b><i>"Select Ohio"</i>,<i>"Export"</i>,<i>"Remove selections"</i>,<i>"Remove filters"</i>,<i>"Start Over"</i></b></center>
 <br>
 <br>
 <center><div id='tableauViz'></div></center>
@@ -26,6 +26,7 @@
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
+ var errorhandler = function(errorhandler) { alert('Please provide correct input');}
  var commands = {
 	'select Alabama': function() { selectAlabama(); responsiveVoice.speak('selecting Alabama', 'UK English Male'); },
 	'select Arizona': function() { selectArizona(); responsiveVoice.speak('selecting Arizona', 'UK English Male'); },
@@ -74,9 +75,16 @@ if (annyang) {
 	'select Washington': function() { selectWashington(); responsiveVoice.speak('selecting Washington', 'UK English Male'); },
 	'select West Virginia': function() { selectWestVirginia(); responsiveVoice.speak('selecting West Virginia', 'UK English Male'); },
 	'select Wisconsin': function() { selectWisconsin(); responsiveVoice.speak('selecting Wisconsin', 'UK English Male'); },
-	'Remove Selections': function() { removeFilter();responsiveVoice.speak('Removing selections', 'UK English Male'); },
+	'filter Central': function() { filterCentral(); responsiveVoice.speak('filtering Central Region', 'UK English Male'); },
+	'filter East': function() { filterEast(); responsiveVoice.speak('filtering East Region', 'UK English Male'); },
+	'filter South': function() { filterSouth(); responsiveVoice.speak('filtering South Region', 'UK English Male'); },
+	'filter West': function() { filterWest(); responsiveVoice.speak('filtering West Region', 'UK English Male'); },
+	'filter East and West': function() { filterEastandWest(); responsiveVoice.speak('filtering East and West Regions', 'UK English Male'); },
+	'Remove Selections': function() { removeSelections();responsiveVoice.speak('Removing selections', 'UK English Male'); },
+	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
-	'start over': function() { startover(); responsiveVoice.speak('starting over', 'UK English Male'); }
+	'start over': function() { startover(); responsiveVoice.speak('starting over', 'UK English Male'); },
+	'*anything': errorhandler
  };
   
   // Add commands to annyang
@@ -197,8 +205,32 @@ function selectVirginia(){activeSheet.getWorksheets()[0].selectMarksAsync('State
 function selectWashington(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Washington', 'REPLACE');}
 function selectWestVirginia(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'West Virginia', 'REPLACE');}
 function selectWisconsin(){activeSheet.getWorksheets()[0].selectMarksAsync('State', 'Wisconsin', 'REPLACE');}
+function filterCentral()
+    	{
+   	activeSheet.getWorksheets()[0].applyFilterAsync('Region', 'Central', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filterWest()
+    	{
+   	activeSheet.getWorksheets()[0].applyFilterAsync('Region', 'West', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filterEast()
+    	{
+   	activeSheet.getWorksheets()[0].applyFilterAsync('Region', 'East', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filterSouth()
+    	{
+   	activeSheet.getWorksheets()[0].applyFilterAsync('Region', 'South', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filterEastandWest()
+    	{
+   	activeSheet.getWorksheets()[0].applyFilterAsync('Region', ['East','West'], tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function removeFilters()
+    	{
+   	activeSheet.getWorksheets()[0].applyFilterAsync('Region', ['Central','West','East','South'], tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
 
-function removeFilter()
+function removeSelections()
 	{
 	viz.revertAllAsync();
 	}
