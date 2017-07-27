@@ -26,6 +26,13 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
+
+
+var selectStorm = function(storm)
+{
+window.location.replace("https://sharat543.github.io/Initial.html");
+};
+
  var commands = {
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
@@ -42,10 +49,7 @@ if (annyang) {
   // Start listening.
   annyang.start();
 
-var selectStorm = function(storm)
-{
-window.location.replace("https://sharat543.github.io/Initial.html");
-} 
+
 }
 </script>
 
