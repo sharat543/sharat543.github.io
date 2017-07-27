@@ -30,7 +30,7 @@ if (annyang) {
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); },
-	'Select *tag': function() { selectstorm(tag);}
+	'Select :storm': function() { selectstorm(storm);}
  };
 
 
@@ -67,9 +67,9 @@ responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English M
 
 //Make Storm selection
   
-function selectstorm(tag)
+function selectstorm(storm)
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE'); 
+	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', storm, 'REPLACE'); 
 	}
 
 	
