@@ -101,51 +101,50 @@ function selectEarl()
 	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'EARL', 'REPLACE'); 
 	}
 	
-	function selectFiona()
+function selectFiona()
 	{
 	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIONA', 'REPLACE'); 
 	}
 	
-	function selectFive()
+function selectFive()
 	{
 	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIVE', 'REPLACE'); 
 	}
 	
-	function selectGaston()
+function selectGaston()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'GASTON', 'REPLACE'); 
 	}
 	
-	function selectHermine()
+function selectHermine()
 	{
 	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'HERMINE', 'REPLACE'); 
 	}
 	
-	 function filterBasinAtlantic()
-    {
-    activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'Atlantic', tableauSoftware.FilterUpdateType.REPLACE); 
-    }
+function filterBasinAtlantic()
+    	{
+    	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'Atlantic', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
 	
-	function filterBasinEastPacific()
-    {
-    activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'East Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
-    }
+function filterBasinEastPacific()
+   	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'East Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
+   	}
 	
-	function filterBasinWestPacific()
-    {
-    activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
-    }
+function filterBasinWestPacific()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
 	
 function removeFilter()
-{
-activeSheet.getWorksheets()[0].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'],tableauSoftware.FilterUpdateType.ALL); 
-}
+	{
+	activeSheet.getWorksheets()[0].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'],tableauSoftware.FilterUpdateType.ALL); 
+	}
 
 function exportPDF()
-{
-
-viz.showExportPDFDialog();
-}
+	{
+	viz.showExportPDFDialog();
+	}
 
 
 	
