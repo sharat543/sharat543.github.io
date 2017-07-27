@@ -2,12 +2,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<title>Tableau Voice Control</title>
+	<title>Storm Dashboard</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creating Vinzzy">
-		<meta name="author" content="Vinit Ganatra">
+		<meta name="description" content="Creating Storm Dashboard">
+		<meta name="author" content="Sarat Varanasi">
 
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
@@ -17,8 +17,8 @@
 </head>	
 
 <body onload=initializeViz();>
-<h1>"Storm Tracking" viz by National Oceanic and Atmospheric Administration </h1>
-Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"</i>
+<h1><center>"Storm Tracking" viz by National Oceanic and Atmospheric Administration</center></h1>
+<center>Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"</i></center>
 <br>
 <br>
 <center><div id='tableauViz'></div></center>
@@ -58,7 +58,7 @@ function initializeViz(){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-var url = "http://public.tableau.com/views/RegionalSampleWorkbook/Storms";
+var url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 var options = {
    width: "1004",   
    height: "869",
@@ -72,10 +72,10 @@ var options = {
   viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
 
-//Vinzzy says hello
-responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English Male');
 
-//Make Storm selection
+responsiveVoice.speak('Hi. How may I help you?','UK English Male');
+
+//Make storm selection
 function selectAlex()
 	{
 	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
@@ -145,8 +145,6 @@ function exportPDF()
 	{
 	viz.showExportPDFDialog();
 	}
-
-
 	
 //Start Viz Over
 function startover()
