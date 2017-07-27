@@ -1,4 +1,4 @@
-	<html>
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Creating Vinzzy">
-		<meta name="author" content="Sarat Varanasi">
+		<meta name="author" content="Vinit Ganatra">
 
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
@@ -26,35 +26,22 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
-
-
-var selectStorm = function(storm)
-{
-window.location.replace("https://sharat543.github.io/Initial.html");
-};
-
  var commands = {
+  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
 	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
-	'start over': function() { startover(); responsiveVoice.speak('starting over'); },
-	'Select :storm': selectStorm
+	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
  };
-
-
-
-
+  
   // Add commands to annyang
   annyang.addCommands(commands);
   
   // Start listening.
   annyang.start();
-
-
 }
 </script>
 
 <script>
-
 var viz, workbook, activeSheet, Worksheet, worksheet;
 function initializeViz(){
 
@@ -78,8 +65,10 @@ var options = {
 responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English Male');
 
 //Make Storm selection
-
-
+function selectAlex()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
+	}
 
 	
 function removeFilter()
@@ -91,6 +80,8 @@ function exportPDF()
 	{
 	viz.showExportPDFDialog();
 	}
+
+
 	
 //Start Viz Over
 function startover()
