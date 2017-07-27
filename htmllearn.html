@@ -2,17 +2,9 @@
 <head>
 </head>
 <body>
-<form name="test">
-<input id="order" name="order" type="text" required>
-<input type="submit" value="submit">
-$('form').on('submit', function(e) {
-  e.preventDefault();
-  var order = $('#order').val();
-  // Format date and order input as necessary
-
-  // Construct URL path and redirect here
-  window.location('http://www.' + order + '.com');
-});
+<form>
+  <input type="text" name="website" id="website" value="" />
+  <input type="submit" value="submit" />
 </form>
 </body>
 </html>
