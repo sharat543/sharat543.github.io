@@ -1,27 +1,24 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
+    <title>Untitled Page</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $('#button').click(function(e) {  
+        var inputvalue = $("#input").val();
+        window.location.replace(" https://www." + inputvalue + ".com");
+
+    });
+});
+</script> 
 </head>
 <body>
-<h1><center>HTML Learning</h1>
-<form>
-  <input type="text" name="website" id="website" value="" />
-  <input type="submit" value="submit" />
-</form>
+
+       <input type="text" id="input"> 
+       <button type="button" id="button">Click Me!</button>
 </body>
-<script type="text/javascript">
-  var text_field = document.querySelector('#website');
-
-  function submitHandler(){
-    // build the new url and open a new window
-    var url = 'www.' + text_field.value + '.com';
-    window.open(url);
-
-    // prevent form from being submitted because we already 
-    // called the request in a new window
-    return false;
-  }
-
-  // attach custom submit handler
-  form.onsubmit = submitHandler;
-</script>
 </html>
