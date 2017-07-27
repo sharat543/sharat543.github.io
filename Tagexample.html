@@ -27,7 +27,7 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
+  	'Select *tag': function() { selectAlex(tag); responsiveVoice.speak('selecting storm', 'UK English Male'); },
  	'REMOVE FILTER': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
 	'start over': function() { startover(); responsiveVoice.speak('starting over',); }
@@ -65,9 +65,9 @@ var options = {
 responsiveVoice.speak('Hi. My name is Vinzzy. How may I help you?','UK English Male');
 
 //Make Storm selection
-function selectAlex()
+function selectAlex(tag)
 	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE'); 
 	}
 
 function removeFilter()
