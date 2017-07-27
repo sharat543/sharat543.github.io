@@ -26,7 +26,7 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
-var selectStorm = function(storm) {window.location.replace("https://sharat543.github.io/Initial.html");}
+var selectStorm = function(storm) { selectStorm();}
 
 
  var commands = {
@@ -65,9 +65,13 @@ var options = {
 }
 
 //Vinzzy says hello
-responsiveVoice.speak('Hi. My name is A. How may I help you?','UK English Male');
+responsiveVoice.speak('Hi. My name is Sarat. How may I help you?','UK English Male');
 
 //Make Storm selection
+function selectStorm()
+	{
+	window.location.replace("https://sharat543.github.io/Initial.html");
+	}
 
 
 function removeFilter()
