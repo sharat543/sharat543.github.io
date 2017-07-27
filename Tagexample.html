@@ -26,7 +26,7 @@ Say: <i>"Select Alex"</i>,<i>"Export"</i>,<i>"Remove filter"</i>,<i>"Start Over"
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
-var selectStorm = function(storm) {window.location.replace("https://sharat543.github.io/Initial.html");}
+var selectStorm = function(storm) {activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', tag, 'REPLACE');}
 
 
  var commands = {
