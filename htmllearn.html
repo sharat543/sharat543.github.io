@@ -10,14 +10,22 @@ $(document).ready(function(){
 
     $('#button').click(function(e) {  
         var inputvalue = $("#input").val();
-        window.location.replace("https://www." + inputvalue + ".com");
-
+	switch(inputvalue)
+	{
+	case "google":
+	window.location.replace("https://www.google.com");
+	break;
+	case "tableau":
+	window.location.replace("https://www.tableau.com");
+	break;
+	default:
+	window.location.replace("https://www.yahoo.com");
+	}
     });
 });
 </script> 
 </head>
 <body>
-
        <input type="text" value="11" id="input"> 
        <button type="button" id="button">Click Me!</button>
 </body>
