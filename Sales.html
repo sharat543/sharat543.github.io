@@ -3,12 +3,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>Sales Dashboard</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creating Vinzzy">
-		<meta name="author" content="Vinit Ganatra">
-
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
 		<script src="js/reveal.js"></script>
@@ -17,16 +11,16 @@
 </head>	
 
 <body onload=initializeViz();>
-<h1><center>"Sales Dashboard"</center></h1>
-<center>Say: <b><i>"Select Ohio"</i>,<i>"Export"</i>,<i>"Remove selections"</i>,<i>"Remove filters"</i>,<i>"Start Over"</i></b></center>
+<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
+<h1 class="head">SALES DASHBOARD</h1>
 <br>
 <br>
-<center><div id='tableauViz'></div></center>
+<center><div id='tableauViz' class="VizHolder"></div></center>
 
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
- var errorhandler = function(errorhandler) { alert('Please provide correct input');}
+ var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide correct input', "UK English Male");}
  var commands = {
 	'select Alabama': function() { selectAlabama(); responsiveVoice.speak('selecting Alabama', 'UK English Male'); },
 	'select Arizona': function() { selectArizona(); responsiveVoice.speak('selecting Arizona', 'UK English Male'); },
@@ -103,8 +97,8 @@ var placeholderDiv = document.getElementById("tableauViz");
 
 var url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 var options = {
-   width: "1200",   
-   height: "1000",
+//   width: "1200",   
+//   height: "1000",
    hideTabs: true,
    hideToolbar: true,
   onFirstInteractive: function () {
@@ -229,7 +223,6 @@ function removeFilters()
     	{
    	activeSheet.getWorksheets()[0].applyFilterAsync('Region', ['Central','West','East','South'], tableauSoftware.FilterUpdateType.REPLACE); 
     	}
-
 function removeSelections()
 	{
 	viz.revertAllAsync();
@@ -240,11 +233,48 @@ function exportPDF()
 	}
 function startover()
 	{
-	window.location.replace("https://sharat543.github.io/Initial.html");
+	window.location.replace("Dashboardspage.html");
 	}
 	
 </script>
 </body>
+<style>
+@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
+@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
+
+
+.head{
+position:fixed;
+top:0px;
+left:43%;
+font-family:Title;
+font-size:60px;
+color:#313131;
+}
+
+.VizHolder
+{
+ position:absolute;
+  top:15%;
+  right:10%
+}
+
+
+
+.logo_deloitte
+{
+ position:absolute;
+  right:2%;
+  top:2%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+
+.logo_deloitte:hover{
+ filter: grayscale(100%);
+}
+
+</style>
 </html>		
 		
 		

@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>Dashboard Selection Page</title>
+  <!-- <link rel="stylesheet" href="leapstrap.css" /> -->
+  <!-- <link rel="stylesheet" href="example.css" /> -->
+	
+	<script src="annyang.min.js"></script>
+	<script src="responsivevoice.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  </head>
+<body>
+<img src="bgfinal.png" class="bg_img" alt="background">
+<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
+<h1 class="head">VIZ ASSISTANT</h1>
+<h2 class="head1">Hello Tableau<h2>
+<h3 class="Storms">STORMS DASHBOARD<h3>
+<h4 class="Storms1">Helps you with detailed storms related information<h4>
+<center><img src="Chart1.png" alt="Chart1" class="Chart1"> </center>
+<h5 class="Sales">SALES DASHBOARD<h5>
+<h6 class="Sales1">Provides sales related information<h6>
+<center><img src="Chart2.png" alt="Chart2" class="Chart2"> </center>
+
+<br>
+<div id="audio"></div>
+
+<script>
+if (annyang) {
+  var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide correct input', "UK English Male"); }
+  var commands = {
+	'Storms Dashboard': function() { Storm(); responsiveVoice.speak('opening Storms dashboard for you', "UK English Male"); },
+	'Sales Dashboard': function() { Sales(); responsiveVoice.speak('opening Sales dashboard for you', "UK English Male"); },
+	'start over': function() { startover(); responsiveVoice.speak('starting over', "UK English Male"); },
+	'*anything':errorhandler
+ };
+  
+  // Add commands to annyang
+  annyang.addCommands(commands);
+  // Start listening.
+  annyang.start();
+}
+</script>
+
+<script>
+// Select Dashboard
+ 
+function Storm()
+	{
+	window.location.replace("StormTracking.html");
+	}	
+function Sales()
+	{
+	window.location.replace("Sales.html");
+	}  
+function startover()
+	{
+	window.location.replace("Landingpage.html");
+	}  
+
+</script>
+</body>
+
+
+<style>
+@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
+@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
+
+.bg_img
+{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+
+.head{
+position:absolute;
+top:25px;
+left:40%;
+font-family:Title;
+font-size:100px;
+color:#313131;
+}
+
+.head:hover
+{
+  transition: color 0.9s ease;
+   color:white;
+}
+
+
+
+.head1{
+position:absolute;
+top:160px;
+right:38%;
+font-family:Description;
+font-size:30px;
+color:#FFFFFF;
+}
+
+.Storms{
+position:fixed;
+top:330px;
+left:20%;
+font-family:Title;
+font-size:45px;
+color:#313131;
+}
+
+
+.Storms1{
+position:fixed;
+top:400px;
+left:20%;
+font-family:Description;
+font-size:15px;
+color:#FFFFFF;
+}
+
+.Chart1
+{
+ position:fixed;
+ top:300px;
+ left:20%;
+ filter: grayscale(0%); 
+}
+
+.Sales{
+position:fixed;
+top:300px;
+left:63%;
+font-family:Title;
+font-size:45px;
+color:#313131;
+}
+
+
+.Sales1{
+position:fixed;
+top:385px;
+left:63%;
+font-family:Description;
+font-size:15px;
+color:#FFFFFF;
+}
+
+.Chart2
+{
+ position:fixed;
+ top:300px;
+ left:63%;
+ filter: grayscale(0%); 
+}
+
+.logo_deloitte
+{
+ position:absolute;
+  right:2%;
+  top:5%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+
+.logo_deloitte:hover{
+ filter: grayscale(100%);
+}
+
+</style>
+</html>
