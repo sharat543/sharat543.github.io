@@ -20,7 +20,7 @@
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
- var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you', "UK English Male");};
+ var errorhandler = function(errorhandler) { responsiveVoice.speak('Did not get you. Please provide a valid input', "UK English Male");};
  var commands = {
 	'select Alabama': function() { selectAlabama(); responsiveVoice.speak('selecting Alabama', 'UK English Male'); },
 	'select Arizona': function() { selectArizona(); responsiveVoice.speak('selecting Arizona', 'UK English Male'); },
@@ -230,8 +230,9 @@ function exportPDF()
 	}
 function startover()
 	{
+	responsiveVoice.speak('starting over', 'UK English Male'); 
 	window.location.replace("Dashboardspage.html");
-	responsiveVoice.speak('I have 2 dashboards for you. Say any one', 'UK English Male'); 
+	responsiveVoice.speak('I have 2 dashboards for you. Which one should I open', 'UK English Male'); 
 	}
 	
 </script>

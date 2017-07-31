@@ -26,7 +26,7 @@
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
- var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you', "UK English Male");};
+ var errorhandler = function(errorhandler) { responsiveVoice.speak('Did not get you. Please provide a valid input', "UK English Male");};
  var commands = {
   	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
  	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
@@ -175,8 +175,9 @@ function exportPDF()
 //Start Viz Over
 function startover()
 	{
+	responsiveVoice.speak('starting over',);
 	window.location.replace("Dashboardspage.html");
-	responsiveVoice.speak('I have 2 dashboards for you. Say any one',);
+	responsiveVoice.speak('I have 2 dashboards for you. Which one should I open',);
 	}
 	
 </script>
