@@ -7,13 +7,13 @@
 	
 	<script src="annyang.min.js"></script>
 	<script src="responsivevoice.js"></script>
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	//<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   </head>
 <body>
 <img src="bgfinal.png" class="bg_img" alt="background">
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <h1 class="head">VIZ ECHO</h1>
-<h2 class="head1">Hello Tableau<h2>
+<h2 class="head1">Hello Tableau</h2>
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
 <br>
 <div id="audio"></div>
@@ -22,7 +22,7 @@
 if (annyang) {
  // var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry', "UK English Male"); }
   var commands = {
-	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); },
+	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); }
 	//'*anything':errorhandler
  };
   
@@ -31,8 +31,7 @@ if (annyang) {
   // Start listening.
   annyang.start();
 }
-</script>
-<script>
+
 // Select Dashboard
 responsiveVoice.speak('Hi. I am your voice assistant. How can I help you','UK English Male');
 function Dashboards()
