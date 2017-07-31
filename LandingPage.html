@@ -21,10 +21,10 @@
   annyang.start();
 responsiveVoice.speak('Hi. I am your voice assistant. How can I help you','UK English Male');
 if (annyang) {
- // var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry', "UK English Male"); }
+  var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you', "UK English Male"); }
   var commands = {
 	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); }
-	//'*anything':errorhandler
+	'*anything':errorhandler
  };
   
   // Add commands to annyang
