@@ -1,38 +1,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Tableau Viz Assistant</title>	
-		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
-		<script src="responsivevoice.js"></script> <!-- Voice Response -->
-		<script src="js/reveal.js"></script>
-		<script src="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script> 
+<title>Tableau Viz Assistant</title>
+	<script src="annyang.min.js"></script>
+	<script src="responsivevoice.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script> 
   </head>
 <body>
 <img src="bgfinal.png" class="bg_img" alt="background">
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <h1 class="head">VIZ ECHO</h1>
-<h2 class="head1">Hello Tableau</h2>
+<h2 class="head1">Hello Tableau<h2>
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
-//<br>
-//<div id="audio"></div>
 
 <script>
-  // Start listening.
-
 if (annyang) {
   var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you', "UK English Male"); }
   var commands = {
-	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); }
+	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); },
 	'*anything':errorhandler
  };
   
   // Add commands to annyang
   annyang.addCommands(commands);
+  // Start listening.
   annyang.start();
 }
 
 // Select Dashboard
-responsiveVoice.speak('Hi. I am your voice assistant. How can I help you','UK English Male');
+responsiveVoice.speak('Hello','UK English Male');
 function Dashboards()
 	{
 	window.location.replace("Dashboardspage.html");
@@ -92,6 +89,12 @@ color:#FFFFFF;
  filter: grayscale(0%); 
 }
 
+.mic:hover
+{
+   filter: grayscale(100%); 
+   transition: filter 0.9s ease;
+
+}
 
 .logo_deloitte
 {
