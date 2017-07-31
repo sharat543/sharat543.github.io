@@ -7,7 +7,7 @@
 	<script src="js/reveal.js"></script>
 	<script src="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script> 
   </head>
-<body>
+<body onload=initializeViz();>
 <img src="bgfinal.png" class="bg_img" alt="background">
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <h1 class="head">VIZ ECHO</h1>
@@ -17,8 +17,9 @@
 <div id="audio"></div>
 
 <script>
-responsiveVoice.speak('Hi','UK English Male');
+
 if (annyang) {
+    responsiveVoice.speak('Hi','UK English Male');
  // var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry', "UK English Male"); }
   var commands = {
 	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); },
