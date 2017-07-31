@@ -11,12 +11,14 @@
 <img src="bgfinal.png" class="bg_img" alt="background">
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <h1 class="head">VIZ ECHO</h1>
-<h2 class="head1">Hello Tableau<h2>
+<h2 class="head1">Hello Tableau</h2>
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
 
 <script>
+
+responsiveVoice.speak('Hello','UK English Male');
 if (annyang) {
-  var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you', "UK English Male"); }
+  var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you', "UK English Male"); },
   var commands = {
 	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. Say any one', "UK English Male"); },
 	'*anything':errorhandler
@@ -29,7 +31,7 @@ if (annyang) {
 }
 
 // Select Dashboard
-responsiveVoice.speak('Hello','UK English Male');
+
 function Dashboards()
 	{
 	window.location.replace("Dashboardspage.html");
