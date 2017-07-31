@@ -16,7 +16,7 @@
 
 <script>
 if (annyang) {
-  var errorhandler = function(errorhandler) { responsiveVoice.speak('Did not get you. Please provide a valid input', "UK English Male"); };
+  var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male"); };
   var commands = {
 	'Show me my dashboards': function() { Dashboards(); responsiveVoice.speak('I have 2 dashboards for you. which one should I open', "UK English Male"); },
 	'*anything': errorhandler
