@@ -29,7 +29,7 @@ if (annyang) {
   var commands = {
 	'Storms Dashboard': function() { Storm(); responsiveVoice.speak('opening Storms dashboard for you', "UK English Male"); },
 	'Sales Dashboard': function() { Sales(); responsiveVoice.speak('opening Sales dashboard for you', "UK English Male"); },
-	'start over': function() { startover(); responsiveVoice.speak('starting over', "UK English Male"); },
+	'start over': function() { startover(); },
 	'*anything':errorhandler
  };
   
@@ -54,6 +54,7 @@ function Sales()
 function startover()
 	{
 	window.location.replace("LandingPage.html");
+	responsiveVoice.speak('Hi. I am your voice assistant. How can I help you', "UK English Male"); 
 	}  
 
 </script>
