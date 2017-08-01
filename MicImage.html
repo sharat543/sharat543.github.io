@@ -1,0 +1,80 @@
+<html>
+<body>
+<img src="bgfinal.png" class="bg_img" alt="background">
+<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
+<h1 class="head">VIZ ASSISTANT</h1>
+<h2 class="head1">Hello Tableau<h2>
+<center><img src="mic.png" alt="Mic" class="mic"> </center>
+</body>
+
+<style>
+@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
+@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
+
+.bg_img
+{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+
+.head{
+position:absolute;
+top:25px;
+left:40%;
+font-family:Title;
+font-size:100px;
+color:#313131;
+}
+
+.head:hover
+{
+  transition: color 0.9s ease;
+   color:white;
+}
+
+
+
+.head1{
+position:absolute;
+top:160px;
+right:38%;
+font-family:Description;
+font-size:30px;
+color:#FFFFFF;
+}
+
+
+.mic
+{
+ position:relative;
+ top:310px;
+ filter: grayscale(0%); 
+}
+
+.mic:hover
+{
+   filter: grayscale(100%); 
+   transition: filter 0.9s ease;
+
+}
+
+.logo_deloitte
+{
+ position:absolute;
+  right:2%;
+  top:5%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+
+.logo_deloitte:hover{
+ filter: grayscale(100%);
+}
+
+</style>
+</html>
