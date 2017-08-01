@@ -18,9 +18,7 @@
 
 <body onload=initializeViz();>
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
-<h1 class="head">STORMS DASHBOARD</h1>
-<br>
-<br>
+<center><h1 class="head">STORMS DASHBOARD</h1></center>
 <center><div id='tableauViz' class="VizHolder"></div></center>
 
 <script>
@@ -180,7 +178,6 @@ function startover()
 	}
 	
 </script>
-
 </body>
 <style>
 @font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
@@ -188,9 +185,8 @@ function startover()
 
 
 .head{
-position:fixed;
-top:0px;
-left:43%;
+position:relative;
+top:25px;
 font-family:Title;
 font-size:60px;
 color:#313131;
@@ -198,9 +194,7 @@ color:#313131;
 
 .VizHolder
 {
- position:absolute;
-  top:15%;
-  right:20%
+ position:relatives;
 }
 
 
@@ -212,10 +206,6 @@ color:#313131;
   top:2%;
   filter: grayscale(000%); 
   color:#313131;
-}
-
-.logo_deloitte:hover{
- filter: grayscale(100%);
 }
 
 </style>
