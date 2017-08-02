@@ -36,17 +36,14 @@ var options = {
 }
 
 if (annyang) {
-  // These are the voice commands in quotes followed by the function
-// var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
  var commands = {
 	'filter :region': regionfilter,
 	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); }
-	//'*anything': errorhandler
  };
-var sheet = viz.getWorkbook().getActiveSheet();
-var regionfilter = function(region) {sheet.applyFilterAsync("Region", 'EAST', tableauSoftware.FilterUpdateType.REPLACE);};
+
+var regionfilter = function(region) {activeSheet.getWorksheets()[0].applyFilterAsync("Region", region, tableauSoftware.FilterUpdateType.REPLACE);};
   
   // Add commands to annyang
   annyang.addCommands(commands);
