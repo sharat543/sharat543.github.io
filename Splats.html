@@ -21,7 +21,6 @@ if (annyang) {
 // var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
  var commands = {
 	'filter :region': function() { filterRegion(region);},
-	'filter East and West': function() { filterEastandWest(); responsiveVoice.speak('filtering East and West Regions', 'UK English Male'); },
 	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); }
@@ -61,7 +60,7 @@ var options = {
 function filterRegion(region)
     	{
 	var sheet = viz.getWorkbook().getActiveSheet();
-   	sheet.applyFilterAsync("Region", region, tableauSoftware.FilterUpdateType.REPLACE); 
+   	sheet.applyFilterAsync("Region", 'EAST', tableauSoftware.FilterUpdateType.REPLACE); 
     	}
 function removeFilters()
     	{
