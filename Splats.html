@@ -16,26 +16,6 @@
 <center><div id='tableauViz' class="VizHolder"></div></center>
 
 <script>
-if (annyang) {
-  // These are the voice commands in quotes followed by the function
-// var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
- var commands = {
-	'filter :region': function() { filterRegion(region);},
-	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
-	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
-	'start over': function() { startover(); }
-	//'*anything': errorhandler
- };
-  
-  // Add commands to annyang
-  annyang.addCommands(commands);
-  
-  // Start listening.
-  annyang.start();
-}
-</script>
-
-<script>
 var viz, workbook, activeSheet, Worksheet, worksheet;
 function initializeViz(){
 
@@ -55,13 +35,29 @@ var options = {
   viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
 
+if (annyang) {
+  // These are the voice commands in quotes followed by the function
+// var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
+ var commands = {
+	'filter :region': regionfilter,
+	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
+	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
+	'start over': function() { startover(); }
+	//'*anything': errorhandler
+ };
+var sheet = viz.getWorkbook().getActiveSheet();
+var regionfilter = function(region) {sheet.applyFilterAsync("Region", 'EAST', tableauSoftware.FilterUpdateType.REPLACE);};
+  
+  // Add commands to annyang
+  annyang.addCommands(commands);
+  
+  // Start listening.
+  annyang.start();
+}
+
+
 //Make state selection
 
-function filterRegion(region)
-    	{
-	var sheet = viz.getWorkbook().getActiveSheet();
-   	sheet.applyFilterAsync("Region", 'EAST', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
 function removeFilters()
     	{
    	activeSheet.getWorksheets()[0].clearFilterAsync("Region"); 
