@@ -23,8 +23,6 @@ var placeholderDiv = document.getElementById("tableauViz");
 
 var url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 var options = {
-//   width: "1200",   
-//   height: "1000",
    hideTabs: true,
    hideToolbar: true,
   onFirstInteractive: function () {
@@ -36,10 +34,12 @@ var options = {
 }
 var regionfilter = function(region) {activeSheet.getWorksheets()[0].applyFilterAsync("Region", region, tableauSoftware.FilterUpdateType.REPLACE);};
 var stateselection = function(state) {activeSheet.getWorksheets()[0].selectMarksAsync("State", state, 'REPLACE');};
+var multiword = function(multi) {activeSheet.getWorksheets()[0].selectMarksAsync("State", multi, 'REPLACE');};
 if (annyang) {
  var commands = {
 	'filter :region': regionfilter,
 	'select :state': stateselection,
+	'show *multi': multiword,
 	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); }
