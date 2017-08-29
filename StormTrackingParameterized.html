@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +17,7 @@
 
 </head>	
 
-<body onload=initializeViz();>
+<body onload=initializeViz(url,actionField,actionValue);>
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <center><h1 class="head">STORMS DASHBOARD</h1></center>
 <center><div id='tableauViz' class="VizHolder"></div></center>
@@ -63,7 +64,7 @@ function initializeViz(url,actionField,actionValue){
 
 var placeholderDiv = document.getElementById("tableauViz");
 
-//var url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
+var url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
 var options = {
 //   width: "1004",   
 //  height: "869",
