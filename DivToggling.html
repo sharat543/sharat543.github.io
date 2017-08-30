@@ -41,12 +41,14 @@ if (viz) { // If a viz object exists, delete it.
 viz=0;
 var placeholderDiv = document.getElementById("tableauViz");
 url =x;
+var field = "State";
+var value = "California"
 var options = {
  		 width: "1004",   
   		 height: "869",
   		 hideTabs: true,
   		 hideToolbar: true,
-		 "State":"California",
+		 field:value,
  		 onInteractive :function () {workbook = viz.getWorkbook();}
 	      }
 viz = new tableau.Viz(placeholderDiv, url, options);
