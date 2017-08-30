@@ -30,41 +30,6 @@
   <option value="Storm" >Storm
 </select>
 
-<script>
-if (annyang) {
-  // These are the voice commands in quotes followed by the function
- var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
- var commands = {
-  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
- 	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
- 	'Select Colin': function() { selectColin(); responsiveVoice.speak('selecting Colin'); },
- 	'Select Danielle': function() { selectDanielle(); responsiveVoice.speak('selecting Danielle'); },
-	'Select EARL': function() { selectEarl(); responsiveVoice.speak('selecting EARL'); },
-	'Select FIONA': function() { selectFiona(); responsiveVoice.speak('selecting FIONA'); },
-	'Select FIVE': function() { selectFive(); responsiveVoice.speak('selecting FIVE'); },
-	'Select GASTON': function() { selectGaston(); responsiveVoice.speak('selecting GASTON'); },
-	'Select HERMINE': function() { selectHermine(); responsiveVoice.speak('selecting HERMINE'); },
-	'Select Alex and Danielle': function() { selectAlexandDanielle(); responsiveVoice.speak('selecting Alex and Danielle'); },
-	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
-	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
-	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
-	'Filter 2010': function() { filter2010(); responsiveVoice.speak('Filtering year 2010'); },
-	'Filter 2011': function() { filter2011(); responsiveVoice.speak('Filtering year 2011'); },
-	'Filter 2012': function() { filter2012(); responsiveVoice.speak('Filtering year 2012'); },
-	'Remove Selections': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
-	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
-	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
-	'start over': function() { startover(); },
-	'*anything':errorhandler
- };
-  
-  // Add commands to annyang
-  annyang.addCommands(commands);
-  
-  // Start listening.
-  annyang.start();
-}
-</script>
 
 <script>
  if (viz) { // If a viz object exists, delete it.
@@ -96,6 +61,37 @@ var options = {
 //alert(options);
 //  viz = new tableau.Viz(placeholderDiv, url, options);
   viz = new tableau.Viz(placeholderDiv, url, options);
+if (annyang) {
+  // These are the voice commands in quotes followed by the function
+ var commands = {
+  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
+ 	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
+ 	'Select Colin': function() { selectColin(); responsiveVoice.speak('selecting Colin'); },
+ 	'Select Danielle': function() { selectDanielle(); responsiveVoice.speak('selecting Danielle'); },
+	'Select EARL': function() { selectEarl(); responsiveVoice.speak('selecting EARL'); },
+	'Select FIONA': function() { selectFiona(); responsiveVoice.speak('selecting FIONA'); },
+	'Select FIVE': function() { selectFive(); responsiveVoice.speak('selecting FIVE'); },
+	'Select GASTON': function() { selectGaston(); responsiveVoice.speak('selecting GASTON'); },
+	'Select HERMINE': function() { selectHermine(); responsiveVoice.speak('selecting HERMINE'); },
+	'Select Alex and Danielle': function() { selectAlexandDanielle(); responsiveVoice.speak('selecting Alex and Danielle'); },
+	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
+	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
+	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
+	'Filter 2010': function() { filter2010(); responsiveVoice.speak('Filtering year 2010'); },
+	'Filter 2011': function() { filter2011(); responsiveVoice.speak('Filtering year 2011'); },
+	'Filter 2012': function() { filter2012(); responsiveVoice.speak('Filtering year 2012'); },
+	'Remove Selections': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
+	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
+	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
+	'start over': function() { startover(); }
+ };
+  
+  // Add commands to annyang
+  annyang.addCommands(commands);
+  
+  // Start listening.
+  annyang.start();
+}
 }
 function showHide()
 {
