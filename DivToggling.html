@@ -20,8 +20,9 @@
 
 
 <select id="mySelect" onchange="showHide()" style="position:absolute;top:0px;">
-  <option value="Sales" selected>Sales
-  <option value="Storm" >Storm
+  <option value="Select" selected>Select Dashboard
+  <option value="Sales">Sales
+  <option value="Storm">Storm
 </select>
 
 
@@ -53,6 +54,11 @@ function showHide()
 {
 	var val = document.getElementById("mySelect").value;
 
+	if(val == "Select")
+	{
+	document.getElementById("heading").innerHTML = "SELECT A DASHBOARD";
+	}
+
 	if(val == "Storm")
 	{
 	document.getElementById("tableauViz").style.zIndex =counter;
@@ -68,6 +74,7 @@ function showHide()
 	document.getElementById("heading").innerHTML = "SALES DASHBOARD";
 	myFunction();
 	}
+
 }
 
 
