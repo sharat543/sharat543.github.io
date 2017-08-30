@@ -39,6 +39,7 @@ if (annyang) {
 	'filter :region': regionfilter, //using named variable concept
 	'select *state': stateselection, //using splats concept because states can have multiple words like West Virginia
 	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
+	'Remove Selections': function() { removeSelections();responsiveVoice.speak('Removing selections', 'UK English Male'); },
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); }
  };
