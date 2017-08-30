@@ -33,7 +33,7 @@ var x,url ,y;
                 viz.dispose();
             }
 var counter=0;
-function initializeViz(actionfield,actionvalue)
+function initializeViz()
 {
 if (viz) { // If a viz object exists, delete it.
                 viz.dispose();
@@ -46,13 +46,12 @@ var options = {
   		 height: "869",
   		 hideTabs: true,
   		 hideToolbar: true,
-		 actionfield:actionvalue,
+		 "State":"California",
  		 onInteractive :function () {workbook = viz.getWorkbook();}
 	      }
 viz = new tableau.Viz(placeholderDiv, url, options);
 }
-var field = "State";
-var value = "California";
+
 function showHide()
 {
 	var val = document.getElementById("mySelect").value;
@@ -79,7 +78,7 @@ function myFunction()
 {
 x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 document.getElementById("tableauViz");
-initializeViz(field,value);
+initializeViz();
 }
 
 
@@ -87,7 +86,7 @@ function myFunction1()
 {
 x= "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
 document.getElementById("tableauViz");
-initializeViz(field,value);
+initializeViz();
 }
 
 //Make storm selection
