@@ -121,7 +121,7 @@ var viz, workbook, activeSheet, Worksheet;
 //Make storm selection
 function removeFilters()
 	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'], tableauSoftware.FilterUpdateType.REPLACE); 
+	activeSheet.getWorksheets()[1].applyFilterAsync('Region', ['Central', 'East', 'West', 'South'], tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 	
 function removeSelections()
