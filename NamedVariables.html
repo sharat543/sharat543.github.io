@@ -17,24 +17,26 @@
 
 <script>
 var viz, workbook, activeSheet, Worksheet, worksheet;
-function initializeViz(){
-
-var placeholderDiv = document.getElementById("tableauViz");
-
-var url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
-var options = {
+function initializeViz()
+{
+ var placeholderDiv = document.getElementById("tableauViz");
+ var url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
+ var options = 
+  {
    hideTabs: true,
    hideToolbar: true,
-  onFirstInteractive: function () {
-  workbook = viz.getWorkbook();
-  activeSheet = workbook.getActiveSheet();
-}
-};
-  viz = new tableauSoftware.Viz(placeholderDiv, url, options);
+   onFirstInteractive: function () 
+    {
+     workbook = viz.getWorkbook();
+     activeSheet = workbook.getActiveSheet();
+    }
+  };
+ viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
 var regionfilter = function(region) {activeSheet.getWorksheets()[0].applyFilterAsync("Region", region, tableauSoftware.FilterUpdateType.REPLACE);};
 var stateselection = function(state) {activeSheet.getWorksheets()[0].selectMarksAsync("State", state, 'REPLACE');};
-if (annyang) {
+if (annyang) 
+{
  var commands = {
 	'filter :region': regionfilter, //using named variable concept
 	'select *state': stateselection, //using splats concept because states can have multiple words like West Virginia
@@ -42,13 +44,10 @@ if (annyang) {
 	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); }
  };
-
-
-  
-  // Add commands to annyang
+ // Add commands to annyang
   annyang.addCommands(commands);
   
-  // Start listening.
+ // Start listening.
   annyang.start();
 }
 
