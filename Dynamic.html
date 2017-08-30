@@ -36,6 +36,7 @@
                 viz.dispose();
             }
 var counter=0;
+var viz, workbook, activeSheet, Worksheet;
 function initializeViz(){
 if (viz) { // If a viz object exists, delete it.
                 viz.dispose();
@@ -64,27 +65,8 @@ var options = {
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
- 	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
- 	'Select Colin': function() { selectColin(); responsiveVoice.speak('selecting Colin'); },
- 	'Select Danielle': function() { selectDanielle(); responsiveVoice.speak('selecting Danielle'); },
-	'Select EARL': function() { selectEarl(); responsiveVoice.speak('selecting EARL'); },
-	'Select FIONA': function() { selectFiona(); responsiveVoice.speak('selecting FIONA'); },
-	'Select FIVE': function() { selectFive(); responsiveVoice.speak('selecting FIVE'); },
-	'Select GASTON': function() { selectGaston(); responsiveVoice.speak('selecting GASTON'); },
-	'Select HERMINE': function() { selectHermine(); responsiveVoice.speak('selecting HERMINE'); },
-	'Select Alex and Danielle': function() { selectAlexandDanielle(); responsiveVoice.speak('selecting Alex and Danielle'); },
-	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
-	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
-	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
-	'Filter 2010': function() { filter2010(); responsiveVoice.speak('Filtering year 2010'); },
-	'Filter 2011': function() { filter2011(); responsiveVoice.speak('Filtering year 2011'); },
-	'Filter 2012': function() { filter2012(); responsiveVoice.speak('Filtering year 2012'); },
-	'Remove Selections': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
-	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
-	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
-	'start over': function() { startover(); }
- };
+  	'Select ALEX': function() {activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE')}   
+                };
   
   // Add commands to annyang
   annyang.addCommands(commands);
@@ -145,110 +127,7 @@ document.getElementById("tableauViz");
 	initializeViz();
 }
 
-var viz, workbook, activeSheet, Worksheet;
 
-
-
-
-
-//Make storm selection
-function selectAlex()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
-	}
-
-function selectBonnie()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'BONNIE', 'REPLACE'); 
-	}
-
-function selectColin()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'COLIN', 'REPLACE'); 
-	}	
-
-function selectDanielle()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'DANIELLE', 'REPLACE'); 
-	}
-	
-function selectEarl()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'EARL', 'REPLACE'); 
-	}
-	
-function selectFiona()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIONA', 'REPLACE'); 
-	}
-	
-function selectFive()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIVE', 'REPLACE'); 
-	}
-	
-function selectGaston()
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'GASTON', 'REPLACE'); 
-	}
-	
-function selectHermine()
-	{ 	 	
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'HERMINE', 'REPLACE'); 
-	}
-
-function selectAlexandDanielle()
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', ['ALEX','DANIELLE'], 'REPLACE'); 
-	}
-	
-function filterBasinAtlantic()
-    	{
-    	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'Atlantic', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-	
-function filterBasinEastPacific()
-   	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'East Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
-   	}
-	
-function filterBasinWestPacific()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function filter2010()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2010', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function filter2011()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2011', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function filter2012()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2012', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function removeFilter()
-	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'], tableauSoftware.FilterUpdateType.REPLACE); 
-	}
-	
-function removeSelection()
-	{
-	viz.revertAllAsync();
-	}
-
-function exportPDF()
-	{
-	viz.showExportPDFDialog();
-	}
-	
-//Start Viz Over
-function startover()
-	{
-	window.location.replace("Dashboardspage.html");
-	responsiveVoice.speak('I have 2 dashboards for you. Which one should I open',);
-	}
 	
 </script>
 </body>
