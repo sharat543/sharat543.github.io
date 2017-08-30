@@ -1,0 +1,291 @@
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Dashboarding</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Creating Storm Dashboard">
+		<meta name="author" content="Vinit Ganatra">
+
+		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
+		<script src="responsivevoice.js"></script> <!-- Voice Response -->
+		<script src="js/reveal.js"></script>
+		<script src="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script> 
+
+</head>	
+
+<body bgcolor='grey'>
+<p id="demo"></p>
+<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
+<center><h1 class="head" id="heading">DASHBOARD SECTION</h1></center>
+
+<center><div id='tableauViz' class="VizHolder"></div></center>
+
+
+<select id="mySelect" onchange="showHide()" style="position:absolute;top:0px;">
+  <option value="Sales" selected>Sales
+  <option value="Storm" >Storm
+</select>
+
+<script>
+if (annyang) {
+  // These are the voice commands in quotes followed by the function
+ var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
+ var commands = {
+  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
+ 	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
+ 	'Select Colin': function() { selectColin(); responsiveVoice.speak('selecting Colin'); },
+ 	'Select Danielle': function() { selectDanielle(); responsiveVoice.speak('selecting Danielle'); },
+	'Select EARL': function() { selectEarl(); responsiveVoice.speak('selecting EARL'); },
+	'Select FIONA': function() { selectFiona(); responsiveVoice.speak('selecting FIONA'); },
+	'Select FIVE': function() { selectFive(); responsiveVoice.speak('selecting FIVE'); },
+	'Select GASTON': function() { selectGaston(); responsiveVoice.speak('selecting GASTON'); },
+	'Select HERMINE': function() { selectHermine(); responsiveVoice.speak('selecting HERMINE'); },
+	'Select Alex and Danielle': function() { selectAlexandDanielle(); responsiveVoice.speak('selecting Alex and Danielle'); },
+	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
+	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
+	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
+	'Filter 2010': function() { filter2010(); responsiveVoice.speak('Filtering year 2010'); },
+	'Filter 2011': function() { filter2011(); responsiveVoice.speak('Filtering year 2011'); },
+	'Filter 2012': function() { filter2012(); responsiveVoice.speak('Filtering year 2012'); },
+	'Remove Selections': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
+	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
+	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
+	'start over': function() { startover(); },
+	'*anything':errorhandler
+ };
+  
+  // Add commands to annyang
+  annyang.addCommands(commands);
+  
+  // Start listening.
+  annyang.start();
+}
+</script>
+
+<script>
+ if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
+var counter=0;
+function initializeViz(){
+if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
+viz=0;
+//alert(viz);
+var placeholderDiv = document.getElementById("tableauViz");
+ url =x;
+ //alert(url);
+var options = {
+ width: "1004",   
+  height: "869",
+  hideTabs: true,
+  hideToolbar: true,
+  onInteractive :function () {
+  workbook = viz.getWorkbook();
+  //activeSheet = workbook.getActiveSheet();
+ // alert(activeSheet);
+}
+}
+//alert(placeholderDiv);
+//alert(url);
+//alert(options);
+//  viz = new tableau.Viz(placeholderDiv, url, options);
+  viz = new tableau.Viz(placeholderDiv, url, options);
+}
+function showHide()
+{
+var val = document.getElementById("mySelect").value;
+
+if(val == "Storm")
+{//alert('xcv');
+//alert(document.getElementById("tableauViz").style.zIndex =counter);
+
+document.getElementById("tableauViz").style.zIndex =counter;
+counter=counter+10;
+document.getElementById("heading").innerHTML = "STORMS DASHBOARD";
+myFunction1();
+
+
+}
+
+if(val == "Sales")
+	{
+//alert('y');
+//alert(document.getElementById("tableauViz").style.zIndex =counter);
+
+document.getElementById("tableauViz").style.zIndex =counter;
+counter=counter+10;
+document.getElementById("heading").innerHTML = "SALES DASHBOARD";
+myFunction();
+	}
+
+
+}
+
+
+
+  var x,url ,y;
+ //x="https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
+function myFunction() {
+x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
+//alert(x);
+
+document.getElementById("tableauViz");
+	initializeViz();
+	
+}
+
+
+function myFunction1() {
+  x= "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
+  //alert(x);
+
+document.getElementById("tableauViz");
+	initializeViz();
+}
+
+var viz, workbook, activeSheet, Worksheet;
+
+
+
+
+
+//Make storm selection
+function selectAlex()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
+	}
+
+function selectBonnie()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'BONNIE', 'REPLACE'); 
+	}
+
+function selectColin()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'COLIN', 'REPLACE'); 
+	}	
+
+function selectDanielle()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'DANIELLE', 'REPLACE'); 
+	}
+	
+function selectEarl()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'EARL', 'REPLACE'); 
+	}
+	
+function selectFiona()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIONA', 'REPLACE'); 
+	}
+	
+function selectFive()
+	{
+	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIVE', 'REPLACE'); 
+	}
+	
+function selectGaston()
+	{
+	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'GASTON', 'REPLACE'); 
+	}
+	
+function selectHermine()
+	{ 	 	
+	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'HERMINE', 'REPLACE'); 
+	}
+
+function selectAlexandDanielle()
+	{
+	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', ['ALEX','DANIELLE'], 'REPLACE'); 
+	}
+	
+function filterBasinAtlantic()
+    	{
+    	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'Atlantic', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+	
+function filterBasinEastPacific()
+   	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'East Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
+   	}
+	
+function filterBasinWestPacific()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filter2010()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2010', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filter2011()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2011', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function filter2012()
+    	{
+   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2012', tableauSoftware.FilterUpdateType.REPLACE); 
+    	}
+function removeFilter()
+	{
+	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'], tableauSoftware.FilterUpdateType.REPLACE); 
+	}
+	
+function removeSelection()
+	{
+	viz.revertAllAsync();
+	}
+
+function exportPDF()
+	{
+	viz.showExportPDFDialog();
+	}
+	
+//Start Viz Over
+function startover()
+	{
+	window.location.replace("Dashboardspage.html");
+	responsiveVoice.speak('I have 2 dashboards for you. Which one should I open',);
+	}
+	
+</script>
+</body>
+<style>
+@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
+@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
+
+
+.head{
+position:relative;
+top:25px;
+font-family:Title;
+font-size:60px;
+color:#313131;
+}
+
+.VizHolder
+{
+ position:relative;
+}
+
+
+
+.logo_deloitte
+{
+ position:absolute;
+  right:2%;
+  top:2%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+
+</style>
+</html>		
+		
+		
