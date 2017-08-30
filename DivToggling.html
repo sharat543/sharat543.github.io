@@ -61,7 +61,7 @@ function showHide()
 	document.getElementById("tableauViz").style.zIndex =counter;
 	counter=counter+10;
 	document.getElementById("heading").innerHTML = "STORMS DASHBOARD";
-	myFunction1(field,value);
+	myFunction1();
 	}
 
 	if(val == "Sales")
@@ -69,13 +69,14 @@ function showHide()
 	document.getElementById("tableauViz").style.zIndex =counter;
 	counter=counter+10;
 	document.getElementById("heading").innerHTML = "SALES DASHBOARD";
-	myFunction();
+	myFunction(field,value);
+	activeSheet.getWorksheets()[1].selectMarksAsync(field, value, 'REPLACE');
 	}
 
 }
 
 
-function myFunction() 
+function myFunction(field,value) 
 {
 x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 document.getElementById("tableauViz");
@@ -88,7 +89,6 @@ function myFunction1(field,value)
 x= "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
 document.getElementById("tableauViz");
 initializeViz();
-activeSheet.getWorksheets()[1].selectMarksAsync(field, value, 'REPLACE');
 }
 
 //Make storm selection
