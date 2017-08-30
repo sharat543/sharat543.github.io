@@ -33,7 +33,7 @@ var x,url ,y;
                 viz.dispose();
             }
 var counter=0;
-function initializeViz()
+function initializeViz(actionfield,actionvalue)
 {
 if (viz) { // If a viz object exists, delete it.
                 viz.dispose();
@@ -46,16 +46,16 @@ var options = {
   		 height: "869",
   		 hideTabs: true,
   		 hideToolbar: true,
+		 actionfield:actionvalue,
  		 onInteractive :function () {workbook = viz.getWorkbook();}
 	      }
 viz = new tableau.Viz(placeholderDiv, url, options);
 }
+var field = "State";
+var value = "California";
 function showHide()
 {
 	var val = document.getElementById("mySelect").value;
-	var field = "State";
-	var value = "California";
-
 	if(val == "Storm")
 	{
 	document.getElementById("tableauViz").style.zIndex =counter;
@@ -69,18 +69,17 @@ function showHide()
 	document.getElementById("tableauViz").style.zIndex =counter;
 	counter=counter+10;
 	document.getElementById("heading").innerHTML = "SALES DASHBOARD";
-	myFunction(field,value);
+	myFunction();
 	}
 
 }
 
 
-function myFunction(field,value) 
+function myFunction() 
 {
 x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 document.getElementById("tableauViz");
-initializeViz();
-activeSheet.getWorksheets()[1].selectMarksAsync(field, value, 'REPLACE');
+initializeViz(field,value);
 }
 
 
