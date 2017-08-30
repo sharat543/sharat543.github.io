@@ -1,15 +1,8 @@
-
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>Dashboarding</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creating Storm Dashboard">
-		<meta name="author" content="Vinit Ganatra">
-
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
 		<script src="js/reveal.js"></script>
@@ -21,7 +14,6 @@
 <p id="demo"></p>
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <center><h1 class="head" id="heading">DASHBOARD SECTION</h1></center>
-
 <center><div id='tableauViz' class="VizHolder"></div></center>
 
 
@@ -33,27 +25,15 @@
 <script>
 if (annyang) {
   // These are the voice commands in quotes followed by the function
+ var regionfilter = function(region) {activeSheet.getWorksheets()[0].applyFilterAsync("Region", region, tableauSoftware.FilterUpdateType.REPLACE);};
+ var stateselection = function(state) {activeSheet.getWorksheets()[0].selectMarksAsync("State", state, 'REPLACE');};
  var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
  var commands = {
-  	'Select ALEX': function() { selectAlex(); responsiveVoice.speak('selecting ALEX', 'UK English Male'); },
- 	'Select Bonnie': function() { selectBonnie(); responsiveVoice.speak('selecting Bonnie'); },
- 	'Select Colin': function() { selectColin(); responsiveVoice.speak('selecting Colin'); },
- 	'Select Danielle': function() { selectDanielle(); responsiveVoice.speak('selecting Danielle'); },
-	'Select EARL': function() { selectEarl(); responsiveVoice.speak('selecting EARL'); },
-	'Select FIONA': function() { selectFiona(); responsiveVoice.speak('selecting FIONA'); },
-	'Select FIVE': function() { selectFive(); responsiveVoice.speak('selecting FIVE'); },
-	'Select GASTON': function() { selectGaston(); responsiveVoice.speak('selecting GASTON'); },
-	'Select HERMINE': function() { selectHermine(); responsiveVoice.speak('selecting HERMINE'); },
-	'Select Alex and Danielle': function() { selectAlexandDanielle(); responsiveVoice.speak('selecting Alex and Danielle'); },
-	'Filter Atlantic': function() { filterBasinAtlantic(); responsiveVoice.speak('Filtering Basin Atlantic'); },
-	'Filter EAST PACIFIC': function() { filterBasinEastPacific(); responsiveVoice.speak('Filtering Basin EAST PACIFIC'); },
-	'Filter WEST PACIFIC': function() { filterBasinWestPacific(); responsiveVoice.speak('Filtering Basin WEST PACIFIC'); },
-	'Filter 2010': function() { filter2010(); responsiveVoice.speak('Filtering year 2010'); },
-	'Filter 2011': function() { filter2011(); responsiveVoice.speak('Filtering year 2011'); },
-	'Filter 2012': function() { filter2012(); responsiveVoice.speak('Filtering year 2012'); },
-	'Remove Selections': function() { removeSelection();responsiveVoice.speak('Removing Selections'); },
-	'Remove Filters': function() { removeFilter();responsiveVoice.speak('Removing Filters'); },
-	'export': function() { exportPDF(); responsiveVoice.speak('exporting'); },
+	'filter :region': regionfilter, //using named variable concept
+	'select *state': stateselection, //using splats concept because states can have multiple words like West Virginia
+	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
+	'Remove Selections': function() { removeSelections();responsiveVoice.speak('Removing selections', 'UK English Male'); },
+	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
 	'start over': function() { startover(); },
 	'*anything':errorhandler
  };
@@ -76,10 +56,8 @@ if (viz) { // If a viz object exists, delete it.
                 viz.dispose();
             }
 viz=0;
-//alert(viz);
 var placeholderDiv = document.getElementById("tableauViz");
  url =x;
- //alert(url);
 var options = {
  width: "1004",   
   height: "869",
@@ -87,14 +65,8 @@ var options = {
   hideToolbar: true,
   onInteractive :function () {
   workbook = viz.getWorkbook();
-  //activeSheet = workbook.getActiveSheet();
- // alert(activeSheet);
 }
 }
-//alert(placeholderDiv);
-//alert(url);
-//alert(options);
-//  viz = new tableau.Viz(placeholderDiv, url, options);
   viz = new tableau.Viz(placeholderDiv, url, options);
 }
 function showHide()
@@ -102,9 +74,7 @@ function showHide()
 var val = document.getElementById("mySelect").value;
 
 if(val == "Storm")
-{//alert('xcv');
-//alert(document.getElementById("tableauViz").style.zIndex =counter);
-
+{
 document.getElementById("tableauViz").style.zIndex =counter;
 counter=counter+10;
 document.getElementById("heading").innerHTML = "STORMS DASHBOARD";
@@ -115,9 +85,6 @@ myFunction1();
 
 if(val == "Sales")
 	{
-//alert('y');
-//alert(document.getElementById("tableauViz").style.zIndex =counter);
-
 document.getElementById("tableauViz").style.zIndex =counter;
 counter=counter+10;
 document.getElementById("heading").innerHTML = "SALES DASHBOARD";
@@ -151,93 +118,13 @@ document.getElementById("tableauViz");
 
 var viz, workbook, activeSheet, Worksheet;
 
-
-
-
-
 //Make storm selection
-function selectAlex()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
-	}
-
-function selectBonnie()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'BONNIE', 'REPLACE'); 
-	}
-
-function selectColin()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'COLIN', 'REPLACE'); 
-	}	
-
-function selectDanielle()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'DANIELLE', 'REPLACE'); 
-	}
-	
-function selectEarl()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'EARL', 'REPLACE'); 
-	}
-	
-function selectFiona()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIONA', 'REPLACE'); 
-	}
-	
-function selectFive()
-	{
-	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'FIVE', 'REPLACE'); 
-	}
-	
-function selectGaston()
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'GASTON', 'REPLACE'); 
-	}
-	
-function selectHermine()
-	{ 	 	
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', 'HERMINE', 'REPLACE'); 
-	}
-
-function selectAlexandDanielle()
-	{
-	activeSheet.getWorksheets()[0].selectMarksAsync('Storm Name', ['ALEX','DANIELLE'], 'REPLACE'); 
-	}
-	
-function filterBasinAtlantic()
-    	{
-    	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'Atlantic', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-	
-function filterBasinEastPacific()
-   	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'East Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
-   	}
-	
-function filterBasinWestPacific()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', 'West Pacific', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function filter2010()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2010', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function filter2011()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2011', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function filter2012()
-    	{
-   	activeSheet.getWorksheets()[1].applyFilterAsync('Year', '2012', tableauSoftware.FilterUpdateType.REPLACE); 
-    	}
-function removeFilter()
+function removeFilters()
 	{
 	activeSheet.getWorksheets()[1].applyFilterAsync('Basin', ['Atlantic', 'East Pacific', 'West Pacific'], tableauSoftware.FilterUpdateType.REPLACE); 
 	}
 	
-function removeSelection()
+function removeSelections()
 	{
 	viz.revertAllAsync();
 	}
