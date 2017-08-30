@@ -46,7 +46,6 @@ var options = {
   		 height: "869",
   		 hideTabs: true,
   		 hideToolbar: true,
-		 field: value,
  		 onInteractive :function () {workbook = viz.getWorkbook();}
 	      }
 viz = new tableau.Viz(placeholderDiv, url, options);
@@ -76,7 +75,7 @@ function showHide()
 }
 
 
-function myFunction(field,value) 
+function myFunction() 
 {
 x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 document.getElementById("tableauViz");
@@ -84,11 +83,12 @@ initializeViz();
 }
 
 
-function myFunction1() 
+function myFunction1(field,value) 
 {
 x= "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
 document.getElementById("tableauViz");
 initializeViz();
+activeSheet.getWorksheets()[1].selectMarksAsync(field, value, 'REPLACE');
 }
 
 //Make storm selection
