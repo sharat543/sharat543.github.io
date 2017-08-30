@@ -46,7 +46,8 @@ var options = {
   		 height: "869",
   		 hideTabs: true,
   		 hideToolbar: true,
- 		 onInteractive :function () {workbook = viz.getWorkbook();activeSheet = workbook.getActiveSheet();}
+		 field: value,
+ 		 onInteractive :function () {workbook = viz.getWorkbook();}
 	      }
 viz = new tableau.Viz(placeholderDiv, url, options);
 }
@@ -80,7 +81,6 @@ function myFunction(field,value)
 x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
 document.getElementById("tableauViz");
 initializeViz();
-activeSheet.getWorksheets()[1].selectMarksAsync(field, value, 'REPLACE');
 }
 
 
