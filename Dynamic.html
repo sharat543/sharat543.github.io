@@ -65,7 +65,7 @@ var options = {
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select ALEX': function() {activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE')}   
+  	'Select ALEX': {responsivevoice.speak("Hello");}   
                 };
   
   // Add commands to annyang
