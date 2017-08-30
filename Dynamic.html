@@ -65,7 +65,7 @@ var options = {
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select ALEX': responsiveVoice.speak('Hello')  
+  	'Select ALEX': function{responsiveVoice.speak('Hello');}  
                 };
   
   // Add commands to annyang
