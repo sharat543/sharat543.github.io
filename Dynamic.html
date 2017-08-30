@@ -4,12 +4,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<title>Dashboarding</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Creating Storm Dashboard">
-		<meta name="author" content="Vinit Ganatra">
-
 		<script src="annyang.min.js"></script> <!-- Voice Recognition -->
 		<script src="responsivevoice.js"></script> <!-- Voice Response -->
 		<script src="js/reveal.js"></script>
@@ -53,19 +47,14 @@ var options = {
   hideToolbar: true,
   onInteractive :function () {
   workbook = viz.getWorkbook();
-  activeSheet = workbook.getActiveSheet();
- // alert(activeSheet);
+ // activeSheet = workbook.getActiveSheet();
 }
 }
-//alert(placeholderDiv);
-//alert(url);
-//alert(options);
-//  viz = new tableau.Viz(placeholderDiv, url, options);
   viz = new tableau.Viz(placeholderDiv, url, options);
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select ALEX': function(){Hello();}  
+  	'Select ALEX': function() { Hello();}  
                 };
   
   // Add commands to annyang
