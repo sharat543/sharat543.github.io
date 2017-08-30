@@ -47,7 +47,7 @@ var options = {
   hideToolbar: true,
   onInteractive :function () {
   workbook = viz.getWorkbook();
- // activeSheet = workbook.getActiveSheet();
+ activeSheet = workbook.getActiveSheet();
 }
 }
   viz = new tableau.Viz(placeholderDiv, url, options);
@@ -56,7 +56,7 @@ var options = {
 if (annyang) {
   // These are the voice commands in quotes followed by the function
  var commands = {
-  	'Select ALEX': activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
+  	'Select ALEX': activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE')
                 };
   
   // Add commands to annyang
