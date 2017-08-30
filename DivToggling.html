@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,6 +15,7 @@
 <p id="demo"></p>
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
 <center><h1 class="head" id="heading">DASHBOARD SECTION</h1></center>
+
 <center><div id='tableauViz' class="VizHolder"></div></center>
 
 
@@ -22,114 +24,78 @@
   <option value="Storm" >Storm
 </select>
 
+
 <script>
 var viz, workbook, activeSheet, Worksheet;
-var x,url,y;
+var x,url ,y;
+ if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
 var counter=0;
 function initializeViz()
 {
- if (viz) 
-  { // If a viz object exists, delete it.
-   viz.dispose();
-  }
- viz=0;
- var placeholderDiv = document.getElementById("tableauViz");
- url =x;
- var options = 
-   {
- 	 width: "1004",   
-  	 height: "869",
- 	 hideTabs: true,
-  	 hideToolbar: true,
-  	 onInteractive :function () {workbook = viz.getWorkbook();}
-   }
- viz = new tableau.Viz(placeholderDiv, url, options);
+if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
+viz=0;
+var placeholderDiv = document.getElementById("tableauViz");
+url =x;
+var options = {
+ 		 width: "1004",   
+  		 height: "869",
+  		 hideTabs: true,
+  		 hideToolbar: true,
+ 		 onInteractive :function () {workbook = viz.getWorkbook();}
+	      }
+viz = new tableau.Viz(placeholderDiv, url, options);
 }
-
-var regionfilter = function(region) {activeSheet.getWorksheets()[0].applyFilterAsync("Region", region, tableauSoftware.FilterUpdateType.REPLACE);};
-var stateselection = function(state) {activeSheet.getWorksheets()[0].selectMarksAsync("State", state, 'REPLACE');};
-var errorhandler = function(errorhandler) { responsiveVoice.speak('Sorry, did not get you. Please provide a valid input', "UK English Male");};
-if (annyang) 
-{
-  // These are the voice commands in quotes followed by the function
- var commands = 
-  {
-	'filter :region': regionfilter, //using named variable concept
-	'select *state': stateselection, //using splats concept because states can have multiple words like West Virginia
-	'Remove Filters': function() { removeFilters();responsiveVoice.speak('Removing filters', 'UK English Male'); },
-	'Remove Selections': function() { removeSelections();responsiveVoice.speak('Removing selections', 'UK English Male'); },
-	'export': function() { exportPDF(); responsiveVoice.speak('exporting', 'UK English Male'); },
-	'start over': function() { startover(); },
-	'*anything':errorhandler
-  };
-  
-  // Add commands to annyang
-  annyang.addCommands(commands);
-  
-  // Start listening.
-  annyang.start();
-}
- 
 function showHide()
 {
- var val = document.getElementById("mySelect").value;
+	var val = document.getElementById("mySelect").value;
 
- if(val == "Storm")
-  {
-   document.getElementById("tableauViz").style.zIndex =counter;
-   counter=counter+10;
-   document.getElementById("heading").innerHTML = "STORMS DASHBOARD";
-   myFunction1();
-  }
+	if(val == "Storm")
+	{
+	document.getElementById("tableauViz").style.zIndex =counter;
+	counter=counter+10;
+	document.getElementById("heading").innerHTML = "STORMS DASHBOARD";
+	myFunction1();
+	}
 
- if(val == "Sales")
-  {
-   document.getElementById("tableauViz").style.zIndex =counter;
-   counter=counter+10;
-   document.getElementById("heading").innerHTML = "SALES DASHBOARD";
-   myFunction();
-  }
+	if(val == "Sales")
+	{
+	document.getElementById("tableauViz").style.zIndex =counter;
+	counter=counter+10;
+	document.getElementById("heading").innerHTML = "SALES DASHBOARD";
+	myFunction();
+	}
 }
+
 
 function myFunction() 
 {
- x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
- document.getElementById("tableauViz");
- initializeViz();
+x= "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
+document.getElementById("tableauViz");
+initializeViz();
 }
 
 
-function myFunction1()
+function myFunction1() 
 {
- x= "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
- document.getElementById("tableauViz");
- initializeViz();
+x= "https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:embed=y&:display_count=yes";
+document.getElementById("tableauViz");
+initializeViz();
 }
 
+//Make storm selection
+//function selectAlex()
+//	{
+//	activeSheet.getWorksheets()[1].selectMarksAsync('Storm Name', 'ALEX', 'REPLACE'); 
+//	}
 
-function removeFilters()
-	{
-	activeSheet.getWorksheets()[1].applyFilterAsync('Region', ['Central', 'East', 'West', 'South'], tableauSoftware.FilterUpdateType.REPLACE); 
-	}
-	
-function removeSelections()
-	{
-	viz.revertAllAsync();
-	}
 
-function exportPDF()
-	{
-	viz.showExportPDFDialog();
-	}
-function startover()
-	{
-	viz.revertAllAsync();
-	}
 	
 </script>
 </body>
-
-
 <style>
 @font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
 @font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
