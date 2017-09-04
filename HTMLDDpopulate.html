@@ -4,17 +4,20 @@
 </head>
 <body>
 
-  <select class="selectpicker" data-style="btn-inverse" data-width="300px"></select>
+  <select id="dashboards"></select>
   
   
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript">
+ var $select = $('#dashboards');
+ $.getJSON('courses.JSON', function(data) {
+    $select.html('');
 
- $.getJSON("courses.json", function( data ) {
-    $.each(data, function(key, value) {
-    $('.selectpicker').append('<option value="' + key + '">' + json[key] + '</option>');
-});
+    for (var i = 0; i < data['dashboards'].length; i++) {
+    $select.append('<option id="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
 }
+});
+
   </script>
 </body>
 </html>
