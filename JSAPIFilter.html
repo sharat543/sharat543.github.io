@@ -63,11 +63,7 @@
 	    if(viz) { viz.dispose(); }
             var containerDiv = document.getElementById("vizContainer"),
             options = {
-                   	hideTabs: true,
-			 onFirstInteractive: function () {
-  			workbook = viz.getWorkbook();
-  			activeSheet = workbook.getActiveSheet();
-}
+                   	hideTabs: true
                	      }
 
 	    if (a === "0")
@@ -86,14 +82,14 @@
 		{
 		var sheet = viz.getWorkbook().getActiveSheet();
 		if (field === "" && value === "") { viz.revertAllAsync(); } 
-		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE'); }
+		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE');}
 		else { sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
 		}
-	    if (dashboards.value === "0")
+	    else
 		{
-		var sheet1 = viz.getWorkbook().getActiveSheet();
-		alert(0);
-		sheet1.applyFilterAsync("Basin", "East Pacific", tableau.FilterUpdateType.REPLACE);
+		var sheet1 = viz.getWorkbook().getActiveSheet().getWorksheets();
+		//alert(sheet1);
+		sheet1.selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
 		}      
 	}
 	
