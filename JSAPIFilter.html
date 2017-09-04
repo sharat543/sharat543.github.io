@@ -1,45 +1,89 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Filter</title>
     
-    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+   <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script>
     
-    <script type="text/javascript">
-        var viz;
-        
-        function initViz() {
-            var containerDiv = document.getElementById("vizContainer"),
-                url = "http://public.tableau.com/views/RegionalSampleWorkbook/College",
-                options = {
-                    "Academic Year": "",
-                    hideTabs: true
-                };
-            
-            viz = new tableau.Viz(containerDiv, url, options);
-        }
-        
-        function yearFilter(year) {
-            var sheet = viz.getWorkbook().getActiveSheet();
-            if (year === "") {
-                sheet.clearFilterAsync("Academic Year");
-            } else {
-                sheet.applyFilterAsync("Academic Year", year, tableau.FilterUpdateType.REPLACE);
-            }
-        }
-    </script>
+
 </head>
 
-<body onload="initViz();">
+<body onload="initViz(1)">
     <div id="vizContainer" style="width:800px; height:700px;"></div>
-    <div id="controls" style="padding:20px;">
-        Year: <select id="changeYear" onchange="yearFilter(value);">
+    <div id="controls" style="padding:30px;">
+        Dashboard: <select id="dashboard" onchange="initViz(dashboard.value)">
+            <option value="0">Storms</option> 
+            <option value="1" selected>College</option>
+            </select>
+        Field: <select id="changeField">
             <option value="">All</option>
+            <option value="Academic Year">Year</option>
+            <option value="College">College</option>   
+            <option value="Storm Name">Storm Name</option>
+            <option value="Basin">Basin</option>        
+        </select>
+        Values: <select id="changeValue" onchange="selectfilter(changeField.value,changeValue.value)">
+	    <option value="">All</option>
             <option value="2013">2013</option>
-            <option value="2014">2014</option>         
+            <option value="2014">2014</option>
+            <option value="Education">Education</option>      
+            <option value="Engineering">Engineering</option>    
+            <option value="Alex">Alex</option>      
+            <option value="Bonnie">Bonnie</option> 
+            <option value="East Pacific">East Pacific</option>      
+            <option value="West Pacific">West Pacific</option> 
         </select>
     </div>
+
+
+    <script type="text/javascript">
+        var vizList = ["http://public.tableau.com/views/RegionalSampleWorkbook/Storms",
+            		"http://public.tableau.com/views/RegionalSampleWorkbook/College"];
+        
+        var viz,url,sheet;
+
+        
+        function initViz(a)
+	{
+	    if(viz) { viz.dispose(); }
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true,
+			 onFirstInteractive: function () {
+  			workbook = viz.getWorkbook();
+  			activeSheet = workbook.getActiveSheet();
+}
+               	      }
+
+	    if (a === "0")
+	 
+	    { url = vizList[0]; }
+	    else 
+	    { url = vizList[1]; }
+
+            viz = new tableau.Viz(containerDiv, url, options);
+        }
+
+        function selectfilter(field,value) 
+	{   
+            sheet = viz.getWorkbook().getActiveSheet();
+	    if (dashboard.value === "1") 
+		{
+		if (field === "" && value === "") { viz.revertAllAsync(); } 
+		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE'); }
+		else { sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
+		}
+	    if (dashboard.value === "0")
+		{
+		alert(0);
+		sheet.applyFilterAsync("Basin", "East Pacific", tableau.FilterUpdateType.REPLACE);
+		}      
+	}
+	
+
+    </script>
 </body>
 
 </html>

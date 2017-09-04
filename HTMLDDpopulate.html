@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+
+  <select class="selectpicker" data-style="btn-inverse" data-width="300px"></select>
+  
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+ $.getJSON("courses.json", function( data ) {
+    $.each(data, function(key, value) {
+    $('.selectpicker').append('<option value="' + key + '">' + json[key] + '</option>');
+});
+}
+  </script>
+</body>
+</html>
