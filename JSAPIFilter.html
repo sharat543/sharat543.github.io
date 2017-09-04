@@ -81,17 +81,19 @@
 
         function selectfilter(field,value) 
 	{   
-            sheet = viz.getWorkbook().getActiveSheet();
+           
 	    if (dashboards.value === "1") 
 		{
+		var sheet = viz.getWorkbook().getActiveSheet();
 		if (field === "" && value === "") { viz.revertAllAsync(); } 
 		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE'); }
 		else { sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
 		}
 	    if (dashboards.value === "0")
 		{
+		var sheet1 = viz.getWorkbook().getActiveSheet();
 		alert(0);
-		sheet.applyFilterAsync("Basin", "East Pacific", tableau.FilterUpdateType.REPLACE);
+		sheet1.applyFilterAsync("Basin", "East Pacific", tableau.FilterUpdateType.REPLACE);
 		}      
 	}
 	
