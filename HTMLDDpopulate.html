@@ -11,12 +11,12 @@
   <script type="text/javascript">
  var $select = $('#dashboards');
  $.getJSON('courses.JSON', function(data) {
-	console.log(data);
-   // $select.html('');
+	
+   $select.html('');
 
-   // for (var i = 0; i < data['dashboards'].length; i++) {
-    //$select.append('<option id="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
-//}
+   for (var i = 0; i < data['dashboards'].length; i++) {
+   $select.append('<option id="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
+}
 });
 
   </script>
