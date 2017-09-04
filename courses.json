@@ -1,12 +1,12 @@
 {"dashboards":[
 	{
 		"id":"0",
-		"name":"College"
+		"name":"Storms"
 	},
 	
 	{
 		"id":"1",
-		"name":"Storms"
+		"name":"College"
 	}
 		
 ]}
