@@ -1,0 +1,22 @@
+{"fields":[
+	{
+		"id":"",
+		"name":"All"
+	},
+	{
+		"id":"Academic Year",
+		"name":"Year"
+	},
+	{
+		"id":"College",
+		"name":"College"
+	},
+	{
+		"id":"Storm Name",
+		"name":"Storm Name"
+	},
+	{
+		"id":"Basin",
+		"name":"Basin"
+	}		
+]}

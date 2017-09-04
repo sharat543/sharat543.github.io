@@ -18,7 +18,7 @@
 	Dashboard: <select id="dashboards" onchange="initViz(dashboards.value)"></select>
 	<script type="text/javascript">
  		var $select = $('#dashboards');
- 		$.getJSON('https://sharat543.github.io/courses.json', function(data) {
+ 		$.getJSON('https://sharat543.github.io/dashboards.json', function(data) {
 		$select.html('');
    		for (var i = 0; i < data['dashboards'].length; i++) {
    		$select.append('<option value="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
@@ -26,24 +26,28 @@
 		});
   	</script>
 
-        Field: <select id="changeField">
-            <option value="">All</option>
-            <option value="Academic Year">Year</option>
-            <option value="College">College</option>   
-            <option value="Storm Name">Storm Name</option>
-            <option value="Basin">Basin</option>        
-        </select>
-        Values: <select id="changeValue" onchange="selectfilter(changeField.value,changeValue.value)">
-	    <option value="">All</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="Education">Education</option>      
-            <option value="Engineering">Engineering</option>    
-            <option value="Alex">Alex</option>      
-            <option value="Bonnie">Bonnie</option> 
-            <option value="East Pacific">East Pacific</option>      
-            <option value="West Pacific">West Pacific</option> 
-        </select>
+        Field: <select id="fields"></select>
+	<script type="text/javascript">
+ 		var $select = $('#fields');
+ 		$.getJSON('https://sharat543.github.io/fields.json', function(data) {
+		$select.html('');
+   		for (var i = 0; i < data['fields'].length; i++) {
+   		$select.append('<option value="' + data['fields'][i]['id'] + '">' + data['fields'][i]['name'] + '</option>');
+		}
+		});
+  	</script>     
+        
+        Values: <select id="values" onchange="selectfilter(fields.value,values.value)"></select>
+	<script type="text/javascript">
+ 		var $select = $('#values');
+ 		$.getJSON('https://sharat543.github.io/values.json', function(data) {
+		$select.html('');
+   		for (var i = 0; i < data['values'].length; i++) {
+   		$select.append('<option value="' + data['values'][i]['id'] + '">' + data['values'][i]['name'] + '</option>');
+		}
+		});
+  	</script>  
+        
     </div>
 
 
@@ -78,13 +82,13 @@
         function selectfilter(field,value) 
 	{   
             sheet = viz.getWorkbook().getActiveSheet();
-	    if (dashboard.value === "1") 
+	    if (dashboards.value === "1") 
 		{
 		if (field === "" && value === "") { viz.revertAllAsync(); } 
 		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE'); }
 		else { sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
 		}
-	    if (dashboard.value === "0")
+	    if (dashboards.value === "0")
 		{
 		alert(0);
 		sheet.applyFilterAsync("Basin", "East Pacific", tableau.FilterUpdateType.REPLACE);
