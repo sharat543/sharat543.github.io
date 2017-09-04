@@ -5,18 +5,27 @@
 <head>
     <title>Filter</title>
     
-   <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js" type="text/javascript"></script>
+   <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 
 </head>
 
-<body onload="initViz(1)">
+<body onload="initViz(0)">
     <div id="vizContainer" style="width:800px; height:700px;"></div>
     <div id="controls" style="padding:30px;">
-        Dashboard: <select id="dashboard" onchange="initViz(dashboard.value)">
-            <option value="0">Storms</option> 
-            <option value="1" selected>College</option>
-            </select>
+        
+	Dashboard: <select id="dashboards" onchange="initViz(dashboards.value)"></select>
+	<script type="text/javascript">
+ 		var $select = $('#dashboards');
+ 		$.getJSON('https://sharat543.github.io/courses.json', function(data) {
+		$select.html('');
+   		for (var i = 0; i < data['dashboards'].length; i++) {
+   		$select.append('<option value="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
+		}
+		});
+  	</script>
+
         Field: <select id="changeField">
             <option value="">All</option>
             <option value="Academic Year">Year</option>
@@ -39,8 +48,8 @@
 
 
     <script type="text/javascript">
-        var vizList = ["http://public.tableau.com/views/RegionalSampleWorkbook/Storms",
-            		"http://public.tableau.com/views/RegionalSampleWorkbook/College"];
+        var vizList = ["http://public.tableau.com/views/RegionalSampleWorkbook/College",
+            		"http://public.tableau.com/views/RegionalSampleWorkbook/Storms"];
         
         var viz,url,sheet;
 
