@@ -19,7 +19,7 @@
 	<script type="text/javascript">
  		var $select = $('#dashboards');
  		$.getJSON('https://sharat543.github.io/dashboards.json', function(data) {
-		$select.html('');
+		$select.html('#dashboards');
    		for (var i = 0; i < data['dashboards'].length; i++) {
    		$select.append('<option value="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
 		}
@@ -28,9 +28,9 @@
 
         Field: <select id="fields"></select>
 	<script type="text/javascript">
- 		var $select = $('#fields');
+ 		$select = $('#fields');
  		$.getJSON('https://sharat543.github.io/fields.json', function(data) {
-		$select.html('');
+		$select.html();
    		for (var i = 0; i < data['fields'].length; i++) {
    		$select.append('<option value="' + data['fields'][i]['id'] + '">' + data['fields'][i]['name'] + '</option>');
 		}
@@ -39,9 +39,9 @@
         
         Values: <select id="values" onchange="selectfilter(fields.value,values.value)"></select>
 	<script type="text/javascript">
- 		var $select = $('#values');
+ 		$select = $('#values');
  		$.getJSON('https://sharat543.github.io/values.json', function(data) {
-		$select.html('');
+		$select.html();
    		for (var i = 0; i < data['values'].length; i++) {
    		$select.append('<option value="' + data['values'][i]['id'] + '">' + data['values'][i]['name'] + '</option>');
 		}
