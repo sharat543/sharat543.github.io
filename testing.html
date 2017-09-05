@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Multi Dashboarding</title>
+    
+   <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+</head>
+
+<body onload="initViz(0)">
+    <div id="vizContainer" style="width:800px; height:700px;"></div>
+    <div id="controls" style="padding:30px;">
+        
+	Dashboard: <select id="dashboards" onchange="initViz(dashboards.value)"></select>
+	<script type="text/javascript">
+ 		var $select = $('#dashboards');
+ 		$.getJSON('https://sharat543.github.io/dashboards.json', function(data) {
+		$select.html('');
+   		for (var i = 0; i < data['dashboards'].length; i++) {
+   		$select.append('<option value="' + data['dashboards'][i]['id'] + '">' + data['dashboards'][i]['name'] + '</option>');
+		}
+		});
+  	</script>
+
+        Field: <select id="fields"></select>
+	<script type="text/javascript">
+ 		var $select1 = $('#fields');
+ 		$.getJSON('https://sharat543.github.io/fields.json', function(data) {
+		$select1.html('');
+   		for (var i = 0; i < data['fields'].length; i++) {
+   		$select1.append('<option value="' + data['fields'][i]['id'] + '">' + data['fields'][i]['name'] + '</option>');
+		}
+		});
+  	</script>     
+        
+        Values: <select id="values" onchange="selectfilter(fields.value,values.value)"></select>
+	<script type="text/javascript">
+ 		var $select2 = $('#values');
+ 		$.getJSON('https://sharat543.github.io/values.json', function(data) {
+		$select2.html('');
+   		for (var i = 0; i < data['values'].length; i++) {
+   		$select2.append('<option value="' + data['values'][i]['id'] + '">' + data['values'][i]['name'] + '</option>');
+		}
+		});
+  	</script>  
+        
+    </div>
+
+
+    <script type="text/javascript">
+        var vizList = ["https://public.tableau.com/views/RegionalSampleWorkbook/Storms",
+            		"https://public.tableau.com/views/RegionalSampleWorkbook/College"];
+        
+        var viz,url,sheet;
+
+        
+        function initViz(a)
+	{
+	    if(viz) { viz.dispose(); }
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true
+               	      }
+
+	    if (a === "0")
+	 
+	    { url = vizList[0]; }
+	    else 
+	    { url = vizList[1]; }
+
+            viz = new tableau.Viz(containerDiv, url, options);
+        }
+
+        function selectfilter(field,value) 
+	{   
+           
+	    if (dashboards.value === "1") 
+		{
+		var sheet = viz.getWorkbook().getActiveSheet(); var sheetname = sheet.getName();
+		if (field === "" && value === "") { viz.revertAllAsync(); } 
+		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE');}
+		else { alert(sheetname); sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
+	
+		}
+	    else
+		{
+		var sheet1 = viz.getWorkbook().getActiveSheet();var sheetname1 = sheet1.getName();
+		alert(sheetname1);
+		sheet1.selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
+		}      
+	}
+	
+
+    </script>
+</body>
+
+</html>
