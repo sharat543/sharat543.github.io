@@ -77,25 +77,34 @@
 
         function selectfilter(field,value) 
 	{   
-           
+           var sheet = viz.getWorkbook().getActiveSheet();
+	   	
 	    if (dashboards.value === "1") 
 		{
-		var sheet = viz.getWorkbook().getActiveSheet(); var sheetname = sheet.getName();
 		if (field === "" && value === "") { viz.revertAllAsync(); } 
 		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE');}
-		else { alert(sheetname); sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
-	
+		else { sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
 		}
-	    else
+	    else 
 		{
-		var sheet1 = viz.getWorkbook().getActiveSheet();var sheetname1 = sheet1.getName();
-		alert(sheetname1);
-		sheet1.selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
+		var sharray = sheet.getWorksheets();	
+		if (field === "" && value === "") { viz.revertAllAsync(); }
+		else if (field === "Storm Name") 
+		   { 
+			for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, 'REPLACE'); } 
+		   }
+	    	else
+		   {
+			for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE); }
+		   }
 		}      
 	}
-	
+
 
     </script>
 </body>
 
 </html>
+
+
+

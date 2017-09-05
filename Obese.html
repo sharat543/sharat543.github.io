@@ -12,7 +12,7 @@
         
         function initViz() {
             var containerDiv = document.getElementById("vizContainer"),
-                url = "http://public.tableau.com/views/RegionalSampleWorkbook/Storms",
+                url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms",
                 options = {
                                  hideTabs: true
                 };
@@ -22,12 +22,25 @@
         
         function yearFilter(year) {
             var sheet = viz.getWorkbook().getActiveSheet();
-	    var sheet_name = sheet.getName();
-            if (year === "") {
-                sheet.clearFilterAsync("Basin");
-            } else {alert(sheet_name);
-                //sheet.applyFilterAsync('Basin', 'East Pacific', tableau.FilterUpdateType.REPLACE);
-            }
+	    
+            if (sheet.getSheetType() === "dashboard")
+		{	
+			
+			var sharray = sheet.getWorksheets();
+			//var sheet_name = sheet.getName();
+			for (var i=0; i < sharray.length; i++)
+			{
+			sharray[i].applyFilterAsync('Basin', 'East Pacific', tableau.FilterUpdateType.REPLACE);
+			}
+		 }
+
+	   // else { alert("dashboard");
+	   //       var sharray = sheet.getworksheets();
+		//  for (var i=0; i < sharray.length; i++)
+		//	{
+		//	sharray[i].applyFilterAsync('Basin', 'East Pacific', tableau.FilterUpdateType.REPLACE);
+		//	}
+		// }
         }
     </script>
 </head>
