@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Filter</title>
+    <title>Multi Dashboarding</title>
     
    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -77,24 +77,34 @@
 
         function selectfilter(field,value) 
 	{   
-           
+           var sheet = viz.getWorkbook().getActiveSheet();
+	   	
 	    if (dashboards.value === "1") 
 		{
-		var sheet = viz.getWorkbook().getActiveSheet();
 		if (field === "" && value === "") { viz.revertAllAsync(); } 
 		else if (field === "College") { sheet.selectMarksAsync(field,value,'REPLACE');}
 		else { sheet.applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE);}
 		}
-	    else
+	    else 
 		{
-		var sheet1 = viz.getWorkbook().getActiveSheet().getWorksheets();
-		//alert(sheet1);
-		sheet1.selectMarksAsync('Storm Name', 'ALEX', 'REPLACE');
+		var sharray = sheet.getWorksheets();	
+		if (field === "" && value === "") { viz.revertAllAsync(); }
+		else if (field === "Storm Name") 
+		   { 
+			for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, tableau.SelectionUpdateType.REPLACE); } 
+		   }
+	    	else
+		   {
+			for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE); }
+		   }
 		}      
 	}
-	
+
 
     </script>
 </body>
 
 </html>
+
+
+
