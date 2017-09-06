@@ -91,7 +91,7 @@
 		if (field === "" && value === "") { viz.revertAllAsync(); }
 		else if (field === "Storm Name") 
 		   { 
-			for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, 'REPLACE'); } 
+			for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, tableau.SelectionUpdateType.REPLACE); } 
 		   }
 	    	else
 		   {
