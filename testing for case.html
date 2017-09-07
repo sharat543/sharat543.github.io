@@ -154,6 +154,8 @@
         var recognizer;
         var previousSubscriptionKey;
         var input;
+		var jsonvalue;
+		var derivedvalue=0;
         document.addEventListener("DOMContentLoaded", function () {
             createBtn = document.getElementById("createBtn");
             startBtn = document.getElementById("startBtn");
@@ -218,15 +220,15 @@
 		function selectfilter(field,value) {
 			var sheet = viz.getWorkbook().getActiveSheet();
 			var sharray = sheet.getWorksheets();
-			var valuecase = valueCase(value);
-			alert(valuecase);
+			//derivedvalue = valueCase(value);
+			//alert("after function call" + jsonvalue);
 			if (field === "Storm Name") 
 			{ 
-				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, valuecase, tableau.SelectionUpdateType.REPLACE); } 
+				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, valueCase(value), tableau.SelectionUpdateType.REPLACE); } 
 			}
 	    	else
 			{
-				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE); }
+				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, valueCase(value), tableau.FilterUpdateType.REPLACE); }
 			}
 		}
 		
@@ -237,11 +239,13 @@
 			for (var i = 0; i < data['values'].length; i++) {
 			var jsonlow = data['values'][i]['name'].toLowerCase();
 			var valuelow = a.toLowerCase();
+			//alert(jsonvalue);
 			if (jsonlow === valuelow)
-				{ return data['values'][i]['name']; }
+				{ jsonvalue = data['values'][i]['name'];}
 			}
 			});
-		}
+		return jsonvalue;
+		}		
 
         function OnComplete() {
             startBtn.disabled = false;
