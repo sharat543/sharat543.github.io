@@ -154,8 +154,8 @@
         var recognizer;
         var previousSubscriptionKey;
         var input;
-		var jsonvalue;
-		var derivedvalue=0;
+		//var jsonvalue="Hello";
+		//var derivedvalue="World";
         document.addEventListener("DOMContentLoaded", function () {
             createBtn = document.getElementById("createBtn");
             startBtn = document.getElementById("startBtn");
@@ -220,31 +220,31 @@
 		function selectfilter(field,value) {
 			var sheet = viz.getWorkbook().getActiveSheet();
 			var sharray = sheet.getWorksheets();
-			//derivedvalue = valueCase(value);
-			//alert("after function call" + jsonvalue);
+			var derivedvalue = "hello";
+			derivedvalue = valueCase(value);
+			alert("after function call" + derivedvalue);
 			if (field === "Storm Name") 
 			{ 
-				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, valueCase(value), tableau.SelectionUpdateType.REPLACE); } 
+				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
 			}
 	    	else
 			{
-				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, valueCase(value), tableau.FilterUpdateType.REPLACE); }
+				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 			}
 		}
 		
 		function valueCase(a) {
 			var $select2 = $('#values');
 			$.getJSON('https://sharat543.github.io/values.json', function(data) {
-			$select2.html('');
 			for (var i = 0; i < data['values'].length; i++) {
+			var jsonvalue;
 			var jsonlow = data['values'][i]['name'].toLowerCase();
 			var valuelow = a.toLowerCase();
 			//alert(jsonvalue);
 			if (jsonlow === valuelow)
-				{ jsonvalue = data['values'][i]['name'];}
+				{ jsonvalue = data['values'][i]['name'];return string(jsonvalue);}
 			}
 			});
-		return jsonvalue;
 		}		
 
         function OnComplete() {
