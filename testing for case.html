@@ -220,8 +220,7 @@
 		function selectfilter(field,value) {
 			var sheet = viz.getWorkbook().getActiveSheet();
 			var sharray = sheet.getWorksheets();
-			var derivedvalue = "hello";
-			derivedvalue = valueCase(value);
+			var derivedvalue = valueCase(value);
 			alert("after function call" + derivedvalue);
 			if (field === "Storm Name") 
 			{ 
@@ -234,18 +233,22 @@
 		}
 		
 		function valueCase(a) {
-			var $select2 = $('#values');
-			$.getJSON('https://sharat543.github.io/values.json', function(data) {
-			for (var i = 0; i < data['values'].length; i++) {
-			var jsonvalue;
-			var jsonlow = data['values'][i]['name'].toLowerCase();
-			var valuelow = a.toLowerCase();
-			//alert(jsonvalue);
-			if (jsonlow === valuelow)
-				{ jsonvalue = data['values'][i]['name'];return string(jsonvalue);}
-			}
-			});
-		}		
+			var jsonvalue; 
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/values.json",
+			type : 'GET',
+			success: function(data) {
+				for (var i = 0; i < data['values'].length; i++) {
+				var jsonlow = data['values'][i]['name'].toLowerCase();
+				var valuelow = a.toLowerCase();
+				if (jsonlow === valuelow)
+				{jsonvalue = data['values'][i]['name'];}
+				}
+			}});
+			return jsonvalue;
+		}				
 
         function OnComplete() {
             startBtn.disabled = false;
