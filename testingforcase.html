@@ -215,10 +215,11 @@
 				 //below code added by Sarat
 				 for (var t=0; t < data.entities.length; t++) {
 				 if ( data.entities[t].type === "Dashboard" )
-					{ db = data.entities[t].entity; }
+					{ db = data.entities[t].entity;fld = 0;val = 0; }
 					else { fld = data.entities[t].type; val = data.entities[t].entity; }
 				 }
-				 initViz(db,fld,val);
+				 alert(db+fld+val);
+				 //initViz(db,fld,val);
 				});
         }
 		
