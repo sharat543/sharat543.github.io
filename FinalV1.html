@@ -213,15 +213,15 @@
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data)
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
-				 selectfilter(data.entities[0].type,data.entities[0].entity);
+				 selectfilter(data.entities[0].type,data.entities[0].entity); //added by Sarat
                 });
         }
-		
+		<!-- added by Sarat -->
 		function selectfilter(field,value) {
 			var sheet = viz.getWorkbook().getActiveSheet();
 			var sharray = sheet.getWorksheets();
 			var derivedvalue = valueCase(value);
-			alert("after function call" + derivedvalue);
+			//alert("after function call" + derivedvalue);
 			if (field === "Storm Name") 
 			{ 
 				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
@@ -231,7 +231,7 @@
 				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 			}
 		}
-		
+		<!-- added by Sarat -->
 		function valueCase(a) {
 			var jsonvalue; 
 			$.ajax({
@@ -254,17 +254,17 @@
             startBtn.disabled = false;
             stopBtn.disabled = true;
         }
-
-	var viz,url;
-	function initViz()
-	{
-	    if(viz) { viz.dispose(); }
+		<!-- added by Sarat -->
+		var viz,url;
+		function initViz()
+		{
+			if(viz) { viz.dispose(); }
             var containerDiv = document.getElementById("vizContainer"),
             options = {
                    	hideTabs: true
                	      }
-	    url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
-        viz = new tableau.Viz(containerDiv, url, options);
+			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
+			viz = new tableau.Viz(containerDiv, url, options);
         }
             
     </script>
