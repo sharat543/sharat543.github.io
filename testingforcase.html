@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script> 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;" onload="initViz()">
+<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
 <div style="float: left">
     <table width="100%">
         <tr>
@@ -209,19 +209,45 @@
         }
 
         function UpdateRecognizedPhrase(json) {
+			var db,fld,val;
             $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data)
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
-				 selectfilter(data.entities[0].type,data.entities[0].entity); //added by Sarat
-                });
+				 //below code added by Sarat
+				 for (var t=0; t < data.entities.length; t++) {
+				 if ( data.entities[t].type === "Dashboard" )
+					{ db = data.entities[t].entity; }
+					else { fld = data.entities[t].type; val = data.entities[t].entity; }
+				 }
+				 initViz(db,fld,val);
+				});
         }
+		
+		<!-- added by Sarat -->
+		var viz,url,sheet,workbook,sharray;
+		function initViz(d,f,v)
+		{
+			if (viz) { viz.dispose(); }
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true,
+					onFirstInteractive: function () {
+									workbook = viz.getWorkbook();
+									activeSheet = workbook.getActiveSheet();
+									sharray = activeSheet.getWorksheets();
+									selectfilter(f,v);}	
+               	      };
+			  		
+			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
+			else { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
+			viz = new tableau.Viz(containerDiv, url, options);
+        }
+		
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
-			var sheet = viz.getWorkbook().getActiveSheet();
-			var sharray = sheet.getWorksheets();
 			var derivedvalue = valueCase(value);
-			//alert("after function call" + derivedvalue);
+			alert(field+derivedvalue);
 			if (field === "Storm Name") 
 			{ 
 				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
@@ -231,6 +257,7 @@
 				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 			}
 		}
+		
 		<!-- added by Sarat -->
 		function valueCase(a) {
 			var jsonvalue; 
@@ -255,17 +282,7 @@
             stopBtn.disabled = true;
         }
 		<!-- added by Sarat -->
-		var viz,url;
-		function initViz()
-		{
-			if(viz) { viz.dispose(); }
-            var containerDiv = document.getElementById("vizContainer"),
-            options = {
-                   	hideTabs: true
-               	      }
-			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
-			viz = new tableau.Viz(containerDiv, url, options);
-        }
+		
             
     </script>
 </body>
