@@ -221,7 +221,7 @@
 			var sheet = viz.getWorkbook().getActiveSheet();
 			var sharray = sheet.getWorksheets();
 			var derivedvalue = valueCase(value);
-			alert("after function call" + derivedvalue);
+			//alert("after function call" + derivedvalue);
 			if (field === "Storm Name") 
 			{ 
 				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
