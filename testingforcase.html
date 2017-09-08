@@ -256,7 +256,6 @@
 				var derivedvalue = valueCase(value);
 				if (field === "Storm Name" || field === "State") 
 				{ 
-					alert(field+value+derivedvalue);
 					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
 				}
 				else

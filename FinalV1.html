@@ -214,10 +214,12 @@
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
 				 //below code added by Sarat
 				 for (var t=0; t < data.entities.length; t++) {
-				 if ( data.entities[t].type === "Dashboard" )
-					{ db = data.entities[t].entity; }
+				 if ( data.entities[t].type === "Dashboard" && data.entities.length == 1)
+					{ db = data.entities[t].entity; fld = 0; val = 0; }
+					else if (data.entities[t].type === "Dashboard" ) { db = data.entities[t].entity; }
 					else { fld = data.entities[t].type; val = data.entities[t].entity; }
 				 }
+				 //alert(db+fld+val);
 				 initViz(db,fld,val);
 				});
         }
@@ -244,14 +246,22 @@
 		
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
-			var derivedvalue = valueCase(value);
-			if (field === "Storm Name") 
-			{ 
-				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
-			}
-	    	else
+			
+			if ( field == 0 && value == 0 )
 			{
-				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+				viz.revertAllAsync();
+			}
+			else
+			{	
+				var derivedvalue = valueCase(value);
+				if (field === "Storm Name" || field === "State") 
+				{ 
+					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
+				}
+				else
+				{
+					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+				}
 			}
 		}
 		
