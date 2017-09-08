@@ -154,8 +154,6 @@
         var recognizer;
         var previousSubscriptionKey;
         var input;
-		//var jsonvalue="Hello";
-		//var derivedvalue="World";
         document.addEventListener("DOMContentLoaded", function () {
             createBtn = document.getElementById("createBtn");
             startBtn = document.getElementById("startBtn");
@@ -247,7 +245,6 @@
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
 			var derivedvalue = valueCase(value);
-			//alert(field+derivedvalue);
 			if (field === "Storm Name") 
 			{ 
 				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
@@ -272,7 +269,6 @@
 				var valuelow = a.toLowerCase();
 				if (jsonlow === valuelow)
 				{jsonvalue = data['values'][i]['name'];}
-				else { jsonvalue = "none"; }
 				}
 			}});
 			return jsonvalue;
@@ -282,7 +278,6 @@
             startBtn.disabled = false;
             stopBtn.disabled = true;
         }
-		<!-- added by Sarat -->
 		
             
     </script>
