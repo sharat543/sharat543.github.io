@@ -230,7 +230,7 @@
         function UpdateStatus(status) {
             statusDiv.innerHTML = status;
         }
-
+		var db,fld,val;
         function UpdateRecognizedHypothesis(text) {
             hypothesisDiv.innerHTML = text;
           
@@ -239,6 +239,8 @@
             {
                 alert("Call Tableau Dashboard");
                 voiceoutput("Filtering the entities for Tableau")
+				alert(db+fld+val);
+				initViz(db,fld,val);
                 activatestart();
             }
             else
@@ -264,14 +266,21 @@
         function OnSpeechEndDetected() {
             stopBtn.disabled = true;
         }
-
+		
         function UpdateRecognizedPhrase(json) {
             $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
                  try{
-                     voice_text = "Detected" +JSON.stringify(data.entities[0].entity)+JSON.stringify(data.entities[0].type) + "Do you want to proceed?";
-                     voiceoutput_detection(voice_text)
+					for (var t=0; t < data.entities.length; t++) 
+					{
+						if ( data.entities[t].type === "Dashboard" && data.entities.length == 1)
+						{ db = data.entities[t].entity; fld = 0; val = 0; }
+						else if (data.entities[t].type === "Dashboard" ) { db = data.entities[t].entity; }
+						else { fld = data.entities[t].type; val = data.entities[t].entity; }
+					}
+				 voice_text = "Detected" + fld + val + "Do you want to proceed?";
+                 voiceoutput_detection(voice_text)
                  }
                  catch(err)
                  {
@@ -281,7 +290,67 @@
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
                 });
 
-    };
+    }
+	
+	<!-- added by Sarat -->
+		var viz,url,sheet,workbook,sharray;
+		function initViz(d,f,v)
+		{
+			if (viz) { viz.dispose(); }
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true,
+					onFirstInteractive: function () {
+									workbook = viz.getWorkbook();
+									activeSheet = workbook.getActiveSheet();
+									sharray = activeSheet.getWorksheets();
+									selectfilter(f,v);}	
+               	      };
+			//alert(d+f+v); 		
+			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
+			else if (d === "sales") { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
+			viz = new tableau.Viz(containerDiv, url, options);
+        }
+		
+		<!-- added by Sarat -->
+		function selectfilter(field,value) {
+			
+			if ( field == 0 && value == 0 )
+			{
+				viz.revertAllAsync();
+			}
+			else
+			{	
+				var derivedvalue = valueCase(value);
+				if (field === "Storm Name" || field === "State") 
+				{ 
+					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
+				}
+				else
+				{
+					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+				}
+			}
+		}
+		
+		<!-- added by Sarat -->
+		function valueCase(a) {
+			var jsonvalue; 
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCvalues.json",
+			type : 'GET',
+			success: function(data) {
+				for (var i = 0; i < data['values'].length; i++) {
+				var jsonlow = data['values'][i]['name'].toLowerCase();
+				var valuelow = a.toLowerCase();
+				if (jsonlow === valuelow)
+				{jsonvalue = data['values'][i]['name'];}
+				}
+			}});
+			return jsonvalue;
+		}
         
         function OnComplete() {
             startBtn.disabled = false;
