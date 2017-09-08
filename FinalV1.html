@@ -3,8 +3,9 @@
 <head>
     <title>Voice to Text with LUIS</title>
     <meta charset="utf-8" />
-	<!-- below line added by Sarat -->
+	<!-- below 2 lines added by Sarat -->
     <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script> 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;" onload="initViz()">
 <div style="float: left">
@@ -153,6 +154,8 @@
         var recognizer;
         var previousSubscriptionKey;
         var input;
+		//var jsonvalue="Hello";
+		//var derivedvalue="World";
         document.addEventListener("DOMContentLoaded", function () {
             createBtn = document.getElementById("createBtn");
             startBtn = document.getElementById("startBtn");
@@ -210,22 +213,42 @@
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data)
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
-				 selectfilter(data.entities[0].entity,data.entities[0].type);
+				 selectfilter(data.entities[0].type,data.entities[0].entity);
                 });
         }
 		
 		function selectfilter(field,value) {
 			var sheet = viz.getWorkbook().getActiveSheet();
 			var sharray = sheet.getWorksheets();
+			var derivedvalue = valueCase(value);
+			alert("after function call" + derivedvalue);
 			if (field === "Storm Name") 
 			{ 
-				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, tableau.SelectionUpdateType.REPLACE); } 
+				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
 			}
 	    	else
 			{
-				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE); }
+				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 			}
 		}
+		
+		function valueCase(a) {
+			var jsonvalue; 
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/values.json",
+			type : 'GET',
+			success: function(data) {
+				for (var i = 0; i < data['values'].length; i++) {
+				var jsonlow = data['values'][i]['name'].toLowerCase();
+				var valuelow = a.toLowerCase();
+				if (jsonlow === valuelow)
+				{jsonvalue = data['values'][i]['name'];}
+				}
+			}});
+			return jsonvalue;
+		}				
 
         function OnComplete() {
             startBtn.disabled = false;
@@ -243,8 +266,7 @@
 	    url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
         viz = new tableau.Viz(containerDiv, url, options);
         }
-       
-          
+            
     </script>
 </body>
 </html>
