@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
 </head>
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
+
     <table width="100%">
         <tr>
             <td></td>
@@ -25,6 +26,7 @@
             <td>
                 <button id="startBtn" disabled="disabled">Start</button>
                 <button id="stopBtn" disabled="disabled">Stop</button>
+                
             </td>
         </tr>
         <tr>
@@ -141,6 +143,7 @@
         var recognizer;
         var previousSubscriptionKey;
         var input;
+        var voices = speechSynthesis.getVoices();
         document.addEventListener("DOMContentLoaded", function () {
             createBtn = document.getElementById("createBtn");
             startBtn = document.getElementById("startBtn");
@@ -173,9 +176,45 @@
             Initialize(function (speechSdk) {
                 SDK = speechSdk;
                 startBtn.disabled = false;
+                voiceoutput("Hello! I'm your voice assistant,how can i help you ?")
             });
         });
+        function voiceoutput(text){
+            if('speechSynthesis' in window){
 
+                //var voices = speechSynthesis.getVoices();
+      //for(var i = 0; i < voices.length; i++ ) {
+        //console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
+      //}
+    var speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'en-US';
+    speech.voice = voices[4]
+    window.speechSynthesis.speak(speech);
+            activatestart();     
+}
+        } 
+         function voiceoutput_detection(text){
+
+            if('speechSynthesis' in window){
+    var speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'en-US';
+
+    
+     
+    speech.voice = voices[4]
+
+    window.speechSynthesis.speak(speech);
+            activatestart();  
+            UpdateRecognizedHypothesisUserConfirmation(text);   
+}
+        } 
+        function activatestart()
+        {   
+            $(startBtn).click() 
+            $(startBtn).hide()
+            $(stopBtn).hide()
+           
+        }
         function Setup() {
             recognizer = RecognizerSetup(SDK, SDK.RecognitionMode.Interactive, key.value);
         }
@@ -186,6 +225,31 @@
 
         function UpdateRecognizedHypothesis(text) {
             hypothesisDiv.innerHTML = text;
+          
+            input = text;
+             if(text =="yes")
+            {
+                alert("Call Tableau Dashboard");
+                voiceoutput("Filtering the entities for Tableau")
+                activatestart();
+            }
+            else
+            {
+                //alert("speak again");
+            }
+            
+        }
+        function UpdateRecognizedHypothesisUserConfirmation(text) {
+            hypothesisDiv.innerHTML = text;
+            if(text =="yes")
+            {
+                //alert("Call Tableau Dashboard");
+                activatestart();
+            }
+            else
+            {
+                //alert("speak again");
+            }
             input = text;
         }
 
@@ -196,11 +260,21 @@
         function UpdateRecognizedPhrase(json) {
             $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
-                 phraseDiv.innerHTML =  JSON.stringify(data)
+                 phraseDiv.innerHTML =  JSON.stringify(data);
+                 try{
+                     voice_text = "Detected" +JSON.stringify(data.entities[0].entity)+JSON.stringify(data.entities[0].type) + "Do you want to proceed?";
+                     voiceoutput_detection(voice_text)
+                 }
+                 catch(err)
+                 {
+                    
+                 }
+
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
                 });
-        }
 
+    };
+        
         function OnComplete() {
             startBtn.disabled = false;
             stopBtn.disabled = true;
