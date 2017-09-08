@@ -247,7 +247,7 @@
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
 			var derivedvalue = valueCase(value);
-			alert(field+derivedvalue);
+			//alert(field+derivedvalue);
 			if (field === "Storm Name") 
 			{ 
 				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
@@ -264,7 +264,7 @@
 			$.ajax({
 			async: false,
 			dataType : 'json',
-			url: "https://sharat543.github.io/values.json",
+			url: "https://sharat543.github.io/POCvalues.json",
 			type : 'GET',
 			success: function(data) {
 				for (var i = 0; i < data['values'].length; i++) {
@@ -272,6 +272,7 @@
 				var valuelow = a.toLowerCase();
 				if (jsonlow === valuelow)
 				{jsonvalue = data['values'][i]['name'];}
+				else { jsonvalue = "none"; }
 				}
 			}});
 			return jsonvalue;
