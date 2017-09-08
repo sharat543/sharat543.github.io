@@ -240,7 +240,7 @@
                	      };
 			  		
 			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
-			else { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
+			else if (d === "sales" ) { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
 			viz = new tableau.Viz(containerDiv, url, options);
         }
 		
