@@ -1,22 +1,22 @@
 {"fields":[
 	{
 		"id":"Storm Name",
-		"name":"Storm Name"
+		"name":"Storm Name",
 		"choosetype":"select"
 	},
 	{
 		"id":"Basin",
-		"name":"Basin"
+		"name":"Basin",
 		"choosetype":"filter"
 	},
 	{
 		"id":"State",
-		"name":"State"
+		"name":"State",
 		"choosetype":"select"
 	},
 	{
 		"id":"Region",
-		"name":"Region"
+		"name":"Region",
 		"choosetype":"filter"
 	}		
 ]}
