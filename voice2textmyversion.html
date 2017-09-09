@@ -204,20 +204,22 @@
                 voiceoutput("Hello! I'm your voice assistant,how can i help you ?")
             });
         });
+		
         function voiceoutput(text){
             if('speechSynthesis' in window){
 
                 //var voices = speechSynthesis.getVoices();
-      //for(var i = 0; i < voices.length; i++ ) {
-        //console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
-      //}
-    var speech = new SpeechSynthesisUtterance(text);
-    speech.lang = 'en-US';
-    speech.voice = voices[4]
-    window.speechSynthesis.speak(speech);
+				//for(var i = 0; i < voices.length; i++ ) {
+				//console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
+				//}
+			var speech = new SpeechSynthesisUtterance(text);
+			speech.lang = 'en-US';
+			speech.voice = voices[4]
+			window.speechSynthesis.speak(speech);
             activatestart();     
-}
+			}
         } 
+		
          function voiceoutput_detection(text){
 
             if('speechSynthesis' in window){
@@ -227,8 +229,9 @@
 			window.speechSynthesis.speak(speech);
             activatestart();  
             UpdateRecognizedHypothesisUserConfirmation(text);   
-}
+			}
         } 
+		
         function activatestart()
         {   
             $(startBtn).click() 
@@ -236,6 +239,7 @@
             $(stopBtn).hide()
 			$(speakAgain).hide()           
         }
+		
         function Setup() {
             recognizer = RecognizerSetup(SDK, SDK.RecognitionMode.Interactive, key.value);
         }
@@ -243,6 +247,7 @@
         function UpdateStatus(status) {
             statusDiv.innerHTML = status;
         }
+		
 		var db,fld,val;
         function UpdateRecognizedHypothesis(text) {
             hypothesisDiv.innerHTML = text;
@@ -250,9 +255,8 @@
             input = text;
              if(text =="yes")
             {
-                alert("Call Tableau Dashboard");
-                voiceoutput("Filtering the entities for Tableau")
-				//alert(db+fld+val);
+                //alert("Call Tableau Dashboard");
+                voiceoutput("Opening" + db + "dashboard")
 				initViz(db,fld,val);
                 activatestart();
             }
@@ -262,6 +266,7 @@
             }
             
         }
+		
         function UpdateRecognizedHypothesisUserConfirmation(text) {
             hypothesisDiv.innerHTML = text;
             if(text =="yes")
@@ -293,10 +298,19 @@
 						{ db = data.entities[t].entity; }
 						else 
 						{ fld = data.entities[t].type; val = data.entities[t].entity; }
+						if ( fld == 0 && val == 0 )
+						{
+						voice_text = "Detected" + db + "dashboard. Do you want to proceed?";
+						voiceoutput_detection(voice_text);
+						}
+						else if ( t > 0 )
+						{
 						voice_text = "Detected" + fld + val + "Do you want to proceed?";
-						voiceoutput_detection(voice_text)
+						voiceoutput_detection(voice_text);
+						}
 					}
-                 }
+
+				 }
                  catch(err)
                  {
                     
@@ -305,7 +319,8 @@
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
                 });
 
-    }
+
+		}
 	
 	<!-- added by Sarat -->
 		var viz,url,sheet,workbook,sharray;
@@ -338,6 +353,7 @@
 			else
 			{	
 				var derivedvalue = valueCase(value);
+				var derivedfield = chooseSelectFilter(field);
 				if (field === "Storm Name" || field === "State") 
 				{ 
 					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
@@ -352,7 +368,25 @@
 		
 		<!-- added by Sarat -->
 		function valueCase(a) {
-			var jsonvalue; 
+			var jsonvalue,choosetype; 
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCvalues.json",
+			type : 'GET',
+			success: function(data) {
+				for (var i = 0; i < data['values'].length; i++) {
+				var jsonlow = data['values'][i]['name'].toLowerCase();
+				var valuelow = a.toLowerCase();
+				if (jsonlow === valuelow)
+				{jsonvalue = data['values'][i]['name'];}
+				}
+			}});
+			return jsonvalue;
+		}
+		
+		function valueCase(a) {
+			var jsonvalue,choosetype; 
 			$.ajax({
 			async: false,
 			dataType : 'json',

@@ -250,9 +250,8 @@
             input = text;
              if(text =="yes")
             {
-                alert("Call Tableau Dashboard");
-                voiceoutput("Filtering the entities for Tableau")
-				//alert(db+fld+val);
+                //alert("Call Tableau Dashboard");
+                voiceoutput("Opening" + db + "dashboard")
 				initViz(db,fld,val);
                 activatestart();
             }
@@ -293,10 +292,19 @@
 						{ db = data.entities[t].entity; }
 						else 
 						{ fld = data.entities[t].type; val = data.entities[t].entity; }
+						if ( fld == 0 && val == 0 )
+						{
+						voice_text = "Detected" + db + "dashboard. Do you want to proceed?";
+						voiceoutput_detection(voice_text);
+						}
+						else if ( t > 0 )
+						{
 						voice_text = "Detected" + fld + val + "Do you want to proceed?";
-						voiceoutput_detection(voice_text)
+						voiceoutput_detection(voice_text);
+						}
 					}
-                 }
+
+				 }
                  catch(err)
                  {
                     
@@ -304,6 +312,7 @@
 
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
                 });
+
 
     }
 	
