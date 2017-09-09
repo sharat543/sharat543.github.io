@@ -354,7 +354,7 @@
 			{	
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
-				if (field === "Storm Name" || field === "State") 
+				if (derivedfield === "select") 
 				{ 
 					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
 				}
@@ -368,39 +368,39 @@
 		
 		<!-- added by Sarat -->
 		function valueCase(a) {
-			var jsonvalue,choosetype; 
+			var jsonvalue;
 			$.ajax({
 			async: false,
 			dataType : 'json',
 			url: "https://sharat543.github.io/POCvalues.json",
 			type : 'GET',
 			success: function(data) {
-				for (var i = 0; i < data['values'].length; i++) {
-				var jsonlow = data['values'][i]['name'].toLowerCase();
+				for (var c = 0; c < data['values'].length; i++) {
+				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
 				var valuelow = a.toLowerCase();
-				if (jsonlow === valuelow)
-				{jsonvalue = data['values'][i]['name'];}
+				if (jsonvaluelow === valuelow)
+				{jsonvalue = data['values'][c]['name'];}
 				}
 			}});
 			return jsonvalue;
 		}
 		
-		function valueCase(a) {
-			var jsonvalue,choosetype; 
+		function chooseSelectFilter(b) {
+			var jsonfield; 
 			$.ajax({
 			async: false,
 			dataType : 'json',
-			url: "https://sharat543.github.io/POCvalues.json",
+			url: "https://sharat543.github.io/POCfields.json",
 			type : 'GET',
 			success: function(data) {
-				for (var i = 0; i < data['values'].length; i++) {
-				var jsonlow = data['values'][i]['name'].toLowerCase();
-				var valuelow = a.toLowerCase();
-				if (jsonlow === valuelow)
-				{jsonvalue = data['values'][i]['name'];}
+				for (var d = 0; d < data['fields'].length; i++) {
+				var jsonfieldlow = data['fields'][d]['name'].toLowerCase();
+				var fieldlow = b.toLowerCase();
+				if (jsonfieldlow === fieldlow)
+				{jsonfield = data['fields'][d]['choosetype'];}
 				}
 			}});
-			return jsonvalue;
+			return jsonfield;
 		}
         
         function OnComplete() {
