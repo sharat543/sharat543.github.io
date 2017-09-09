@@ -204,20 +204,22 @@
                 voiceoutput("Hello! I'm your voice assistant,how can i help you ?")
             });
         });
+		
         function voiceoutput(text){
             if('speechSynthesis' in window){
 
                 //var voices = speechSynthesis.getVoices();
-      //for(var i = 0; i < voices.length; i++ ) {
-        //console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
-      //}
-    var speech = new SpeechSynthesisUtterance(text);
-    speech.lang = 'en-US';
-    speech.voice = voices[4]
-    window.speechSynthesis.speak(speech);
+				//for(var i = 0; i < voices.length; i++ ) {
+				//console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
+				//}
+			var speech = new SpeechSynthesisUtterance(text);
+			speech.lang = 'en-US';
+			speech.voice = voices[4]
+			window.speechSynthesis.speak(speech);
             activatestart();     
-}
+			}
         } 
+		
          function voiceoutput_detection(text){
 
             if('speechSynthesis' in window){
@@ -227,8 +229,9 @@
 			window.speechSynthesis.speak(speech);
             activatestart();  
             UpdateRecognizedHypothesisUserConfirmation(text);   
-}
+			}
         } 
+		
         function activatestart()
         {   
             $(startBtn).click() 
@@ -236,6 +239,7 @@
             $(stopBtn).hide()
 			$(speakAgain).hide()           
         }
+		
         function Setup() {
             recognizer = RecognizerSetup(SDK, SDK.RecognitionMode.Interactive, key.value);
         }
@@ -243,6 +247,7 @@
         function UpdateStatus(status) {
             statusDiv.innerHTML = status;
         }
+		
 		var db,fld,val;
         function UpdateRecognizedHypothesis(text) {
             hypothesisDiv.innerHTML = text;
@@ -251,16 +256,17 @@
              if(text =="yes")
             {
                 //alert("Call Tableau Dashboard");
-                voiceoutput("Opening" + db + "dashboard")
+                voiceoutput("Opening the dashboard for you")
 				initViz(db,fld,val);
                 activatestart();
             }
             else
             {
-                //alert("speak again");
+
             }
             
         }
+		
         function UpdateRecognizedHypothesisUserConfirmation(text) {
             hypothesisDiv.innerHTML = text;
             if(text =="yes")
@@ -270,7 +276,7 @@
             }
             else
             {
-                //alert("speak again");
+                
             }
             input = text;
         }
@@ -292,14 +298,15 @@
 						{ db = data.entities[t].entity; }
 						else 
 						{ fld = data.entities[t].type; val = data.entities[t].entity; }
-						if ( fld == 0 && val == 0 )
+						
+						if ( fld == 0 && val == 0 && data.entities.length == 1)
 						{
-						voice_text = "Detected" + db + "dashboard. Do you want to proceed?";
+						voice_text = "Detected " + db + " dashboard. Do you want to proceed?";
 						voiceoutput_detection(voice_text);
 						}
 						else if ( t > 0 )
 						{
-						voice_text = "Detected" + fld + val + "Do you want to proceed?";
+						voice_text = "Detected " + fld + " " + val + ". Do you want to proceed?";
 						voiceoutput_detection(voice_text);
 						}
 					}
@@ -314,7 +321,7 @@
                 });
 
 
-    }
+		}
 	
 	<!-- added by Sarat -->
 		var viz,url,sheet,workbook,sharray;
@@ -330,7 +337,6 @@
 									sharray = activeSheet.getWorksheets();
 									selectfilter(f,v);}	
                	      };
-			//alert(d+f+v); 		
 			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
 			else if (d === "sales") { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
 			viz = new tableau.Viz(containerDiv, url, options);
@@ -347,11 +353,13 @@
 			else
 			{	
 				var derivedvalue = valueCase(value);
-				if (field === "Storm Name" || field === "State") 
+				var derivedfield = chooseSelectFilter(field);
+				//alert(derivedfield+derivedvalue);
+				if (derivedfield === "select") 
 				{ 
 					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
 				}
-				else
+				else if (derivedfield === "filter")
 				{
 					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 				}
@@ -361,21 +369,40 @@
 		
 		<!-- added by Sarat -->
 		function valueCase(a) {
-			var jsonvalue; 
+			var jsonvalue;
 			$.ajax({
 			async: false,
 			dataType : 'json',
 			url: "https://sharat543.github.io/POCvalues.json",
 			type : 'GET',
 			success: function(data) {
-				for (var i = 0; i < data['values'].length; i++) {
-				var jsonlow = data['values'][i]['name'].toLowerCase();
+				for (var c = 0; c < data['values'].length; c++) {
+				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
 				var valuelow = a.toLowerCase();
-				if (jsonlow === valuelow)
-				{jsonvalue = data['values'][i]['name'];}
+				if (jsonvaluelow === valuelow)
+				{jsonvalue = data['values'][c]['name'];}
 				}
 			}});
 			return jsonvalue;
+		}
+		
+		function chooseSelectFilter(b) {
+			var jsonfield; 
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCfields.json",
+			type : 'GET',
+			success: function(data) {
+				for (var d = 0; d < data['fields'].length; d++) {
+				var jsonfieldlow = data['fields'][d]['name'].toLowerCase();
+				var fieldlow = b.toLowerCase();
+				if (jsonfieldlow === fieldlow)
+				{jsonfield = data['fields'][d]['choosetype'];}
+				}
+			}});
+			
+			return jsonfield;
 		}
         
         function OnComplete() {
