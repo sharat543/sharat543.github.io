@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice to Text with LUIS</title>
+    <meta charset="utf-8" />
+	<!-- below line added by Sarat -->
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+	<script src="scripts/require.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+</head>
+<body>
+<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
+<center><h1 class="head">VIZ ECHO</h1></center>
+
+<button id= "BING" class ="bing" onclick="myFunction()">BING</button>
+<div id="myDIV">
+	<center><img src="mic.png" alt="Mic" class="mic"> </center>
+</div>
+<div id ="id2" style="float: left; display:none">
+    <table width="100%">
+        <tr>
+            <td></td>
+            <td>
+                <h1 style="font-weight:500;">Voice to Text with LUIS</h1>
+               
+            </td>
+        </tr>
+        <tr>            
+            <td ><input  type="hidden" id="key" type="text" size="40" value="940c2da177274e9597b2b4ccfccb9620" v></td>
+        </tr>
+     
+        </tr>
+      
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="startBtn" disabled="disabled">Start</button>
+                <button id="stopBtn" disabled="disabled">Stop</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>BING interpretation: <span id="hypothesisDiv"></span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <textarea id="phraseDiv" style="width:600px;height:200px"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Status: <span id="statusDiv"></span></td>
+        </tr>
+    </table>
+</div>
+<div id= "id3" style="float: left; display:none">
+    <table width="100%" style="float: left">
+        <tr>
+            <td>
+                <div id="vizContainer" style="width:800px; height:700px;"></div>
+            </td>
+        </tr>
+    </table>	
+</div>
+
+    <!-- SDK REFERENCE -->
+    <script src="scripts/speech.browser.sdk-min.js"></script>
+
+    <!-- SDK USAGE -->
+    <script>
+        // On doument load resolve the SDK dependecy
+        function Initialize(onComplete) {
+            require(["Speech.Browser.Sdk"], function(SDK) {
+                onComplete(SDK);
+            });
+        }
+        
+        // Setup the recongizer
+        function RecognizerSetup(SDK, recognitionMode, subscriptionKey) {
+            var recognizerConfig = new SDK.RecognizerConfig(
+                new SDK.SpeechConfig(
+                    new SDK.Context(
+                        new SDK.OS(navigator.userAgent, "Browser", null),
+                        new SDK.Device("SpeechSample", "SpeechSample", "1.0.00000"))),
+                recognitionMode
+                ); 
+
+           
+            var authentication = new SDK.CognitiveSubscriptionKeyAuthentication(subscriptionKey);
+
+            return SDK.CreateRecognizer(recognizerConfig, authentication);
+        }
+
+        // Start the recognition
+        function RecognizerStart(SDK, recognizer) {
+            recognizer.Recognize((event) => {
+                /*
+                 Alternative syntax for typescript devs.
+                 if (event instanceof SDK.RecognitionTriggeredEvent)
+                */
+                switch (event.Name) {
+                    case "RecognitionTriggeredEvent" :
+                        UpdateStatus("Initializing");
+                        break;
+                    case "ListeningStartedEvent" :
+                        UpdateStatus("Listening");
+                        break;
+                    case "RecognitionStartedEvent" :
+                        UpdateStatus("Listening_Recognizing");
+                        break;
+                    case "SpeechStartDetectedEvent" :
+                        UpdateStatus("Listening_DetectedSpeech_Recognizing");
+                        console.log(JSON.stringify(event.Result)); // check console for other information in result
+                        break;
+                    case "SpeechHypothesisEvent" :
+                        UpdateRecognizedHypothesis(event.Result.Text);
+                        console.log(JSON.stringify(event.Result)); // check console for other information in result
+                        break;
+                    case "SpeechEndDetectedEvent" :
+                        OnSpeechEndDetected();
+                        UpdateStatus("Processing_Adding_Final_Touches");
+                        console.log(JSON.stringify(event.Result)); // check console for other information in result
+                        break;
+                    case "SpeechSimplePhraseEvent" :
+                        UpdateRecognizedPhrase(JSON.stringify(event.Result, null, 3));
+                        break;
+                    case "SpeechDetailedPhraseEvent" :
+                        UpdateRecognizedPhrase(JSON.stringify(event.Result, null, 3));
+                        break;
+                    case "RecognitionEndedEvent" :
+                        OnComplete();
+                        UpdateStatus("Idle");
+                        console.log(JSON.stringify(event)); // Debug information
+                        break;
+                }
+            })
+            .On(() => {
+                // The request succeeded. Nothing to do here.
+            },
+            (error) => {
+                console.error(error);
+            });
+        }
+
+        // Stop the Recognition.
+        function RecognizerStop(SDK, recognizer) {
+            // recognizer.AudioSource.Detach(audioNodeId) can be also used here. (audioNodeId is part of ListeningStartedEvent)
+            recognizer.AudioSource.TurnOff();
+        }
+    </script>
+
+    <!-- Browser Hooks -->
+    <script>
+        var startBtn, stopBtn, hypothesisDiv, phraseDiv, statusDiv, key, languageOptions, formatOptions;
+        var SDK;
+        var recognizer;
+        var previousSubscriptionKey;
+        var input;
+        document.addEventListener("DOMContentLoaded", function () {
+            createBtn = document.getElementById("createBtn");
+            startBtn = document.getElementById("startBtn");
+            stopBtn = document.getElementById("stopBtn");
+            phraseDiv = document.getElementById("phraseDiv");
+            hypothesisDiv = document.getElementById("hypothesisDiv");
+            statusDiv = document.getElementById("statusDiv");
+            key = document.getElementById("key");
+         
+
+            startBtn.addEventListener("click", function () {
+                if (!recognizer || previousSubscriptionKey != key.value) {
+                    previousSubscriptionKey = key.value;
+                    Setup();
+                }
+
+                hypothesisDiv.innerHTML = "";
+                phraseDiv.innerHTML = "";
+                RecognizerStart(SDK, recognizer);
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            });
+
+            stopBtn.addEventListener("click", function () {
+                RecognizerStop(SDK);
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            });
+
+            Initialize(function (speechSdk) {
+                SDK = speechSdk;
+                startBtn.disabled = false;
+            });
+        });
+
+        function Setup() {
+            recognizer = RecognizerSetup(SDK, SDK.RecognitionMode.Interactive, key.value);
+        }
+
+        function UpdateStatus(status) {
+            statusDiv.innerHTML = status;
+        }
+
+        function UpdateRecognizedHypothesis(text) {
+            hypothesisDiv.innerHTML = text;
+            input = text;
+        }
+
+        function OnSpeechEndDetected() {
+            stopBtn.disabled = true;
+        }
+
+        function UpdateRecognizedPhrase(json) {
+            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
+                function(data){
+                 phraseDiv.innerHTML =  JSON.stringify(data)
+                 //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
+				 selectfilter(data.entities[0].entity,data.entities[0].type);
+                });
+        }
+		
+		function selectfilter(field,value) {
+			var sheet = viz.getWorkbook().getActiveSheet();
+			var sharray = sheet.getWorksheets();
+			if (field === "Storm Name") 
+			{ 
+				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, tableau.SelectionUpdateType.REPLACE); } 
+			}
+	    	else
+			{
+				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE); }
+			}
+		}
+
+        function OnComplete() {
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        }
+
+	var viz,url;
+	function initViz()
+	{
+	    if(viz) { viz.dispose(); }
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true
+               	      }
+	    url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
+        viz = new tableau.Viz(containerDiv, url, options);
+        }
+          
+    </script>
+<script>
+	function myFunction() {
+		var x = document.getElementById('myDIV');
+		var y = document.getElementById('id2');
+		var z = document.getElementById('id3');
+		x.style.display = 'none';
+		if (y.style.display === 'none') {
+			y.style.display = 'block';
+		} else if (y.style.display === 'block'){
+			y.style.display = 'none';
+		}
+		z.style.display = 'block';
+		
+	}
+</script>
+</body>
+<style>
+@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
+@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
+
+.bg_img
+{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+ 
+.head{
+position:relative;
+top:2%;
+//left:40%;
+font-family:Title;
+font-size:70px;
+color:#313131;
+}
+
+.mic
+{
+ position:relative;
+ top:120px;
+ filter: grayscale(0%); 
+}
+
+.logo_deloitte
+{
+ position:absolute;
+  right:2%;
+  top:5%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+
+.bing
+{
+position:absolute;
+  right:2%;
+  top:15%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+body { 
+    background-image: url('bgfinal.png');
+}
+</style>
+</html>
