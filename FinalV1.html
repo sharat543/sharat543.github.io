@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Voice to Text with LUIS</title>
+    <title>Viz Echo</title>
     <meta charset="utf-8" />
 	<!-- below 2 lines added by Sarat -->
     <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script> 
@@ -201,11 +201,12 @@
             Initialize(function (speechSdk) {
                 SDK = speechSdk;
                 startBtn.disabled = false;
-                voiceoutput("Hello! I'm your voice assistant,how can i help you ?")
+                voiceoutput("Hello! I'm your voice assistant,how can i help you ?",1)
             });
         });
 		
-        function voiceoutput(text){
+        function voiceoutput(text,flag){
+
             if('speechSynthesis' in window){
 
                 //var voices = speechSynthesis.getVoices();
@@ -216,7 +217,10 @@
 			speech.lang = 'en-US';
 			speech.voice = voices[4]
 			window.speechSynthesis.speak(speech);
-            activatestart();     
+            if (flag==1){
+            setTimeout(activatestart, 4000);
+        }
+           
 			}
         } 
 		
@@ -227,13 +231,15 @@
 			speech.lang = 'en-US';
 			speech.voice = voices[4]
 			window.speechSynthesis.speak(speech);
-            activatestart();  
+            setTimeout(activatestart, 4000);
+         
             UpdateRecognizedHypothesisUserConfirmation(text);   
 			}
         } 
 		
         function activatestart()
         {   
+          
             $(startBtn).click() 
             $(startBtn).hide()
             $(stopBtn).hide()
@@ -256,9 +262,9 @@
              if(text =="yes")
             {
                 //alert("Call Tableau Dashboard");
-                voiceoutput("Opening the dashboard for you")
+                voiceoutput("Opening the dashboard for you",0)
 				initViz(db,fld,val);
-                activatestart();
+                //activatestart();
             }
             else
             {
@@ -272,7 +278,7 @@
             if(text =="yes")
             {
                 //alert("Call Tableau Dashboard");
-                activatestart();
+                //activatestart();
             }
             else
             {
@@ -286,7 +292,8 @@
         }
 		
         function UpdateRecognizedPhrase(json) {
-            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
+            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c5f07b07-2b8b-4f71-86c6-e865912d589d?subscription-key=39a47ec06ed6499da5f948c10f93ee82&verbose=true&timezoneOffset=0&q="+input+"",
+			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
                  try{
@@ -298,7 +305,7 @@
 						{ db = data.entities[t].entity; }
 						else 
 						{ fld = data.entities[t].type; val = data.entities[t].entity; }
-						alert("t="+t+fld+val+"length="+data.entities.length);
+						
 						if ( fld == 0 && val == 0 && data.entities.length == 1)
 						{
 						voice_text = "Detected " + db + " dashboard. Do you want to proceed?";
@@ -306,7 +313,7 @@
 						}
 						else if ( t > 0 )
 						{
-						voice_text = "Detected " + db + " dashboard with "+ fld + " " + val + ". Do you want to proceed?";
+						voice_text = "Detected " + db + " dashboard with " + fld + " " + val + ". Do you want to proceed?";
 						voiceoutput_detection(voice_text);
 						}
 					}
