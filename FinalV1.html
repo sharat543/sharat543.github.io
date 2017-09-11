@@ -298,7 +298,7 @@
 						{ db = data.entities[t].entity; }
 						else 
 						{ fld = data.entities[t].type; val = data.entities[t].entity; }
-						
+						alert("t="+t+fld+val+"length="+data.entities.length);
 						if ( fld == 0 && val == 0 && data.entities.length == 1)
 						{
 						voice_text = "Detected " + db + " dashboard. Do you want to proceed?";
