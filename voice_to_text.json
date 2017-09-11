@@ -1,0 +1,380 @@
+{
+  "luis_schema_version": "2.1.0",
+  "versionId": "0.1",
+  "name": "voice_to_text",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "Filter"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Select"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Basin"
+    },
+    {
+      "name": "Dashboard"
+    },
+    {
+      "name": "Region"
+    },
+    {
+      "name": "State"
+    },
+    {
+      "name": "Storm Name"
+    },
+    {
+      "name": "Year"
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "bing_entities": [
+    "datetimeV2"
+  ],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "show me the storm dashboard for alex",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
+        },
+        {
+          "entity": "Storm Name",
+          "startPos": 32,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "show me the sales dashboard",
+      "intent": "Select",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "show me the storm dashboard",
+      "intent": "Select",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
+        }
+      ]
+    },
+    {
+      "text": "can you pull out the latest sales dashboad",
+      "intent": "Select",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 28,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "can you show the storm dashboard",
+      "intent": "Select",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 17,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "can you show me the sales dashboard",
+      "intent": "Select",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 20,
+          "endPos": 24
+        }
+      ]
+    },
+    {
+      "text": "show the sales dashboard for south region",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "Region",
+          "startPos": 29,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "show the sales dashboard for west",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "Region",
+          "startPos": 29,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "show the sales dashboard for east",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "Region",
+          "startPos": 29,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "show me the sales dashboard for central",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
+        },
+        {
+          "entity": "Region",
+          "startPos": 32,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "show the storms dashboard for atlantic basin",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Basin",
+          "startPos": 30,
+          "endPos": 37
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "show me the storm dashboard for colin",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
+        },
+        {
+          "entity": "Storm Name",
+          "startPos": 32,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "show me the storm dashboard for bonnie",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
+        },
+        {
+          "entity": "Storm Name",
+          "startPos": 32,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "show the sales dashboard for florida",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "State",
+          "startPos": 29,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "show the sales dashboard for california",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "State",
+          "startPos": 29,
+          "endPos": 38
+        }
+      ]
+    },
+    {
+      "text": "show the sales dashboard for arizona",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 13
+        },
+        {
+          "entity": "State",
+          "startPos": 29,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "show the storms dashboard for west pacific basin",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Basin",
+          "startPos": 30,
+          "endPos": 41
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "show the storms dashboard for east pacific basin",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Basin",
+          "startPos": 30,
+          "endPos": 41
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "show the storms dashboard for atlantic",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Basin",
+          "startPos": 30,
+          "endPos": 37
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "show me the storms dashboard for alex",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 17
+        },
+        {
+          "entity": "Storm Name",
+          "startPos": 33,
+          "endPos": 36
+        }
+      ]
+    },
+    {
+      "text": "which storms affected east pacific in 2011 ?",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Year",
+          "startPos": 38,
+          "endPos": 41
+        },
+        {
+          "entity": "Basin",
+          "startPos": 22,
+          "endPos": 33
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 6,
+          "endPos": 11
+        }
+      ]
+    },
+    {
+      "text": "how alex affected east pacific",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Basin",
+          "startPos": 18,
+          "endPos": 29
+        },
+        {
+          "entity": "Storm Name",
+          "startPos": 4,
+          "endPos": 7
+        }
+      ]
+    }
+  ]
+}
