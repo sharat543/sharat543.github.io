@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Voice to Text with LUIS</title>
+    <title>Viz Echo</title>
     <meta charset="utf-8" />
 	<!-- below 2 lines added by Sarat -->
     <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script> 
@@ -292,7 +292,8 @@
         }
 		
         function UpdateRecognizedPhrase(json) {
-            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
+            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c5f07b07-2b8b-4f71-86c6-e865912d589d?subscription-key=39a47ec06ed6499da5f948c10f93ee82&verbose=true&timezoneOffset=0&q="+input+"",
+			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
                  try{
@@ -345,7 +346,6 @@
                	      };
 			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
 			else if (d === "sales") { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
-			alert(d+f+v);
 			viz = new tableau.Viz(containerDiv, url, options);
         }
 		
