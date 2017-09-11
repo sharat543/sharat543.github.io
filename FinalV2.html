@@ -13,7 +13,7 @@
         <tr>
             <td></td>
             <td>
-                <h1 style="font-weight:500;">VIZ ECHO</h1>
+                <center><h1 style="font-weight:500;">VIZ ECHO</h1></center>
                
             </td>
         </tr>
@@ -24,7 +24,17 @@
         </tr>
       
         </tr>
-        <tr>
+		<tr>
+            <td>
+                <div id="vizContainer" style="width:500px; height:500px;"></div>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+<div style="float: right">
+    <table width="50%" style="float: right">
+		 <tr>
             <td></td>
             <td>
                 <button id="startBtn" disabled="disabled">Start</button>
@@ -32,28 +42,19 @@
 				<button id="speakAgain">Speak Again</button>			
             </td>
         </tr>
-        <tr>
+		<tr>
             <td></td>
             <td>BING interpretation: <span id="hypothesisDiv"></span></td>
         </tr>
         <tr>
             <td></td>
             <td>
-                <textarea id="phraseDiv" style="width:500px;height:200px"></textarea>
+                <textarea id="phraseDiv" style="width:250px;height:200px"></textarea>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>Status: <span id="statusDiv"></span></td>
-        </tr>
-    </table>
-</div>
-<div style="float: left">
-    <table width="100%" style="float: left">
-        <tr>
-            <td>
-                <div id="vizContainer" style="width:800px; height:700px;"></div>
-            </td>
         </tr>
     </table>	
 </div>
@@ -346,6 +347,7 @@
                	      };
 			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
 			else if (d === "sales") { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
+			alert(d+f+v);
 			viz = new tableau.Viz(containerDiv, url, options);
         }
 		
