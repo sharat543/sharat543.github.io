@@ -3,38 +3,33 @@
 <head>
     <title>Voice to Text with LUIS</title>
     <meta charset="utf-8" />
-	<!-- below line added by Sarat -->
-    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
-	<script src="scripts/require.min.js"></script>
-    <script src="scripts/jquery.min.js"></script>
+	<!-- below 2 lines added by Sarat -->
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script> 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
-<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte">
-<center><h1 class="head">VIZ ECHO</h1></center>
-
-<button id= "BING" class ="bing" onclick="myFunction()">&#8592;</button>
-<div id="myDIV">
-	<center><img src="mic.png" alt="Mic" class="mic"> </center>
-</div>
-<div id ="id2" style="float: right; height: 20px; display:none ">
-    <table width="100%" height ="30%">
+<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
+<div style="float: left">
+    <table width="100%">
         <tr>
             <td></td>
             <td>
-                <h1 style="font-weight:100;">Voice to Text with LUIS</h1>
+                <h1 style="font-weight:500;">Voice to Text with LUIS</h1>
                
             </td>
         </tr>
         <tr>            
-            <td ><input  type="hidden" id="key" type="text" size="20" value="940c2da177274e9597b2b4ccfccb9620" v></td>
+            <td ><input  type="hidden" id="key" type="text" size="40" value="940c2da177274e9597b2b4ccfccb9620" v></td>
         </tr>
+     
         </tr>
+      
         </tr>
         <tr>
             <td></td>
             <td>
                 <button id="startBtn" disabled="disabled">Start</button>
                 <button id="stopBtn" disabled="disabled">Stop</button>
+				<button id="speakAgain">Speak Again</button>			
             </td>
         </tr>
         <tr>
@@ -44,7 +39,7 @@
         <tr>
             <td></td>
             <td>
-                <textarea id="phraseDiv" style="width:500px;height:100px; overflow-y:scroll; overflow-x:hidden;"></textarea>
+                <textarea id="phraseDiv" style="width:500px;height:200px"></textarea>
             </td>
         </tr>
         <tr>
@@ -53,7 +48,7 @@
         </tr>
     </table>
 </div>
-<div id= "id3" style="float: left; display:none">
+<div style="float: left">
     <table width="100%" style="float: left">
         <tr>
             <td>
@@ -62,6 +57,10 @@
         </tr>
     </table>	
 </div>
+  
+    <script src="scripts/require.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+   
 
     <!-- SDK REFERENCE -->
     <script src="scripts/speech.browser.sdk-min.js"></script>
@@ -156,6 +155,7 @@
         var recognizer;
         var previousSubscriptionKey;
         var input;
+        var voices = speechSynthesis.getVoices();
         document.addEventListener("DOMContentLoaded", function () {
             createBtn = document.getElementById("createBtn");
             startBtn = document.getElementById("startBtn");
@@ -178,6 +178,19 @@
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
             });
+			
+			speakAgain.addEventListener("click", function () {
+                if (!recognizer || previousSubscriptionKey != key.value) {
+                    previousSubscriptionKey = key.value;
+                    Setup();
+                }
+
+                hypothesisDiv.innerHTML = "";
+                phraseDiv.innerHTML = "";
+                RecognizerStart(SDK, recognizer);
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            });
 
             stopBtn.addEventListener("click", function () {
                 RecognizerStop(SDK);
@@ -188,9 +201,45 @@
             Initialize(function (speechSdk) {
                 SDK = speechSdk;
                 startBtn.disabled = false;
+                voiceoutput("Hello! I'm your voice assistant,how can i help you ?")
             });
         });
+		
+        function voiceoutput(text){
+            if('speechSynthesis' in window){
 
+                //var voices = speechSynthesis.getVoices();
+				//for(var i = 0; i < voices.length; i++ ) {
+				//console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
+				//}
+			var speech = new SpeechSynthesisUtterance(text);
+			speech.lang = 'en-US';
+			speech.voice = voices[4]
+			window.speechSynthesis.speak(speech);
+            activatestart();     
+			}
+        } 
+		
+         function voiceoutput_detection(text){
+
+            if('speechSynthesis' in window){
+			var speech = new SpeechSynthesisUtterance(text);
+			speech.lang = 'en-US';
+			speech.voice = voices[4]
+			window.speechSynthesis.speak(speech);
+            activatestart();  
+            UpdateRecognizedHypothesisUserConfirmation(text);   
+			}
+        } 
+		
+        function activatestart()
+        {   
+            $(startBtn).click() 
+            $(startBtn).hide()
+            $(stopBtn).hide()
+			$(speakAgain).hide()           
+        }
+		
         function Setup() {
             recognizer = RecognizerSetup(SDK, SDK.RecognitionMode.Interactive, key.value);
         }
@@ -198,120 +247,170 @@
         function UpdateStatus(status) {
             statusDiv.innerHTML = status;
         }
-
+		
+		var db,fld,val;
         function UpdateRecognizedHypothesis(text) {
             hypothesisDiv.innerHTML = text;
+          
+            input = text;
+             if(text =="yes")
+            {
+                //alert("Call Tableau Dashboard");
+                voiceoutput("Opening the dashboard for you")
+				initViz(db,fld,val);
+                activatestart();
+            }
+            else
+            {
+
+            }
+            
+        }
+		
+        function UpdateRecognizedHypothesisUserConfirmation(text) {
+            hypothesisDiv.innerHTML = text;
+            if(text =="yes")
+            {
+                //alert("Call Tableau Dashboard");
+                activatestart();
+            }
+            else
+            {
+                
+            }
             input = text;
         }
 
         function OnSpeechEndDetected() {
             stopBtn.disabled = true;
         }
-
+		
         function UpdateRecognizedPhrase(json) {
             $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=15e9c635dabb4b17a699da23564be8b6&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
-                 phraseDiv.innerHTML =  JSON.stringify(data)
+                 phraseDiv.innerHTML =  JSON.stringify(data);
+                 try{
+					for (var t=0; t < data.entities.length; t++) 
+					{
+						if ( data.entities[t].type === "Dashboard" && data.entities.length == 1)
+						{ db = data.entities[t].entity; fld = 0; val = 0; }
+						else if (data.entities[t].type === "Dashboard" ) 
+						{ db = data.entities[t].entity; }
+						else 
+						{ fld = data.entities[t].type; val = data.entities[t].entity; }
+						
+						if ( fld == 0 && val == 0 && data.entities.length == 1)
+						{
+						voice_text = "Detected " + db + " dashboard. Do you want to proceed?";
+						voiceoutput_detection(voice_text);
+						}
+						else if ( t > 0 )
+						{
+						voice_text = "Detected " + fld + " " + val + ". Do you want to proceed?";
+						voiceoutput_detection(voice_text);
+						}
+					}
+
+				 }
+                 catch(err)
+                 {
+                    
+                 }
+
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
-				 selectfilter(data.entities[0].entity,data.entities[0].type);
                 });
+
+
+		}
+	
+	<!-- added by Sarat -->
+		var viz,url,sheet,workbook,sharray;
+		function initViz(d,f,v)
+		{
+			if (viz) { viz.dispose(); }
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true,
+					onFirstInteractive: function () {
+									workbook = viz.getWorkbook();
+									activeSheet = workbook.getActiveSheet();
+									sharray = activeSheet.getWorksheets();
+									selectfilter(f,v);}	
+               	      };
+			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
+			else if (d === "sales") { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
+			viz = new tableau.Viz(containerDiv, url, options);
         }
 		
+		<!-- added by Sarat -->
 		function selectfilter(field,value) {
-			var sheet = viz.getWorkbook().getActiveSheet();
-			var sharray = sheet.getWorksheets();
-			if (field === "Storm Name") 
-			{ 
-				for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, value, tableau.SelectionUpdateType.REPLACE); } 
-			}
-	    	else
+			
+			if ( field == 0 && value == 0 )
 			{
-				for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, value, tableau.FilterUpdateType.REPLACE); }
+				viz.revertAllAsync();
+				$(speakAgain).show();
+			}
+			else
+			{	
+				var derivedvalue = valueCase(value);
+				var derivedfield = chooseSelectFilter(field);
+				//alert(derivedfield+derivedvalue);
+				if (derivedfield === "select") 
+				{ 
+					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
+				}
+				else if (derivedfield === "filter")
+				{
+					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+				}
+				$(speakAgain).show();
 			}
 		}
-
+		
+		<!-- added by Sarat -->
+		function valueCase(a) {
+			var jsonvalue;
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCvalues.json",
+			type : 'GET',
+			success: function(data) {
+				for (var c = 0; c < data['values'].length; c++) {
+				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
+				var valuelow = a.toLowerCase();
+				if (jsonvaluelow === valuelow)
+				{jsonvalue = data['values'][c]['name'];}
+				}
+			}});
+			return jsonvalue;
+		}
+		
+		function chooseSelectFilter(b) {
+			var jsonfield; 
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCfields.json",
+			type : 'GET',
+			success: function(data) {
+				for (var d = 0; d < data['fields'].length; d++) {
+				var jsonfieldlow = data['fields'][d]['name'].toLowerCase();
+				var fieldlow = b.toLowerCase();
+				if (jsonfieldlow === fieldlow)
+				{jsonfield = data['fields'][d]['choosetype'];}
+				}
+			}});
+			
+			return jsonfield;
+		}
+        
         function OnComplete() {
             startBtn.disabled = false;
             stopBtn.disabled = true;
         }
-
-	var viz,url;
-	function initViz()
-	{
-	    if(viz) { viz.dispose(); }
-            var containerDiv = document.getElementById("vizContainer"),
-            options = {
-                   	hideTabs: true
-               	      }
-	    url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
-        viz = new tableau.Viz(containerDiv, url, options);
-        }
+       
           
     </script>
-<script>
-	function myFunction() {
-		var x = document.getElementById('myDIV');
-		var y = document.getElementById('id2');
-		var z = document.getElementById('id3');
-		x.style.display = 'none';
-		if (y.style.display === 'none') {
-			y.style.display = 'block';
-		} else if (y.style.display === 'block'){
-			y.style.display = 'none';
-		}
-		z.style.display = 'block';
-		
-	}
-</script>
 </body>
-<style>
-@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
-@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
-
-.bg_img
-{
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  min-width: 100%;
-  min-height: 100%;
-}
- 
-.head{
-position:relative;
-top:2%;
-//left:40%;
-font-family:Title;
-font-size:70px;
-color:#313131;
-}
-
-.mic
-{
- position:relative;
- top:120px;
- filter: grayscale(0%); 
-}
-
-.logo_deloitte
-{
- position:absolute;
-  right:2%;
-  top:5%;
-  filter: grayscale(000%); 
-  color:#313131;
-}
-
-.bing
-{
-position:absolute;
-  right:2%;
-  top:15%;
-  filter: grayscale(000%); 
-  color:#313131;
-}
-body { 
-    background-image: url('bgfinal.png');
-}
-</style>
 </html>
