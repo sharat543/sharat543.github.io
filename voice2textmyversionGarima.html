@@ -201,11 +201,11 @@
             Initialize(function (speechSdk) {
                 SDK = speechSdk;
                 startBtn.disabled = false;
-                voiceoutput("Hello! I'm your voice assistant,how can i help you ?")
+                voiceoutput("Hello! I'm your voice assistant,how can i help you ?",1)
             });
         });
 		
-        function voiceoutput(text){
+        function voiceoutput(text,flag){
 
             if('speechSynthesis' in window){
 
@@ -217,7 +217,9 @@
 			speech.lang = 'en-US';
 			speech.voice = voices[4]
 			window.speechSynthesis.speak(speech);
+            if (flag==1){
             setTimeout(activatestart, 4000);
+        }
            
 			}
         } 
@@ -260,9 +262,9 @@
              if(text =="yes")
             {
                 //alert("Call Tableau Dashboard");
-                voiceoutput("Opening the dashboard for you")
+                voiceoutput("Opening the dashboard for you",0)
 				initViz(db,fld,val);
-                activatestart();
+                //activatestart();
             }
             else
             {
@@ -276,7 +278,7 @@
             if(text =="yes")
             {
                 //alert("Call Tableau Dashboard");
-                activatestart();
+                //activatestart();
             }
             else
             {
