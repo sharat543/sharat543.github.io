@@ -18,5 +18,16 @@
 		"id":"Region",
 		"name":"Region",
 		"choosetype":"filter"
-	}		
+	},
+	{
+		"id":"Academic Year",
+		"name":"Academic Year",
+		"choosetype":"filter"
+	},
+	{
+		"id":"Gender",
+		"name":"Gender",
+		"choosetype":"filter"
+	}
+
 ]}

@@ -224,18 +224,18 @@
 			}
         } 
 		
-         function voiceoutput_detection(text){
+        // function voiceoutput_detection(text){
 
-            if('speechSynthesis' in window){
-			var speech = new SpeechSynthesisUtterance(text);
-			speech.lang = 'en-US';
-			speech.voice = voices[4]
-			window.speechSynthesis.speak(speech);
-            setTimeout(activatestart, 4000);
-         
-            UpdateRecognizedHypothesisUserConfirmation(text);   
-			}
-        } 
+         //   if('speechSynthesis' in window){
+		//	var speech = new SpeechSynthesisUtterance(text);
+		//	speech.lang = 'en-US';
+		//	speech.voice = voices[4]
+		//	window.speechSynthesis.speak(speech);
+         //   setTimeout(activatestart, 4000);
+         //
+        //    UpdateRecognizedHypothesisUserConfirmation(text);   
+		//	}
+        //} 
 		
         function activatestart()
         {   
@@ -259,17 +259,17 @@
             hypothesisDiv.innerHTML = text;
           
             input = text;
-             if(text =="yes")
-            {
+            // if(text =="yes")
+           // {
                 //alert("Call Tableau Dashboard");
                 //voiceoutput("Opening the dashboard for you",0)
-				initViz(db,fld,val);
+				//initViz(db,fld,val);
                 //activatestart();
-            }
-            else
-            {
+           // }
+           // else
+           // {
 
-            }
+           // }
             
         }
 		
@@ -292,7 +292,7 @@
         }
 		
         function UpdateRecognizedPhrase(json) {
-            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c5f07b07-2b8b-4f71-86c6-e865912d589d?subscription-key=39a47ec06ed6499da5f948c10f93ee82&verbose=true&timezoneOffset=0&q="+input+"",
+            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/21b9dd19-9b03-4fb5-87a8-337112c474b7?subscription-key=c642986d701f44b29227bc3b60fab71b&verbose=true&timezoneOffset=0&q="+input+"",
 			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
@@ -305,16 +305,18 @@
 						{ db = data.entities[t].entity; }
 						else 
 						{ fld = data.entities[t].type; val = data.entities[t].entity; }
-						
+						alert(t+db+fld+val);
 						if ( fld == 0 && val == 0 && data.entities.length == 1)
 						{
-						voice_text = "Detected " + db + " dashboard. Do you want to proceed?";
-						voiceoutput_detection(voice_text);
+						//voice_text = "Detected " + db + " dashboard. Do you want to proceed?";
+						//voiceoutput_detection(voice_text);
+						initViz(db,fld,val);
 						}
 						else if ( t > 0 )
 						{
-						voice_text = "Detected " + db + " dashboard with " + fld + " " + val + ". Do you want to proceed?";
-						voiceoutput_detection(voice_text);
+						//voice_text = "Detected " + db + " dashboard with " + fld + " " + val + ". Do you want to proceed?";
+						//voiceoutput_detection(voice_text);
+						initViz(db,fld,val);
 						}
 					}
 
@@ -346,6 +348,7 @@
                	      };
 			if (d === "storms") { url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; }
 			else if (d === "sales") { url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" }
+			else if (d === "college") { url = "http://public.tableau.com/views/RegionalSampleWorkbook/College"; }
 			viz = new tableau.Viz(containerDiv, url, options);
         }
 		
