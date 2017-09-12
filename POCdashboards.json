@@ -1,15 +1,15 @@
 {"dashboards":[
 	{
 		"id":"0",
-		"name":"College"
+		"name":"sales"
 	},
 	{
 		"id":"1",
-		"name":"Storms"
+		"name":"storms"
 	},
 	{
 		"id":"2",
-		"name":"College"
+		"name":"college"
 	},
 		
 ]}

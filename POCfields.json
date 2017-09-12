@@ -2,32 +2,38 @@
 	{
 		"id":"Storm Name",
 		"name":"Storm Name",
-		"choosetype":"select"
+		"choosetype":"select",
+		"db":"storms"
 	},
 	{
 		"id":"Basin",
 		"name":"Basin",
-		"choosetype":"filter"
+		"choosetype":"filter",
+		"db":"storms"
 	},
 	{
 		"id":"State",
 		"name":"State",
-		"choosetype":"select"
+		"choosetype":"select",
+		"db":"sales"
 	},
 	{
 		"id":"Region",
 		"name":"Region",
-		"choosetype":"filter"
+		"choosetype":"filter",
+		"db":"sales"
 	},
 	{
 		"id":"Academic Year",
 		"name":"Academic Year",
-		"choosetype":"filter"
+		"choosetype":"filter",
+		"db":"college"
 	},
 	{
 		"id":"Gender",
 		"name":"Gender",
-		"choosetype":"filter"
+		"choosetype":"filter",
+		"db":"college"
 	}
 
 ]}

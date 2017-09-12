@@ -301,17 +301,34 @@
 					}
 					//voiceoutput("Opening dashboard",0);
 					//alert(db+fld+val);
+					var var1 = dashboardcheck(db);
+					var var2 = fieldcheck(fld);
+					var var3 = valuecheck(val);
 					initViz(db,fld,val);
 				 }
                  catch(err)
                  {
                     
                  }
-
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
                 });
-
-
+		}
+		
+		function dashboardcheck(e) {
+			var dbvalue;
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCdashboards.json",
+			type : 'GET',
+			success: function(data) {
+				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
+				if (e === data['dashboards'][e1])
+				{dbvalue=1;}
+				else { dbvalue = 0; }
+				}
+			}});
+			return dbvalue;
 		}
 	
 	<!-- added by Sarat -->
