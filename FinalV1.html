@@ -365,14 +365,19 @@
 			type : 'GET',
 			success: function(data) {
 				//alert(f1+f2);
-				for (var f3 = 0; f3 < data['fields'].length; f3++) {
-				if (f1 === data['fields'][f3]['db'] && f2 === data['fields'][f3]['name'])
-				{fldassign = fldassign + 1;}
-				else if (f2 === 0)
-				{ fldassign = fldassign + 1; }
-				else { fldassign = fldassign + 0; }
+				for (var l = 0; l < f2.length ; f2++)
+				{
+					for (var f3 = 0; f3 < data['fields'].length; f3++) {
+					//alert("f1="+f1+"f2="+f2+"db="+data['fields'][f3]['db']+"fld="+data['fields'][f3]['name']);
+					if (f1 === data['fields'][f3]['db'] && f2[l] === data['fields'][f3]['name'])
+					{alert("hi");fldassign = fldassign + 1;}
+					else if (f2 === 0)
+					{ fldassign = fldassign + 1; }
+					else { fldassign = fldassign + 0; }
+					}
 				}
 			}});
+			//alert(fldassign);
 			return fldassign;
 		}
 	
