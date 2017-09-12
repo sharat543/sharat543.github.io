@@ -316,7 +316,7 @@
 						else
 						{
 						var var2 = fieldcheck(db,fld);
-						alert(db+fld);
+						
 							if ( var2 === 0 )
 							{
 							voiceoutput("Provided dimension does not belong to the dashboard");
@@ -338,7 +338,7 @@
 		}
 		
 		function dashboardcheck(e) {
-			var dbvalue;
+			var dbvalue = 0;
 			$.ajax({
 			async: false,
 			dataType : 'json',
@@ -346,28 +346,31 @@
 			type : 'GET',
 			success: function(data) {
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
-				if (e === data['dashboards'][e1])
-				{dbvalue=1;}
-				else { dbvalue = 0; }
+				alert(e+data['dashboards'][e1][name]);
+				if (e === data['dashboards'][e1][name])
+				{dbvalue = dbvalue + 1;}
+				else { dbvalue = dbvalue + 0; }
 				}
 			}});
+			//alert(dbvalue);
 			return dbvalue;
 		}
 		
 		function fieldcheck(f1,f2) {
-			var fldassign;
+			var fldassign = 0;
 			$.ajax({
 			async: false,
 			dataType : 'json',
 			url: "https://sharat543.github.io/POCfields.json",
 			type : 'GET',
 			success: function(data) {
+				alert(f1+f2);
 				for (var f3 = 0; f3 < data['fields'].length; f3++) {
 				if (f1 === data['fields'][f3][db] && f2 === data['fields'][f3][name])
-				{fldassign=1;}
+				{fldassign = fldassign + 1;}
 				else if (f2 === 0)
-				{ fldassign = 1; }
-				else { fldassign = 0; }
+				{ fldassign = fldassign + 1; }
+				else { fldassign = fldassign + 0; }
 				}
 			}});
 			return fldassign;
