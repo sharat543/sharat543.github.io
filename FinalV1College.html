@@ -308,6 +308,14 @@
 						else if (data.entities[t].type === "Dashboard" ) 
 						{ db = data.entities[t].entity; }
 						else if (data.entities[t].type != "builtin.datetimeV2.daterange" &&  data.entities[t].type != "Dashboard" )
+						//{
+						//  for (var k=0; k < field.length; k++)
+						//	{
+						//		if (data.entities[t].type != field[k]) { fld.push(data.entities[t].type); }
+						//	}
+						//val.push(data.entities[t].entity);
+						//}
+						alert(db+fld+val);
 						{ fld.push(data.entities[t].type); val.push(data.entities[t].entity); } 
 					}
 					
@@ -328,7 +336,7 @@
 		var viz,url,sheet,workbook,sharray;
 		function initViz(d,f,v)
 		{
-			alert(d+f+v);
+			//alert(d+f+v);
 			if (viz) { viz.dispose(); }
             var containerDiv = document.getElementById("vizContainer"),
             options = {
