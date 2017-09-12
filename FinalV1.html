@@ -302,9 +302,22 @@
 					//voiceoutput("Opening dashboard",0);
 					//alert(db+fld+val);
 					var var1 = dashboardcheck(db);
-					var var2 = fieldcheck(fld);
-					var var3 = valuecheck(val);
-					initViz(db,fld,val);
+					if ( var1 = 0 ) 
+					{ 
+					voiceoutput("Please provide a valid dashboard name",0); 
+					}
+					else
+					{
+					var var2 = fieldcheck(db,fld);
+						if ( var2 = 0 )
+						{
+						voiceoutput("Provided dimension does not belong to the dashboard");
+						}
+						else
+						{
+						initViz(db,fld,val);
+						}
+					}
 				 }
                  catch(err)
                  {
@@ -329,6 +342,23 @@
 				}
 			}});
 			return dbvalue;
+		}
+		
+		function fieldcheck(f1,f2) {
+			var fldassign;
+			$.ajax({
+			async: false,
+			dataType : 'json',
+			url: "https://sharat543.github.io/POCfields.json",
+			type : 'GET',
+			success: function(data) {
+				for (var f3 = 0; f3 < data['fields'].length; f3++) {
+				if (f1 === data['fields'].[f3].db && f2 === data['dashboards'][f3])
+				{fldassign=1;}
+				else { fldassign = 0; }
+				}
+			}});
+			return fldassign;
 		}
 	
 	<!-- added by Sarat -->
