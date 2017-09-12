@@ -310,6 +310,7 @@
 						else if (data.entities[t].type != "builtin.datetimeV2.daterange" &&  data.entities[t].type != "Dashboard" )
 						{ fld.push(data.entities[t].type); val.push(data.entities[t].entity); } 
 					}
+					
 					initViz(db,fld,val);
 				 }
                  catch(err)
@@ -355,7 +356,7 @@
 			}
 			else
 			{	
-				for (var g=0; g < field.length; g++)
+				for (var g=0; g < value.length; g++)
 				{
 				var derivedvalue = valueCase(value[g]);
 				var derivedfield = chooseSelectFilter(field[g]);
@@ -369,7 +370,8 @@
 				}	
 				}
 				$(speakAgain).show();
-
+				fld.pop();
+				val.pop();
 			}
 		}
 		
