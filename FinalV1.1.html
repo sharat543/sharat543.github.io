@@ -445,7 +445,8 @@
 									}	
                	      };
 			if (d === "storms") { 
-			voiceoutput("Opening Storms dashboard",0);
+			voiceoutput("Opening storms dashboard",0);
+			
 			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
                 $('.speak-home').hide();
              }
@@ -459,6 +460,8 @@
 			url = "http://public.tableau.com/views/RegionalSampleWorkbook/College"; 
                 $('.speak-home').hide();
             }
+			if (f!=0){
+				voiceoutput("Applying filters")}
 			//alert(1+d+f+v);
 			viz = new tableau.Viz(containerDiv, url, options);
 			//workbook = viz.getWorkbook();
