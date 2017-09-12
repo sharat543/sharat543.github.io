@@ -369,13 +369,13 @@
 					for (var f3 = 0; f3 < data['fields'].length; f3++) {
 					//alert("f1="+f1+"f2="+f2+"db="+data['fields'][f3]['db']+"fld="+data['fields'][f3]['name']);
 					if (f1 === data['fields'][f3]['db'] && f2 === data['fields'][f3]['name'])
-					{alert("hi");fldassign = fldassign + 1;}
+					{fldassign = fldassign + 1;}
 					else if (f2 === 0)
 					{ fldassign = fldassign + 1; }
 					else { fldassign = fldassign + 0; }
 					}
 			}});
-			//alert(fldassign);
+			
 			return fldassign;
 		}
 	
@@ -431,20 +431,19 @@
 			}
 			else
 			{	
-				for (var g=0; g < value.length; g++)
-				{
-				var derivedvalue = valueCase(value[g]);
-				var derivedfield = chooseSelectFilter(field[g]);
+
+				var derivedvalue = valueCase(value);
+				var derivedfield = chooseSelectFilter(field);
 				//alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
-					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field[g], derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
+					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
 				}
 				else if (derivedfield === "filter")
 				{
-					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field[g], derivedvalue, tableau.FilterUpdateType.REPLACE); }
+					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 				}	
-				}
+
 			$(speakAgain).show();
 			}
 			fld = [];
