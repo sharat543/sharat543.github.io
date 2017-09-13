@@ -3,17 +3,28 @@
 <head>
     <title>DECIBEL</title>
     <meta charset="utf-8" />
-	<!-- below 2 lines added by Sarat -->
     <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script> 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
-<div style="float: left">
+
+<img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte" style="z-index:999;">
+<img src="Decibel.png" class="logo_decibel" alt="Decibel" height="40px" Width="120px" style="z-index:999;">
+<button id="speakAgain" style="position: absolute;Left: 16%;top: 5%;filter: grayscale(000%);color: #313131;">Speak Again</button>
+<div class="speak-home">
+<img src="bgfinal.png" class="bg_img" alt="background">
+<button id="startBtn" class="stbutton" disabled="disabled" hidden="">Start</button>
+<button id="stopBtn" class="spbutton" disabled="disabled" hidden="">Stop</button>
+<!-- <button id="speakAgain" class="sabutton">Speak Again</button> -->
+<center><img src="mic.png" alt="Mic" class="mic"> </center>
+</div>
+
+<div style="float: left;margin-top: 60px;">
     <table width="100%">
         <tr>
             <td></td>
             <td>
-                <h1 style="font-weight:500;">VIZ ECHO</h1>
+                <!-- <h1 style="font-weight:500;">DECIBEL</h1> -->
                
             </td>
         </tr>
@@ -27,36 +38,69 @@
         <tr>
             <td></td>
             <td>
-                <button id="startBtn" disabled="disabled">Start</button>
-                <button id="stopBtn" disabled="disabled">Stop</button>
-				<button id="speakAgain">Speak Again</button>			
+                <button id="startBtn" disabled="disabled" hidden="">Start</button>
+                <button id="stopBtn" disabled="disabled" hidden="">Stop</button>
+							
             </td>
         </tr>
         <tr>
             <td></td>
-            <td>BING interpretation: <span id="hypothesisDiv"></span></td>
+            <!-- <td>BING interpretation: <span id="hypothesisDiv"> -->
+                
+            </span></td>
         </tr>
         <tr>
             <td></td>
             <td>
-                <textarea id="phraseDiv" style="width:500px;height:200px"></textarea>
+                <!-- <textarea id="phraseDiv" style="width:500px;height:200px"></textarea> -->
             </td>
         </tr>
         <tr>
             <td></td>
-            <td>Status: <span id="statusDiv"></span></td>
+            <!-- <td>Status: <span id="statusDiv"></span></td> -->
         </tr>
     </table>
-</div>
-<div style="float: left">
+    <div style="float: left">
     <table width="100%" style="float: left">
         <tr>
             <td>
                 <div id="vizContainer" style="width:800px; height:700px;"></div>
             </td>
         </tr>
-    </table>	
+    </table>    
 </div>
+</div>
+<div>
+    <div id="toggle-first-sidebar" style="text-align: right;position: absolute;width: 100%;right: 22px;top: 200px;cursor: pointer;">
+        <img src="plus.png" width="20px" height="20px">
+        <div class="first-sidebar-content" style="display: none; min-width: 200px">
+        <div style="min-width: 300px;float: right;background-color: #fff;text-align: center;">
+            
+            <div><td>BING interpretation: <span id="hypothesisDiv"></span></td></div>
+			<br>
+			<br>
+			<br>
+			<br>
+            </div>
+        </div>
+    </div>
+    <div id="toggle-second-sidebar" style="text-align: right;position: absolute;width: 100%;right: 22px;top: 400px;cursor: pointer;">
+        <img src="plus.png" width="20px" height="20px">
+        <div class="second-sidebar-content" style="display: none; min-width: 200px"">
+        <div style="min-width: 300px; float: right;background-color: #fff;text-align: center;">
+            <div> 
+			<td>
+                <textarea id="phraseDiv" style="width:300px;height:100px"></textarea>
+            </td></div>
+			
+            <div>  <td>Status: <span id="statusDiv"></span></td></div>
+            <br>
+			<br>
+            </div>
+        </div>
+    </div>
+</div>
+
   
     <script src="scripts/require.min.js"></script>
     <script src="scripts/jquery.min.js"></script>
@@ -273,7 +317,6 @@
             
         }
 		
-
         function OnSpeechEndDetected() {
             stopBtn.disabled = true;
         }
@@ -289,7 +332,7 @@
 			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
-                 if (data.entities.length === 0)
+          if (data.entities.length === 0)
 					{
 						voiceoutput("Please provide a valid input",0); 
 						$(speakAgain).show();
@@ -305,6 +348,7 @@
 							else if (data.entities[t].type != "builtin.datetimeV2.daterange" &&  data.entities[t].type != "Dashboard" )
 							{ fld = data.entities[t].type; val = data.entities[t].entity; } 
 						}
+
 					
 						//alert(db+fld+val);
 						var var1 = dashboardcheck(db);
@@ -313,6 +357,7 @@
 						voiceoutput("Please provide a valid dashboard name",0); 
 						$(speakAgain).show();
 						}
+
 						else
 						{
 						var var2 = fieldcheck(db,fld);
@@ -377,13 +422,17 @@
 			}});
 			
 			return fldassign;
-		}
-	
+		}      
 	<!-- added by Sarat -->
 		var viz,url,sheet,workbook,sharray;
+		if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
+		var counter=0;
 		function initViz(d,f,v)
 		{
 			if (viz) { viz.dispose(); }
+			viz=0;
             var containerDiv = document.getElementById("vizContainer"),
             options = {
                    	hideTabs: true,
@@ -391,34 +440,35 @@
 									workbook = viz.getWorkbook();
 									activeSheet = workbook.getActiveSheet();
 									sharray = activeSheet.getWorksheets();
+
 									selectfilter(f,v);
 									}	
                	      };
-			if (d === "storms") 
-			{ 
-			voiceoutput("Opening dashboard",0);
-			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms"; 
-			viz = new tableau.Viz(containerDiv, url, options);
-			}
-			else if (d === "sales") 
-			{ 
-			voiceoutput("Opening dashboard",0);
-			url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes";
-			viz = new tableau.Viz(containerDiv, url, options);
-			}
-			else if (d === "college") 
-			{ 
-			voiceoutput("Opening dashboard",0);
-			url = "http://public.tableau.com/views/RegionalSampleWorkbook/College";
-			viz = new tableau.Viz(containerDiv, url, options); 
-			}
-			//else 
-			//{ 
-			//voiceoutput("Provide correct input",0); $(speakAgain).show(); viz.dispose();
-			//}
-			//alert(1+d+f+v);
+			if (d === "storms") { 
+			voiceoutput("Opening storms dashboard",0);
 			
-
+			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
+                $('.speak-home').hide();
+             }
+			else if (d === "sales") { 
+			voiceoutput("Opening Sales dashboard",0);
+			url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" 
+                $('.speak-home').hide();
+            }
+			else if (d === "college") { 
+			voiceoutput("Opening College dashboard",0);
+			url = "http://public.tableau.com/views/RegionalSampleWorkbook/College"; 
+                $('.speak-home').hide();
+            }
+			if (f!=0){
+				voiceoutput("Applying filters")}
+			//alert(1+d+f+v);
+			viz = new tableau.Viz(containerDiv, url, options);
+			//workbook = viz.getWorkbook();
+			//activeSheet = workbook.getActiveSheet();
+			//sharray = activeSheet.getWorksheets();
+			
+			//selectfilter(f,v);
         }
 		
 		<!-- added by Sarat -->
@@ -431,7 +481,6 @@
 			}
 			else
 			{	
-
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
 				//alert(derivedfield+derivedvalue);
@@ -443,13 +492,8 @@
 				{
 					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 				}	
-
-			$(speakAgain).show();
+				$(speakAgain).show();
 			}
-			//fld = [];
-			//val = [];
-			//db=null;
-
 		}
 		
 		<!-- added by Sarat -->
@@ -497,5 +541,89 @@
        
           
     </script>
+    <script type="text/javascript">
+        $("#toggle-first-sidebar").click(function(){
+            $(".first-sidebar-content").toggle();
+        });
+        $("#toggle-second-sidebar").click(function(){
+            $(".second-sidebar-content").toggle();
+        });
+    </script>
 </body>
+
+<style>
+@font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
+@font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
+
+.bg_img
+{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.logo_deloitte
+{
+ position:absolute;
+  right:2%;
+  top:5%;
+  filter: grayscale(000%); 
+  color:#313131;
+}
+
+.logo_decibel
+{
+position:absolute;
+  Left:2%;
+  top:5%;
+  filter: grayscale(000%); 
+  color:#313131;
+  }
+
+  .sabutton
+{
+position:absolute;
+  Left:24%;
+  top:7%;
+  filter: grayscale(000%); 
+  color:#313131;
+  }
+  
+    .stbutton
+{
+position:absolute;
+  Left:12%;
+  top:7%;
+  filter: grayscale(000%); 
+  color:#313131;
+  }
+  
+    .spbutton
+{
+position:absolute;
+  Left:17%;
+  top:7%;
+  filter: grayscale(000%); 
+  color:#313131;
+  }
+  
+.head{
+position:relative;
+top:1px;
+left:1px;
+font-family:Title;
+font-size:60px;
+color:#313131;
+}
+
+.mic
+{
+ position:relative;
+ top:170px;
+ filter: grayscale(0%); 
+}
+
+</style>
 </html>
