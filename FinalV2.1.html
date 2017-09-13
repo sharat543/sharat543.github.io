@@ -13,10 +13,8 @@
 <h2 class="head1"> Voice Enabled </h2>
 <h2 class="head2"> Cognitive  </h2>
 <h2 class="head3"> Platform  </h2>
-
 <!--<button id="speakAgain" class="sabutton">Speak Again</button>-->
-<img src="mic.png" id="speakAgain" class="sabutton">
-
+<img src="mic.png" id="speakAgain" class="sabutton" hidden="">
 <div class="speak-home">
 <img src="bgfinal.png" class="bg_img" alt="background">
 <button id="startBtn" class="stbutton" disabled="disabled" hidden="">Start</button>
@@ -25,7 +23,7 @@
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
 </div>
 
-<div style="float: left;margin-top: 60px;">
+<div style="float: center;margin-top: 90px;margin-left: 150px;">
     <table width="100%">
         <tr>
             <td></td>
@@ -66,11 +64,11 @@
             <!-- <td>Status: <span id="statusDiv"></span></td> -->
         </tr>
     </table>
-    <div style="float: left">
-    <table width="100%" style="float: left">
+    <div style="float: center;">
+    <table width="100%" style="float: center;">
         <tr>
             <td>
-                <div id="vizContainer" style="width:800px; height:700px;"></div>
+                <div id="vizContainer" style="width:1000px; height:350px;"></div>
             </td>
         </tr>
     </table>    
@@ -82,7 +80,7 @@
         <div class="first-sidebar-content" style="display: none; min-width: 200px">
         <div style="min-width: 300px;float: right;background-color: #fff;text-align: center;">
             
-            <div><td>Recognised Voice: <span id="hypothesisDiv"></span></td></div>
+            <div><td>Recognized voice: <span id="hypothesisDiv"></span></td></div>
 			<br>
 			<br>
 			<br>
@@ -106,12 +104,15 @@
         </div>
     </div>
 </div>
+
   
     <script src="scripts/require.min.js"></script>
     <script src="scripts/jquery.min.js"></script>
    
+
     <!-- SDK REFERENCE -->
     <script src="scripts/speech.browser.sdk-min.js"></script>
+
     <!-- SDK USAGE -->
     <script>
         // On doument load resolve the SDK dependecy
@@ -130,10 +131,13 @@
                         new SDK.Device("SpeechSample", "SpeechSample", "1.0.00000"))),
                 recognitionMode
                 ); 
+
            
             var authentication = new SDK.CognitiveSubscriptionKeyAuthentication(subscriptionKey);
+
             return SDK.CreateRecognizer(recognizerConfig, authentication);
         }
+
         // Start the recognition
         function RecognizerStart(SDK, recognizer) {
             recognizer.Recognize((event) => {
@@ -184,12 +188,14 @@
                 console.error(error);
             });
         }
+
         // Stop the Recognition.
         function RecognizerStop(SDK, recognizer) {
             // recognizer.AudioSource.Detach(audioNodeId) can be also used here. (audioNodeId is part of ListeningStartedEvent)
             recognizer.AudioSource.TurnOff();
         }
     </script>
+
     <!-- Browser Hooks -->
     <script>
         var startBtn, stopBtn, hypothesisDiv, phraseDiv, statusDiv, key, languageOptions, formatOptions;
@@ -207,11 +213,13 @@
             statusDiv = document.getElementById("statusDiv");
             key = document.getElementById("key");
          
+
             startBtn.addEventListener("click", function () {
                 if (!recognizer || previousSubscriptionKey != key.value) {
                     previousSubscriptionKey = key.value;
                     Setup();
                 }
+
                 hypothesisDiv.innerHTML = "";
                 phraseDiv.innerHTML = "";
                 RecognizerStart(SDK, recognizer);
@@ -224,17 +232,20 @@
                     previousSubscriptionKey = key.value;
                     Setup();
                 }
+
                 hypothesisDiv.innerHTML = "";
                 phraseDiv.innerHTML = "";
                 RecognizerStart(SDK, recognizer);
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
             });
+
             stopBtn.addEventListener("click", function () {
                 RecognizerStop(SDK);
                 startBtn.disabled = false;
                 stopBtn.disabled = true;
             });
+
             Initialize(function (speechSdk) {
                 SDK = speechSdk;
                 startBtn.disabled = false;
@@ -243,7 +254,9 @@
         });
 		
         function voiceoutput(text,flag){
+
             if('speechSynthesis' in window){
+
                 //var voices = speechSynthesis.getVoices();
 				//for(var i = 0; i < voices.length; i++ ) {
 				//console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
@@ -260,6 +273,7 @@
         } 
 		
         // function voiceoutput_detection(text){
+
          //   if('speechSynthesis' in window){
 		//	var speech = new SpeechSynthesisUtterance(text);
 		//	speech.lang = 'en-US';
@@ -283,6 +297,7 @@
         function Setup() {
             recognizer = RecognizerSetup(SDK, SDK.RecognitionMode.Interactive, key.value);
         }
+
         function UpdateStatus(status) {
             statusDiv.innerHTML = status;
         }
@@ -301,6 +316,7 @@
            // }
            // else
            // {
+
            // }
             
         }
@@ -336,14 +352,17 @@
 							else if (data.entities[t].type != "builtin.datetimeV2.daterange" &&  data.entities[t].type != "Dashboard" )
 							{ fld = data.entities[t].type; val = data.entities[t].entity; } 
 						}
+
 					
-						//alert(db+fld+val);
+						//alert(db);
 						var var1 = dashboardcheck(db);
+						//alert(var1);
 						if ( var1 === 0 ) 
 						{ 
 						voiceoutput("Please provide a valid dashboard name",0); 
 						$(speakAgain).show();
 						}
+
 						else
 						{
 						var var2 = fieldcheck(db,fld);
@@ -355,7 +374,7 @@
 							}
 							else
 							{
-							initViz(db,fld,val);
+							initViz(db,fld,val,urlvalue);
 							}
 						}
 					}
@@ -368,18 +387,20 @@
                 });
 		}
 		
+		var urlvalue;
 		function dashboardcheck(e) {
 			var dbvalue = 0;
+			//alert(e+dbvalue);
 			$.ajax({
 			async: false,
 			dataType : 'json',
 			url: "https://sharat543.github.io/POCdashboards.json",
 			type : 'GET',
 			success: function(data) {
+				//alert(data['dashboards'].length);
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
-				//alert(e+data['dashboards'][e1]['name']);
 				if (e === data['dashboards'][e1]['name'])
-				{dbvalue = dbvalue + 1;}
+				{dbvalue = dbvalue + 1; urlvalue = data['dashboards'][e1]['site'];}
 				else { dbvalue = dbvalue + 0; }
 				}
 			}});
@@ -396,6 +417,7 @@
 			type : 'GET',
 			success: function(data) {
 				//alert(f1+f2);
+
 					for (var f3 = 0; f3 < data['fields'].length; f3++) {
 					//alert("f1="+f1+"f2="+f2+"db="+data['fields'][f3]['db']+"fld="+data['fields'][f3]['name']);
 					if (f1 === data['fields'][f3]['db'] && f2 === data['fields'][f3]['name'])
@@ -414,7 +436,7 @@
                 viz.dispose();
             }
 		var counter=0;
-		function initViz(d,f,v)
+		function initViz(d,f,v,u)
 		{
 			if (viz) { viz.dispose(); }
 			viz=0;
@@ -424,35 +446,32 @@
 					onFirstInteractive: function () {
 									workbook = viz.getWorkbook();
 									activeSheet = workbook.getActiveSheet();
+									if (activeSheet.getSheetType() === 'dashboard')
+									{
 									sharray = activeSheet.getWorksheets();
+									}
+									else
+									{
+									sharray = null;
+									}
 									selectfilter(f,v);
 									}	
                	      };
-			if (d === "storms") { 
-			voiceoutput("Opening storms dashboard",0);
-			
-			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
-                $('.speak-home').hide();
-             }
-			else if (d === "sales") { 
-			voiceoutput("Opening Sales dashboard",0);
-			url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" 
-                $('.speak-home').hide();
-            }
-			else if (d === "college") { 
-			voiceoutput("Opening College dashboard",0);
-			url = "http://public.tableau.com/views/RegionalSampleWorkbook/College"; 
-                $('.speak-home').hide();
-            }
-			if (f!=0){
-				voiceoutput("Applying filters")}
+			 
+			if ( f === 0)
+			{
+			voiceoutput("Opening"+d+"dashboard",0);
+			}
+			else
+			{
+			voiceoutput("Opening"+d+"dashboard and applying filters",0);
+			}
+			url = u;
+            $('.speak-home').hide();
+            
 			//alert(1+d+f+v);
 			viz = new tableau.Viz(containerDiv, url, options);
-			//workbook = viz.getWorkbook();
-			//activeSheet = workbook.getActiveSheet();
-			//sharray = activeSheet.getWorksheets();
-			
-			//selectfilter(f,v);
+
         }
 		
 		<!-- added by Sarat -->
@@ -470,11 +489,25 @@
 				//alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
+					if ( activeSheet.getSheetType() === 'dashboard' )
+					{
 					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
+					}
+					else
+					{
+					activeSheet.selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE);
+					}
 				}
 				else if (derivedfield === "filter")
 				{
+					if ( activeSheet.getSheetType() === 'dashboard' )
+					{
 					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+					}
+					else
+					{
+					activeSheet.applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE);
+					}					
 				}	
 				$(speakAgain).show();
 			}
@@ -534,6 +567,7 @@
         });
     </script>
 </body>
+
 <style>
 @font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
 @font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
@@ -565,12 +599,13 @@ position:absolute;
   .sabutton
 {
 position:absolute;
-  Left:50%;
-  top:3%;
+  Left:25%;
+  top:5%;
   filter: grayscale(000%); 
   height:60px;
   width:60px;
   color:#313131;
+  cursor: pointer;
   }
   
     .stbutton
@@ -627,10 +662,6 @@ font-size:22.5px;
 color:#313131;
 }
 
-
-
-
-
 .mic
 {
  position:relative;
@@ -638,8 +669,6 @@ color:#313131;
  filter: grayscale(0%); 
 }
 
-<!--body {
-         overflow:hidden;
-       }-->
+
 </style>
 </html>
