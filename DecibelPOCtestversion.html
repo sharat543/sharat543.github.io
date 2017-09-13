@@ -393,7 +393,7 @@
 			url: "https://sharat543.github.io/POCdashboards.json",
 			type : 'GET',
 			success: function(data) {
-				alert(data['dashboards'].length);
+				//alert(data['dashboards'].length);
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
 				if (e === data['dashboards'][e1]['name'])
 				{dbvalue = dbvalue + 1; urlvalue = data['dashboards'][e1]['site'];}

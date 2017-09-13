@@ -16,8 +16,23 @@
 	},
 	{
 		"id":"3",
-		"name":"pain",
-		"site":"https://public.tableau.com/views/PainDashboard/HomePage?:embed=y&:display_count=yes"
+		"name":"geographies",
+		"site":"https://public.tableau.com/views/PainDashboard/GeographicalSales?:embed=y&:display_count=yes"
+	},
+	{
+		"id":"4",
+		"name":"positive trend",
+		"site":"https://public.tableau.com/views/RegionalSampleWorkbook/Storms"
+	},
+	{
+		"id":"5",
+		"name":"negative trend",
+		"site":"http://public.tableau.com/views/RegionalSampleWorkbook/College"
+	},
+	{
+		"id":"6",
+		"name":"channels",
+		"site":"https://public.tableau.com/views/PainDashboard/GeographicalSales?:embed=y&:display_count=yes"
 	}
 		
 ]}
