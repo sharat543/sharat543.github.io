@@ -43,22 +43,6 @@
 							
             </td>
         </tr>
-        <tr>
-            <td></td>
-            <!-- <td>BING interpretation: <span id="hypothesisDiv"> -->
-                
-            </span></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <!-- <textarea id="phraseDiv" style="width:500px;height:200px"></textarea> -->
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <!-- <td>Status: <span id="statusDiv"></span></td> -->
-        </tr>
     </table>
     <div style="float: left">
     <table width="100%" style="float: left">
@@ -332,12 +316,12 @@
 			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
-          if (data.entities.length === 0)
+					if (data.entities.length === 0)
 					{
 						voiceoutput("Please provide a valid input",0); 
 						$(speakAgain).show();
 					}
-				 else
+					else
 					{		
 						for (var t=0; t < data.entities.length; t++) 
 						{	
