@@ -350,8 +350,9 @@
 						}
 
 					
-						//alert(db+fld+val);
+						//alert(db);
 						var var1 = dashboardcheck(db);
+						//alert(var1);
 						if ( var1 === 0 ) 
 						{ 
 						voiceoutput("Please provide a valid dashboard name",0); 
@@ -381,15 +382,18 @@
                  //JSON.stringify(data.entities[0].type )+ ":"+ JSON.stringify(data.entities[0].entity);
                 });
 		}
+		
 		var urlvalue;
 		function dashboardcheck(e) {
 			var dbvalue = 0;
+			//alert(e+dbvalue);
 			$.ajax({
 			async: false,
 			dataType : 'json',
 			url: "https://sharat543.github.io/POCdashboards.json",
 			type : 'GET',
 			success: function(data) {
+				alert(data['dashboards'].length);
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
 				if (e === data['dashboards'][e1]['name'])
 				{dbvalue = dbvalue + 1; urlvalue = data['dashboards'][e1]['url']}
