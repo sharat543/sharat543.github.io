@@ -34,6 +34,18 @@
 		"name":"Gender",
 		"choosetype":"filter",
 		"db":"college"
+	},
+	{
+		"id":"Product",
+		"name":"Product",
+		"choosetype":"filter",
+		"db":"geographies"
+	},
+	{
+		"id":"Product",
+		"name":"Product",
+		"choosetype":"filter",
+		"db":"sales distribution"
 	}
 
 ]}

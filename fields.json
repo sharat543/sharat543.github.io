@@ -18,5 +18,10 @@
 	{
 		"id":"Basin",
 		"name":"Basin"
-	}		
+	},
+	{
+		"id":"Product",
+		"name":"Product"
+	}
+		
 ]}

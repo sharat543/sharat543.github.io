@@ -76,7 +76,7 @@
         <div class="first-sidebar-content" style="display: none; min-width: 200px">
         <div style="min-width: 300px;float: right;background-color: #fff;text-align: center;">
             
-            <div><td>Speech recognized: <span id="hypothesisDiv"></span></td></div>
+            <div><td>Recognized speech: <span id="hypothesisDiv"></span></td></div>
 			<br>
 			<br>
 			<br>
@@ -350,8 +350,9 @@
 						}
 
 					
-						//alert(db+fld+val);
+						//alert(db);
 						var var1 = dashboardcheck(db);
+						//alert(var1);
 						if ( var1 === 0 ) 
 						{ 
 						voiceoutput("Please provide a valid dashboard name",0); 
@@ -369,7 +370,7 @@
 							}
 							else
 							{
-							initViz(db,fld,val);
+							initViz(db,fld,val,urlvalue);
 							}
 						}
 					}
@@ -382,18 +383,20 @@
                 });
 		}
 		
+		var urlvalue;
 		function dashboardcheck(e) {
 			var dbvalue = 0;
+			//alert(e+dbvalue);
 			$.ajax({
 			async: false,
 			dataType : 'json',
 			url: "https://sharat543.github.io/POCdashboards.json",
 			type : 'GET',
 			success: function(data) {
+				//alert(data['dashboards'].length);
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
-				//alert(e+data['dashboards'][e1]['name']);
 				if (e === data['dashboards'][e1]['name'])
-				{dbvalue = dbvalue + 1;}
+				{dbvalue = dbvalue + 1; urlvalue = data['dashboards'][e1]['site'];}
 				else { dbvalue = dbvalue + 0; }
 				}
 			}});
@@ -429,7 +432,7 @@
                 viz.dispose();
             }
 		var counter=0;
-		function initViz(d,f,v)
+		function initViz(d,f,v,u)
 		{
 			if (viz) { viz.dispose(); }
 			viz=0;
@@ -444,31 +447,21 @@
 									selectfilter(f,v);
 									}	
                	      };
-			if (d === "storms") { 
-			voiceoutput("Opening storms dashboard",0);
-			
-			url = "https://public.tableau.com/views/RegionalSampleWorkbook/Storms";
-                $('.speak-home').hide();
-             }
-			else if (d === "sales") { 
-			voiceoutput("Opening Sales dashboard",0);
-			url = "https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes" 
-                $('.speak-home').hide();
-            }
-			else if (d === "college") { 
-			voiceoutput("Opening College dashboard",0);
-			url = "http://public.tableau.com/views/RegionalSampleWorkbook/College"; 
-                $('.speak-home').hide();
-            }
-			if (f!=0){
-				voiceoutput("Applying filters")}
+			 
+			if ( f === 0)
+			{
+			voiceoutput("Opening"+d+"dashboard",0);
+			}
+			else
+			{
+			voiceoutput("Opening"+d+"dashboard. Applying filters",0);
+			}
+			url = u;
+            $('.speak-home').hide();
+            
 			//alert(1+d+f+v);
 			viz = new tableau.Viz(containerDiv, url, options);
-			//workbook = viz.getWorkbook();
-			//activeSheet = workbook.getActiveSheet();
-			//sharray = activeSheet.getWorksheets();
-			
-			//selectfilter(f,v);
+
         }
 		
 		<!-- added by Sarat -->
