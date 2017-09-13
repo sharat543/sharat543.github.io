@@ -23,7 +23,7 @@
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
 </div>
 
-<div style="float: left;margin-top: 60px;">
+<div style="float: center;margin-top: 90px;margin-left: 150px;">
     <table width="100%">
         <tr>
             <td></td>
@@ -64,11 +64,11 @@
             <!-- <td>Status: <span id="statusDiv"></span></td> -->
         </tr>
     </table>
-    <div style="float: left">
-    <table width="100%" style="float: left">
+    <div style="float: center;">
+    <table width="100%" style="float: center;">
         <tr>
             <td>
-                <div id="vizContainer" style="width:800px; height:700px;"></div>
+                <div id="vizContainer" style="width:1000px; height:350px;"></div>
             </td>
         </tr>
     </table>    
@@ -446,8 +446,14 @@
 					onFirstInteractive: function () {
 									workbook = viz.getWorkbook();
 									activeSheet = workbook.getActiveSheet();
+									if (activeSheet.getSheetType() === 'dashboard')
+									{
 									sharray = activeSheet.getWorksheets();
-
+									}
+									else
+									{
+									sharray = null;
+									}
 									selectfilter(f,v);
 									}	
                	      };
@@ -458,7 +464,7 @@
 			}
 			else
 			{
-			voiceoutput("Opening"+d+"dashboard. Applying filters",0);
+			voiceoutput("Opening"+d+"dashboard and applying filters",0);
 			}
 			url = u;
             $('.speak-home').hide();
@@ -483,11 +489,25 @@
 				//alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
+					if ( activeSheet.getSheetType() === 'dashboard' )
+					{
 					for (var i=0; i < sharray.length; i++) { sharray[i].selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE); } 
+					}
+					else
+					{
+					activeSheet.selectMarksAsync(field, derivedvalue, tableau.SelectionUpdateType.REPLACE);
+					}
 				}
 				else if (derivedfield === "filter")
 				{
+					if ( activeSheet.getSheetType() === 'dashboard' )
+					{
 					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+					}
+					else
+					{
+					activeSheet.applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE);
+					}					
 				}	
 				$(speakAgain).show();
 			}
@@ -579,8 +599,8 @@ position:absolute;
   .sabutton
 {
 position:absolute;
-  Left:50%;
-  top:3%;
+  Left:25%;
+  top:5%;
   filter: grayscale(000%); 
   height:60px;
   width:60px;
