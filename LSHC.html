@@ -494,7 +494,7 @@
 			type : 'GET',
 			success: function(data) {
 				for (var c = 0; c < data['values'].length; c++) {
-				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
+				var jsonvaluelow = data['values'][c]['id'].toLowerCase();
 				var valuelow = a.toLowerCase();
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}

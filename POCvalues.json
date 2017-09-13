@@ -83,6 +83,15 @@
 		"id":"Women",
 		"name":"Women",
 		"db":"college"
+	},
+	{
+		"id":"Product One",
+		"name":"Product 1",
+		"db":"geographies"
+	},
+	{
+		"id":"Product One",
+		"name":"Product 1",
+		"db":"sales distribution"
 	}
-	
 ]}
