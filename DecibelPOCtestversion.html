@@ -9,8 +9,12 @@
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
 
 <img src="deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte" style="z-index:999;">
-<img src="Decibel.png" class="logo_decibel" alt="Decibel" height="40px" Width="120px" style="z-index:999;">
-<button id="speakAgain" style="position: absolute;Left: 16%;top: 5%;filter: grayscale(000%);color: #313131;">Speak Again</button>
+<img src="Decibel.png" class="logo_decibel" alt="Decibel" height="60px" Width="180px" style="z-index:999;">
+<h2 class="head1"> Voice Enabled </h2>
+<h2 class="head2"> Cognitive  </h2>
+<h2 class="head3"> Platform  </h2>
+<!--<button id="speakAgain" class="sabutton">Speak Again</button>-->
+<img src="mic.png" id="speakAgain" class="sabutton" hidden="">
 <div class="speak-home">
 <img src="bgfinal.png" class="bg_img" alt="background">
 <button id="startBtn" class="stbutton" disabled="disabled" hidden="">Start</button>
@@ -43,6 +47,22 @@
 							
             </td>
         </tr>
+        <tr>
+            <td></td>
+            <!-- <td>BING interpretation: <span id="hypothesisDiv"> -->
+                
+            </span></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <!-- <textarea id="phraseDiv" style="width:500px;height:200px"></textarea> -->
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <!-- <td>Status: <span id="statusDiv"></span></td> -->
+        </tr>
     </table>
     <div style="float: left">
     <table width="100%" style="float: left">
@@ -56,11 +76,11 @@
 </div>
 <div>
     <div id="toggle-first-sidebar" style="text-align: right;position: absolute;width: 100%;right: 22px;top: 200px;cursor: pointer;">
-        <img src="plus.png" width="20px" height="20px">
+        <img src="plus.png" width="30px" height="30px">
         <div class="first-sidebar-content" style="display: none; min-width: 200px">
         <div style="min-width: 300px;float: right;background-color: #fff;text-align: center;">
             
-            <div><td>Recognized speech: <span id="hypothesisDiv"></span></td></div>
+            <div><td>Recognized voice: <span id="hypothesisDiv"></span></td></div>
 			<br>
 			<br>
 			<br>
@@ -69,7 +89,7 @@
         </div>
     </div>
     <div id="toggle-second-sidebar" style="text-align: right;position: absolute;width: 100%;right: 22px;top: 400px;cursor: pointer;">
-        <img src="plus.png" width="20px" height="20px">
+        <img src="plus.png" width="30px" height="30px">
         <div class="second-sidebar-content" style="display: none; min-width: 200px"">
         <div style="min-width: 300px; float: right;background-color: #fff;text-align: center;">
             <div> 
@@ -316,12 +336,12 @@
 			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
                  phraseDiv.innerHTML =  JSON.stringify(data);
-					if (data.entities.length === 0)
+          if (data.entities.length === 0)
 					{
 						voiceoutput("Please provide a valid input",0); 
 						$(speakAgain).show();
 					}
-					else
+				 else
 					{		
 						for (var t=0; t < data.entities.length; t++) 
 						{	
@@ -531,7 +551,6 @@
 <style>
 @font-face { font-family: Title; src: url('Knockout-HTF27-JuniorBantamwt.otf'); } 
 @font-face { font-family: Description; src: url('FrutigerNextPro-Light.ttf'); } 
-
 .bg_img
 {
   position: fixed; 
@@ -539,8 +558,8 @@
   left: 0; 
   min-width: 100%;
   min-height: 100%;
+  z-index: -1;
 }
-
 .logo_deloitte
 {
  position:absolute;
@@ -549,7 +568,6 @@
   filter: grayscale(000%); 
   color:#313131;
 }
-
 .logo_decibel
 {
 position:absolute;
@@ -558,14 +576,16 @@ position:absolute;
   filter: grayscale(000%); 
   color:#313131;
   }
-
   .sabutton
 {
 position:absolute;
-  Left:24%;
-  top:7%;
+  Left:50%;
+  top:3%;
   filter: grayscale(000%); 
+  height:60px;
+  width:60px;
   color:#313131;
+  cursor: pointer;
   }
   
     .stbutton
@@ -595,12 +615,40 @@ font-size:60px;
 color:#313131;
 }
 
+.head1{
+position:absolute;
+top:1.8%;
+left:15.5%;
+font-family:Description;
+font-size:22.5px;
+color:#313131;
+}
+
+.head2{
+position:absolute;
+top:4.5%;
+left:15.5%;
+font-family:Description;
+font-size:22.5px;
+color:#313131;
+}
+
+.head3{
+position:absolute;
+top:7.5%;
+left:15.5%;
+font-family:Description;
+font-size:22.5px;
+color:#313131;
+}
+
 .mic
 {
  position:relative;
- top:170px;
+ top:210px;
  filter: grayscale(0%); 
 }
+
 
 </style>
 </html>
