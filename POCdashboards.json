@@ -22,17 +22,17 @@
 	{
 		"id":"4",
 		"name":"positive trend",
-		"site":"https://public.tableau.com/views/RegionalSampleWorkbook/Storms"
+		"site":"https://public.tableau.com/views/PainDashboard/Retailers-SalesUp?:embed=y&:display_count=yes"
 	},
 	{
 		"id":"5",
 		"name":"negative trend",
-		"site":"http://public.tableau.com/views/RegionalSampleWorkbook/College"
+		"site":"https://public.tableau.com/views/PainDashboard/Retailers-SalesDown?:embed=y&:display_count=yes"
 	},
 	{
 		"id":"6",
-		"name":"channels",
-		"site":"https://public.tableau.com/views/PainDashboard/GeographicalSales?:embed=y&:display_count=yes"
+		"name":"sales distribution",
+		"site":"https://public.tableau.com/views/PainDashboard/SalesacrossChannels?:embed=y&:display_count=yes"
 	}
 		
 ]}
