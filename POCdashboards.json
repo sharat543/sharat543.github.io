@@ -1,7 +1,7 @@
 {"dashboards":[
 	{
 		"id":"0",
-		"name":"sales",
+		"name":"analysis",
 		"site":"https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes"
 	},
 	{
@@ -33,6 +33,11 @@
 		"id":"6",
 		"name":"sales distribution",
 		"site":"https://public.tableau.com/views/PainDashboard/SalesacrossChannels?:embed=y&:display_count=yes"
+	},
+	{
+		"id":"7",
+		"name":"sales",
+		"site":"https://public.tableau.com/views/PainDashboard/HomePage?:embed=y&:display_count=yes"
 	}
 		
 ]}
