@@ -1,0 +1,38 @@
+{"dashboards":[
+	{
+		"id":"0",
+		"name":"sales",
+		"site":"https://public.tableau.com/views/SalesDashboard_414/Dashboard1?:embed=y&:display_count=yes&publish=yes"
+	},
+	{
+		"id":"1",
+		"name":"storms",
+		"site":"https://public.tableau.com/views/RegionalSampleWorkbook/Storms"
+	},
+	{
+		"id":"2",
+		"name":"college",
+		"site":"http://public.tableau.com/views/RegionalSampleWorkbook/College"
+	},
+	{
+		"id":"3",
+		"name":"geographies",
+		"site":"https://public.tableau.com/views/PainDashboard/GeographicalSales?:embed=y&:display_count=yes"
+	},
+	{
+		"id":"4",
+		"name":"positive trend",
+		"site":"https://public.tableau.com/views/PainDashboard/Retailers-SalesUp?:embed=y&:display_count=yes"
+	},
+	{
+		"id":"5",
+		"name":"negative trend",
+		"site":"https://public.tableau.com/views/PainDashboard/Retailers-SalesDown?:embed=y&:display_count=yes"
+	},
+	{
+		"id":"6",
+		"name":"sales distribution",
+		"site":"https://public.tableau.com/views/PainDashboard/SalesacrossChannels?:embed=y&:display_count=yes"
+	}
+		
+]}

@@ -14,16 +14,17 @@
 <h2 class="head2"> Cognitive  </h2>
 <h2 class="head3"> Platform  </h2>
 <!--<button id="speakAgain" class="sabutton">Speak Again</button>-->
-<img src="mic.png" id="speakAgain" class="sabutton" hidden="">
-<div class="speak-home">
+<img src="mic.png" id="speakAgain" class="sabutton" hidden="" title="Click to speak again">
 <img src="bgfinal.png" class="bg_img" alt="background">
+<div class="speak-home">
+<!--<img src="bgfinal.png" class="bg_img" alt="background">-->
 <button id="startBtn" class="stbutton" disabled="disabled" hidden="">Start</button>
 <button id="stopBtn" class="spbutton" disabled="disabled" hidden="">Stop</button>
 <!-- <button id="speakAgain" class="sabutton">Speak Again</button> -->
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
 </div>
 
-<div style="float: center;margin-top: 90px;margin-left: 150px;">
+<div style="float: center;margin-top: 90px;margin-left: 135px;">
     <table width="100%">
         <tr>
             <td></td>
@@ -68,7 +69,7 @@
     <table width="100%" style="float: center;">
         <tr>
             <td>
-                <div id="vizContainer" style="width:1000px; height:350px;"></div>
+                <div id="vizContainer" style="width:1000px; height:310px;"></div>
             </td>
         </tr>
     </table>    
@@ -460,11 +461,12 @@
 			 
 			if ( f === 0)
 			{
-			voiceoutput("Opening"+d+"dashboard",0);
+			voiceoutput("Opening "+d+" dashboard",0);
 			}
 			else
 			{
-			voiceoutput("Opening"+d+"dashboard and applying filters",0);
+			alert(d+v);
+			voiceoutput("Applying "+v+" filter to "+d+" dashboard",0);
 			}
 			url = u;
             $('.speak-home').hide();
@@ -599,7 +601,7 @@ position:absolute;
   .sabutton
 {
 position:absolute;
-  Left:25%;
+  Left:27%;
   top:5%;
   filter: grayscale(000%); 
   height:60px;
@@ -637,28 +639,28 @@ color:#313131;
 
 .head1{
 position:absolute;
-top:1.8%;
-left:15.5%;
+top:1.9%;
+left:15%;
 font-family:Description;
-font-size:22.5px;
+font-size:20.5px;
 color:#313131;
 }
 
 .head2{
 position:absolute;
-top:4.5%;
-left:15.5%;
+top:4.85%;
+left:15%;
 font-family:Description;
-font-size:22.5px;
+font-size:20.5px;
 color:#313131;
 }
 
 .head3{
 position:absolute;
-top:7.5%;
-left:15.5%;
+top:8%;
+left:15%;
 font-family:Description;
-font-size:22.5px;
+font-size:20.5px;
 color:#313131;
 }
 
