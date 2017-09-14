@@ -69,7 +69,7 @@
     <table width="100%" style="float: center;">
         <tr>
             <td>
-                <div id="vizContainer" style="width:1000px; height:310px;"></div>
+                <div id="vizContainer" style="width:1000px; height:350px;"></div>
             </td>
         </tr>
     </table>    
@@ -266,9 +266,14 @@
 			speech.lang = 'en-US';
 			speech.voice = voices[4]
 			window.speechSynthesis.speak(speech);
-            if (flag==1){
+			if (flag==1)
+			{
             setTimeout(activatestart, 4000);
-        }
+			}
+			else if (flag == 2)
+			{
+			setTimeout(voiceoutput, 10000);
+			}
            
 			}
         } 
@@ -332,7 +337,7 @@
 		
 		
         function UpdateRecognizedPhrase(json) {
-            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c5f07b07-2b8b-4f71-86c6-e865912d589d?subscription-key=39a47ec06ed6499da5f948c10f93ee82&timezoneOffset=0&verbose=true&q="+input+"",
+            $.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/631f2b5e-8875-48f2-984c-9e7e7c78a3e2?subscription-key=c642986d701f44b29227bc3b60fab71b&verbose=true&timezoneOffset=0&q="+input+"",
 			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/21b9dd19-9b03-4fb5-87a8-337112c474b7?subscription-key=c642986d701f44b29227bc3b60fab71b&verbose=true&timezoneOffset=0&q="+input+"",
 			//$.get("https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5cac76d5-cdf5-4928-a48e-3fc400c5430a?subscription-key=c642986d701f44b29227bc3b60fab71b&timezoneOffset=0&verbose=true&q="+input+"",
                 function(data){
@@ -511,8 +516,14 @@
 					activeSheet.applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE);
 					}					
 				}	
+				
 				$(speakAgain).show();
 			}
+				//alert(db);
+				if ( db === "sales distribution")
+				{
+				voiceoutput("Drug Channel continues to be the leading contributor in your overall sales of $20 Million. The trend on other channels is also inline with the previous periods",2);
+				}
 		}
 		
 		<!-- added by Sarat -->
