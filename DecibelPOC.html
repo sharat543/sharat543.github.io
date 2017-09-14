@@ -13,33 +13,23 @@
 <h2 class="head1"> Voice Enabled </h2>
 <h2 class="head2"> Cognitive  </h2>
 <h2 class="head3"> Platform  </h2>
-<!--<button id="speakAgain" class="sabutton">Speak Again</button>-->
+
 <img src="mic.png" id="speakAgain" class="sabutton" hidden="" title="Click to speak again">
 <img src="bgfinal.png" class="bg_img" alt="background">
 <div class="speak-home">
-<!--<img src="bgfinal.png" class="bg_img" alt="background">-->
+
 <button id="startBtn" class="stbutton" disabled="disabled" hidden="">Start</button>
 <button id="stopBtn" class="spbutton" disabled="disabled" hidden="">Stop</button>
-<!-- <button id="speakAgain" class="sabutton">Speak Again</button> -->
+
 <center><img src="mic.png" alt="Mic" class="mic"> </center>
 </div>
 
 <div style="float: center;margin-top: 90px;margin-left: 40px;">
     <table width="100%">
-        <tr>
-            <td></td>
-            <td>
-                <!-- <h1 style="font-weight:500;">DECIBEL</h1> -->
-               
-            </td>
-        </tr>
         <tr>            
             <td ><input  type="hidden" id="key" type="text" size="40" value="940c2da177274e9597b2b4ccfccb9620" v></td>
         </tr>
      
-        </tr>
-      
-        </tr>
         <tr>
             <td></td>
             <td>
@@ -48,35 +38,12 @@
 							
             </td>
         </tr>
-        <tr>
-            <td></td>
-            <!-- <td>BING interpretation: <span id="hypothesisDiv"> -->
-                
-            </span></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <!-- <textarea id="phraseDiv" style="width:500px;height:200px"></textarea> -->
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <!-- <td>Status: <span id="statusDiv"></span></td> -->
-        </tr>
     </table>
-    <div style="float: center;">
-    <table width="100%" style="float: center;">
-        <tr>
-            <td>
-                <div id="vizContainer" style="width:1000px; height:350px;"></div>
-            </td>
-        </tr>
-    </table>    
 </div>
+<div id="vizContainer" style="width:1000px; height:350px; margin-top: 15px;margin-left: 21px;">
 </div>
 <div>
-    <div id="toggle-first-sidebar" style="text-align: right;position: absolute;width: 100%;right: 22px;top: 200px;cursor: pointer;">
+    <div id="toggle-first-sidebar" style="text-align: right;position: absolute;width: 100%;right: 18px;top: 200px;cursor: pointer;">
         <img src="plus.png" width="30px" height="30px">
         <div class="first-sidebar-content" style="display: none; min-width: 200px">
         <div style="min-width: 300px;float: right;background-color: #fff;text-align: center;">
@@ -89,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div id="toggle-second-sidebar" style="text-align: right;position: absolute;width: 100%;right: 22px;top: 400px;cursor: pointer;">
+    <div id="toggle-second-sidebar" style="text-align: right;position: absolute;width: 100%;right: 18px;top: 400px;cursor: pointer;">
         <img src="plus.png" width="30px" height="30px">
         <div class="second-sidebar-content" style="display: none; min-width: 200px"">
         <div style="min-width: 300px; float: right;background-color: #fff;text-align: center;">
@@ -523,6 +490,10 @@
 				if ( db === "sales distribution")
 				{
 				voiceoutput("Drug Channel continues to be the leading contributor in your overall sales of $20 Million. The trend on other channels is also inline with the previous periods",2);
+				}
+				else if ( db === "sales")
+				{
+				voiceoutput("Product 1 occupies third position in terms of market share. and sales have decreased by 0.1 million compared to the previous period",2);
 				}
 		}
 		
