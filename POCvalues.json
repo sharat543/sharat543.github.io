@@ -32,37 +32,37 @@
 	{
 		"id":"Central",
 		"name":"Central",
-		"db":"sales"
+		"db":"mobile"
 	},	
 	{
 		"id":"East",
 		"name":"East",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"South",
 		"name":"South",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"West",
 		"name":"West",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"Arizona",
 		"name":"Arizona",
-		"db":"sales"
+		"db":"mobile"
 	},	
 	{
 		"id":"California",
 		"name":"California",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"Florida",
 		"name":"Florida",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"2013",

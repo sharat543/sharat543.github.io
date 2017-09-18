@@ -15,13 +15,13 @@
 		"id":"State",
 		"name":"State",
 		"choosetype":"select",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"Region",
 		"name":"Region",
 		"choosetype":"filter",
-		"db":"sales"
+		"db":"mobile"
 	},
 	{
 		"id":"Academic Year",
