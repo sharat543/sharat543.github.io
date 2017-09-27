@@ -38,6 +38,11 @@
 		"id":"7",
 		"name":"sales",
 		"site":"https://public.tableau.com/views/PainDashboard/HomePage?:embed=y&:display_count=yes"
+	},
+	{
+		"id":"8",
+		"name":"test",
+		"site":"http://10.118.20.96:8008/t/datavisualizationcoe/views/ARDashboard/ARAgeingandFCST"
 	}
 		
 ]}
