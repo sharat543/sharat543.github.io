@@ -48,6 +48,11 @@
 		"id":"9",
 		"name":"patient",
 		"site":"https://us-east-1.online.tableau.com/t/takrd/views/C16021_PRO_View_SIT_Workbook/PRO-PatientView?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no"
+	},
+	{
+		"id":"10",
+		"name":"anthem",
+		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
 	}
 		
 ]}

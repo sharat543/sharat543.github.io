@@ -52,6 +52,12 @@
 		"name":"Cycle Number",
 		"choosetype":"filter",
 		"db":"patient"
+	},
+	{
+		"id":"Module",
+		"name":"Module",
+		"choosetype":"filter",
+		"db":"anthem"
 	}
 
 ]}
