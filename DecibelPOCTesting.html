@@ -485,7 +485,7 @@
 		
 		<!-- added by Sarat -->
 		function valueCase(a) {
-			var jsonvalue;
+			var jsonvalue,jsonvaluelow,valuelow;
 			$.ajax({
 			async: false,
 			dataType : 'json',
@@ -493,12 +493,22 @@
 			type : 'GET',
 			success: function(data) {
 				for (var c = 0; c < data['values'].length; c++) {
-				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
-				var valuelow = a.toLowerCase();
+				if ( typeof data['values'][c]['name'] === 'string')
+				{
+				jsonvaluelow = data['values'][c]['name'].toLowerCase();
+				valuelow = a.toLowerCase();
+				}
+				else
+				{
+				jsonvaluelow = data['values'][c]['name'];
+				valuelow = a;
+				}
+				
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}
 				}
 			}});
+			alert(jsonvalue);
 			return jsonvalue;
 		}
 		
