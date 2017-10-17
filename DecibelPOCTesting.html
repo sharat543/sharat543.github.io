@@ -438,7 +438,6 @@
 		
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
-			//alert(field+value);
 			if ( field == 0 && value == 0 )
 			{
 				viz.revertAllAsync();
@@ -448,7 +447,6 @@
 			{	
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
-				//alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
 					if ( activeSheet.getSheetType() === 'dashboard' )
@@ -497,7 +495,6 @@
 				for (var c = 0; c < data['values'].length; c++) {
 				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
 				var valuelow = a.toLowerCase();
-				alert(jsonvaluelow+valuelow);
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}
 				}
