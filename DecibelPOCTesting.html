@@ -20,7 +20,6 @@
 <button id="startBtn" class="stbutton" disabled="disabled" hidden="">Start</button>
 <button id="stopBtn" class="spbutton" disabled="disabled" hidden="">Stop</button>
 <center><img src="mic.png" id="speakAgainbig" alt="Mic" class="mic" title="Click to speak again"> </center>
-<!--<iframe width="420" height="315" src="https://tabtest2.clearlight.deloitteinnovation.us/#/signin" frameborder="0" allowfullscreen></iframe>-->
 </div>
 
 <div style="float: center;margin-top: 90px;margin-left: 40px;">
@@ -29,14 +28,14 @@
             <td ><input  type="hidden" id="key" type="text" size="40" value="da516ce671ae4a9da60cb67eac9c14e7" v></td>
         </tr>
      
- <!--       <tr>
+        <tr>
             <td></td>
             <td>
                 <button id="startBtn" disabled="disabled" hidden="">Start</button>
                 <button id="stopBtn" disabled="disabled" hidden="">Stop</button>
 							
             </td>
-        </tr> -->
+        </tr>
     </table>
 </div>
 <div id="vizContainer" style="width:1000px; height:350px; margin-top: 15px;margin-left: 21px;">
@@ -439,6 +438,7 @@
 		
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
+			//alert(field+value);
 			if ( field == 0 && value == 0 )
 			{
 				viz.revertAllAsync();
@@ -448,7 +448,7 @@
 			{	
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
-
+				//alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
 					if ( activeSheet.getSheetType() === 'dashboard' )
@@ -497,6 +497,7 @@
 				for (var c = 0; c < data['values'].length; c++) {
 				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
 				var valuelow = a.toLowerCase();
+				alert(jsonvaluelow+valuelow);
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}
 				}
@@ -637,9 +638,7 @@ color:#313131;
 .mic
 {
  position:relative;
- top:20px;
- height:60px;
- width:60px;
+ top:210px;
  filter: grayscale(0%); 
  cursor: pointer;
 }
