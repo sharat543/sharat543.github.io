@@ -235,11 +235,6 @@
         function voiceoutput(text,flag){
 
             if('speechSynthesis' in window){
-
-                //var voices = speechSynthesis.getVoices();
-				//for(var i = 0; i < voices.length; i++ ) {
-				//console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
-				//}
 			var speech = new SpeechSynthesisUtterance(text);
 			speech.lang = 'en-US';
 			speech.voice = voices[4]
