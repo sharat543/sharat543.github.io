@@ -64,6 +64,12 @@
 		"name":"Module",
 		"choosetype":"filter",
 		"db":"incidents trend"
+	},
+	{
+		"id":"Module",
+		"name":"Module",
+		"choosetype":"filter",
+		"db":"incident summary"
 	}
 
 ]}

@@ -118,5 +118,10 @@
 		"id":"Consumer Products",
 		"name":"Consumer Products",
 		"db":"incidents trend"
+	},
+	{
+		"id":"Consumer Products",
+		"name":"Consumer Products",
+		"db":"incident summary"
 	}
 ]}
