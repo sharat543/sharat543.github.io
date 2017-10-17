@@ -57,7 +57,13 @@
 		"id":"Module",
 		"name":"Module",
 		"choosetype":"filter",
-		"db":"anthem"
+		"db":"incidents"
+	},
+	{
+		"id":"Module",
+		"name":"Module",
+		"choosetype":"filter",
+		"db":"incidents trend"
 	}
 
 ]}
