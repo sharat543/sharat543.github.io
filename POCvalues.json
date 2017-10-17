@@ -95,17 +95,17 @@
 		"db":"sales distribution"
 	},
 	{
-		"id":"1",
+		"id":"one",
 		"name":"1",
 		"db":"patient"
 	},
 	{
-		"id":"2",
+		"id":"two",
 		"name":"2",
 		"db":"patient"
 	},
 	{
-		"id":"3",
+		"id":"three",
 		"name":"3",
 		"db":"patient"
 	}
