@@ -501,14 +501,16 @@
 				else
 				{
 				jsonvaluelow = data['values'][c]['name'];
-				valuelow = a;
+				valuelow = data['values'][c]['name'];
 				}
 				
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}
 				}
+				alert(jsonvaluelow+valuelow);
+				alert(jsonvalue);
 			}});
-			alert(jsonvalue);
+			
 			return jsonvalue;
 		}
 		

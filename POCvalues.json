@@ -123,10 +123,5 @@
 		"id":"Consumer Products",
 		"name":"Consumer Products",
 		"db":"incident summary"
-	},
-	{
-		"id":"September",
-		"name":"9/1/2017",
-		"db":"incidents"
 	}
 ]}
