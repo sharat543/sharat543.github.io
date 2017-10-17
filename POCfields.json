@@ -63,7 +63,7 @@
 		"id":"Module",
 		"name":"Module",
 		"choosetype":"filter",
-		"db":"incidents trend"
+		"db":"incident trend"
 	},
 	{
 		"id":"Module",

@@ -61,7 +61,7 @@
 	},
 	{
 		"id":"12",
-		"name":"incidents trend",
+		"name":"incident trend",
 		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/IncidentsTrendsSummary?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
 	}
 		
