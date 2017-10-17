@@ -68,6 +68,11 @@
 		"id":"13",
 		"name":"service requests",
 		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
+	},
+	{
+		"id":"14",
+		"name":"service request",
+		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
 	}
 		
 ]}
