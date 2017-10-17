@@ -70,6 +70,12 @@
 		"name":"Module",
 		"choosetype":"filter",
 		"db":"incident summary"
+	},
+	{
+		"id":"Start Date",
+		"name":"Start Date",
+		"choosetype":"filter",
+		"db":"incidents"
 	}
 
 ]}
