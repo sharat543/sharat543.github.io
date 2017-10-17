@@ -112,6 +112,11 @@
 	{
 		"id":"Consumer Products",
 		"name":"Consumer Products",
-		"db":"anthem"
+		"db":"incidents"
+	},
+	{
+		"id":"Consumer Products",
+		"name":"Consumer Products",
+		"db":"incident summary"
 	}
 ]}

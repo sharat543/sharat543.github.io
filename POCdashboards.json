@@ -51,8 +51,13 @@
 	},
 	{
 		"id":"10",
-		"name":"anthem",
+		"name":"incidents",
 		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
+	},
+	{
+		"id":"11",
+		"name":"incident summary",
+		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/IncidentsTrendsSummary?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
 	}
 		
 ]}
