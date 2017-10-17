@@ -48,8 +48,8 @@
 		"db":"sales distribution"
 	},
 	{
-		"id":"Visit Number",
-		"name":"Visit Number",
+		"id":"Cycle Number",
+		"name":"Cycle Number",
 		"choosetype":"filter",
 		"db":"patient"
 	}
