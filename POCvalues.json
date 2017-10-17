@@ -93,5 +93,20 @@
 		"id":"Product One",
 		"name":"Product 1",
 		"db":"sales distribution"
+	},
+	{
+		"id":"1",
+		"name":"1",
+		"db":"patient view"
+	},
+	{
+		"id":"2",
+		"name":"2",
+		"db":"patient view"
+	},
+	{
+		"id":"3",
+		"name":"3",
+		"db":"patient view"
 	}
 ]}

@@ -43,6 +43,11 @@
 		"id":"8",
 		"name":"test",
 		"site":"https://tabtest2.clearlight.deloitteinnovation.us/t/IAAP/views/ExecutiveDashboard/GlobalQualityPerformance"
+	},
+	{
+		"id":"9",
+		"name":"patient view",
+		"site":"https://us-east-1.online.tableau.com/t/takrd/views/C16021_PRO_View_SIT_Workbook/PRO-PatientView?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no"
 	}
 		
 ]}
