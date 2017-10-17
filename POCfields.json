@@ -51,7 +51,7 @@
 		"id":"Visit Number",
 		"name":"Visit Number",
 		"choosetype":"filter",
-		"db":"patient view"
+		"db":"patient"
 	}
 
 ]}
