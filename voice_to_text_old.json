@@ -26,16 +26,10 @@
       "name": "Basin"
     },
     {
-      "name": "Cycle Number"
-    },
-    {
       "name": "Dashboard"
     },
     {
       "name": "Gender"
-    },
-    {
-      "name": "Module"
     },
     {
       "name": "Product"
@@ -76,14 +70,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 16
-        },
-        {
           "entity": "Storm Name",
           "startPos": 32,
           "endPos": 35
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
         }
       ]
     },
@@ -227,14 +221,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 16
-        },
-        {
           "entity": "Storm Name",
           "startPos": 32,
           "endPos": 36
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
         }
       ]
     },
@@ -243,14 +237,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 16
-        },
-        {
           "entity": "Storm Name",
           "startPos": 32,
           "endPos": 37
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 16
         }
       ]
     },
@@ -259,14 +253,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "State",
-          "startPos": 29,
-          "endPos": 35
-        },
-        {
           "entity": "Dashboard",
           "startPos": 9,
           "endPos": 13
+        },
+        {
+          "entity": "State",
+          "startPos": 29,
+          "endPos": 35
         }
       ]
     },
@@ -275,14 +269,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "State",
-          "startPos": 29,
-          "endPos": 38
-        },
-        {
           "entity": "Dashboard",
           "startPos": 9,
           "endPos": 13
+        },
+        {
+          "entity": "State",
+          "startPos": 29,
+          "endPos": 38
         }
       ]
     },
@@ -291,14 +285,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "State",
-          "startPos": 29,
-          "endPos": 35
-        },
-        {
           "entity": "Dashboard",
           "startPos": 9,
           "endPos": 13
+        },
+        {
+          "entity": "State",
+          "startPos": 29,
+          "endPos": 35
         }
       ]
     },
@@ -355,14 +349,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 17
-        },
-        {
           "entity": "Storm Name",
           "startPos": 33,
           "endPos": 36
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 17
         }
       ]
     },
@@ -371,14 +365,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "Basin",
-          "startPos": 22,
-          "endPos": 33
-        },
-        {
           "entity": "Year",
           "startPos": 38,
           "endPos": 41
+        },
+        {
+          "entity": "Basin",
+          "startPos": 22,
+          "endPos": 33
         },
         {
           "entity": "Dashboard",
@@ -413,14 +407,14 @@
           "endPos": 48
         },
         {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 17
-        },
-        {
           "entity": "Storm Name",
           "startPos": 33,
           "endPos": 36
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 17
         }
       ]
     },
@@ -428,6 +422,11 @@
       "text": "show me the college dashboard for men in 2013",
       "intent": "Filter",
       "entities": [
+        {
+          "entity": "Academic Year",
+          "startPos": 41,
+          "endPos": 44
+        },
         {
           "entity": "Dashboard",
           "startPos": 12,
@@ -437,11 +436,6 @@
           "entity": "Gender",
           "startPos": 34,
           "endPos": 36
-        },
-        {
-          "entity": "Academic Year",
-          "startPos": 41,
-          "endPos": 44
         }
       ]
     },
@@ -449,11 +443,6 @@
       "text": "show me the college dashboard for 2013 and 2014",
       "intent": "Filter",
       "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 18
-        },
         {
           "entity": "Academic Year",
           "startPos": 34,
@@ -463,6 +452,11 @@
           "entity": "Academic Year",
           "startPos": 43,
           "endPos": 46
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 18
         }
       ]
     },
@@ -487,14 +481,14 @@
       "intent": "Filter",
       "entities": [
         {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 18
-        },
-        {
           "entity": "Academic Year",
           "startPos": 34,
           "endPos": 37
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 12,
+          "endPos": 18
         }
       ]
     },
@@ -790,174 +784,6 @@
           "entity": "Dashboard",
           "startPos": 9,
           "endPos": 14
-        }
-      ]
-    },
-    {
-      "text": "open the patient dashboard for cycle three",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Cycle Number",
-          "startPos": 37,
-          "endPos": 41
-        },
-        {
-          "entity": "Dashboard",
-          "startPos": 9,
-          "endPos": 15
-        }
-      ]
-    },
-    {
-      "text": "show me the patient dashboard for cycle two",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Cycle Number",
-          "startPos": 40,
-          "endPos": 42
-        },
-        {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 18
-        }
-      ]
-    },
-    {
-      "text": "show me the patient dashboard for cycle one",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Cycle Number",
-          "startPos": 40,
-          "endPos": 42
-        },
-        {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 18
-        }
-      ]
-    },
-    {
-      "text": "filter cycle one",
-      "intent": "Interact",
-      "entities": [
-        {
-          "entity": "Cycle Number",
-          "startPos": 13,
-          "endPos": 15
-        }
-      ]
-    },
-    {
-      "text": "select consumer products",
-      "intent": "Interact",
-      "entities": [
-        {
-          "entity": "Module",
-          "startPos": 7,
-          "endPos": 23
-        }
-      ]
-    },
-    {
-      "text": "can you give me a summary of incidents in september 2017",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 29,
-          "endPos": 37
-        }
-      ]
-    },
-    {
-      "text": "can you show me the incident summary for consumer products",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 20,
-          "endPos": 35
-        },
-        {
-          "entity": "Module",
-          "startPos": 41,
-          "endPos": 57
-        }
-      ]
-    },
-    {
-      "text": "show me the incidents trend for consumer products",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 26
-        },
-        {
-          "entity": "Module",
-          "startPos": 32,
-          "endPos": 48
-        }
-      ]
-    },
-    {
-      "text": "can you give me a summary of incidents for september",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 29,
-          "endPos": 37
-        }
-      ]
-    },
-    {
-      "text": "can you give me a summary of the incidents",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 33,
-          "endPos": 41
-        }
-      ]
-    },
-    {
-      "text": "let's now check on the service requests",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 23,
-          "endPos": 38
-        }
-      ]
-    },
-    {
-      "text": "show me the service request",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 12,
-          "endPos": 26
-        }
-      ]
-    },
-    {
-      "text": "can you show me the service request",
-      "intent": "Filter",
-      "entities": [
-        {
-          "entity": "Dashboard",
-          "startPos": 20,
-          "endPos": 34
         }
       ]
     }
