@@ -235,11 +235,6 @@
         function voiceoutput(text,flag){
 
             if('speechSynthesis' in window){
-
-                //var voices = speechSynthesis.getVoices();
-				//for(var i = 0; i < voices.length; i++ ) {
-				//console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].uri);
-				//}
 			var speech = new SpeechSynthesisUtterance(text);
 			speech.lang = 'en-US';
 			speech.voice = voices[4]
@@ -438,6 +433,7 @@
 		
 		<!-- added by Sarat -->
 		function selectfilter(field,value) {
+			
 			if ( field == 0 && value == 0 )
 			{
 				viz.revertAllAsync();
@@ -447,6 +443,7 @@
 			{	
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
+				
 				if (derivedfield === "select") 
 				{ 
 					if ( activeSheet.getSheetType() === 'dashboard' )
@@ -487,7 +484,7 @@
 				}
 				else if ( db === "incident summary")
 				{
-				voiceoutput("There are no pending incidents for the selected module and time period",2);
+				voiceoutput("All the incidents created for this module have been closed. There are no pending incidents for the selected time period",2);
 				}
 				else if ( db === "incident trend")
 				{
@@ -501,7 +498,7 @@
 		
 		<!-- added by Sarat -->
 		function valueCase(a) {
-			var jsonvalue,jsonvaluelow,valuelow;
+			var jsonvalue;
 			$.ajax({
 			async: false,
 			dataType : 'json',
@@ -509,22 +506,12 @@
 			type : 'GET',
 			success: function(data) {
 				for (var c = 0; c < data['values'].length; c++) {
-				if ( typeof data['values'][c]['name'] === 'string')
-				{
-				jsonvaluelow = data['values'][c]['name'].toLowerCase();
-				valuelow = a.toLowerCase();
-				}
-				else
-				{
-				jsonvaluelow = data['values'][c]['name'];
-				valuelow = data['values'][c]['name'];
-				}
-				
+				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
+				var valuelow = a.toLowerCase();
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}
 				}
 			}});
-			
 			return jsonvalue;
 		}
 		
@@ -633,28 +620,28 @@ color:#313131;
 
 .head1{
 position:absolute;
-top:2.8%;
-left:12%;
+top:1.9%;
+left:15%;
 font-family:Description;
-font-size:18.5px;
+font-size:20.5px;
 color:#313131;
 }
 
 .head2{
 position:absolute;
-top:5.3%;
-left:12%;
+top:4.85%;
+left:15%;
 font-family:Description;
-font-size:18.5px;
+font-size:20.5px;
 color:#313131;
 }
 
 .head3{
 position:absolute;
 top:8%;
-left:12%;
+left:15%;
 font-family:Description;
-font-size:18.5px;
+font-size:20.5px;
 color:#313131;
 }
 
