@@ -1,0 +1,184 @@
+#header {
+	text-align: center;
+	margin-top: 30px
+}
+
+#wrapper {
+     width: 1005px;
+     margin: 0 auto;
+}
+input[type=text], select {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  /*background: #f2f2f2;*/
+  background: #000000;
+  width: 50%;
+  border: 1;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;  
+  color: #ffffff;
+}
+
+h2, #status {
+	text-align: center;
+	color: #81bc02;
+	text-transform: uppercase;
+}
+
+/*#formArea,#recordComplaint,#complaintStatus { 
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  width: 50%;
+  margin: 0px 250px 100px;
+  padding: 20px 0px 50px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); 
+  float: left;
+}*/
+
+#formArea,#recordComplaint,#complaintStatus{
+        width: 599px;
+        float: left;
+        color: #ffffff;
+		text-align: center;
+}
+
+#statusImage{
+        height:350px;
+        width: 389px;
+        overflow: hidden;
+        color: #ffffff;
+        overflow: hidden;
+        float:right;		
+    }	
+
+/*#blinkImage {
+	margin-left: 140px;
+	width: 50px;
+	background: #00ff00;
+}*/
+
+/*#recordComplaint {
+	position: absolute;
+  width: 200px;
+  height: 300px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+  background: #FFFFFF;
+}*/
+
+/*#recordComplaint {
+  position: relative;
+  z-index: 1;  
+  max-width: 360px;
+  margin: 100px auto 100px;
+  padding: 45px;
+  text-align: center;
+}*/
+#recordComplaint{
+	display:none;
+}
+
+#complaintStatus{
+	display:none;
+}
+
+body{
+	/*background-image:url('bg.png');*/
+	background-size: 50%;
+	background-color: #000000;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+button {
+ width: 200px;
+ height: 200px;
+ background-image: url('mic.png');
+ background-size: cover;
+ display: block;
+ /*border-top-left-radius: 100px;
+ webkit-border-top-left-radius: 100px;
+ -moz-border-top-left-radius: 100px;
+ border-bottom-right-radius: 100px;
+ -webkit-border-bottom-right-radius: 100px;
+ -moz-border-bottom-right-radius: 100px;*/
+ background-color: #000000;
+ border: 0px;
+}
+
+#startBtn img {
+    display: block;
+    width: 76%;
+    padding: 12%;
+    height: auto;
+}
+
+#hypothesisDiv, #statusDiv {
+	color: #81bc02
+}
+
+/* Firefox old*/
+@-moz-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+/* IE */
+@-ms-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+#blinkImage {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+	align: center;
+}
+.mic {
+	align: center;
+}

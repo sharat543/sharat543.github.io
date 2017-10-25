@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice to Text with LUIS</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css"></link>
+</head>
+<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
+<div id="header">
+<img src="Intellinet.jpg" class="logo_decibel" alt="Decibel" height="120px" Width="400px" style="z-index:999;">
+</div>
+<br/><br/><br/><br/>
+<div id="wrapper">
+<div id="formArea">
+<!--<h2>Welcome to customer assistance</h2>-->
+  <form action="#" id="userDetails" autocomplete="off">
+    <input type="text" id="mobileNo" name="mobileNo" placeholder="Mobile No">
+  </form>
+  <img src="ATREBM_lo.png" height="200" width="200"/>
+  <span id="status">		
+  </span>
+</div>
+<input  type="hidden" id="key" type="text" size="40" value="7e451bf0274d412db92637338f4a5c9e">
+<div id="recordComplaint">
+				<!--<h2>Provide your complaint details</h2>-->                
+				<button id="startBtn" disabled="disabled"><!--<img src="mic.png">--></button>
+                <button id="stopBtn" disabled="disabled" style="display:none">Stop</button><br/>
+<span id="statusDiv"></span>
+<span id="hypothesisDiv"></span>
+</div>
+<div id="statusImage">
+
+</div>
+</div>
+<div id="complaintStatus">
+
+</div>
+  
+    <script src="scripts/require.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+
+    <!-- SDK REFERENCE -->
+    <script src="scripts/speech.browser.sdk-min.js"></script>
+
+    <!-- SDK USAGE -->
+	<script src="scripts/index.js"></script>
+
+</body>
+</html>
