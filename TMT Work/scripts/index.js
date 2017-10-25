@@ -236,7 +236,7 @@ function submitComplaint(){
 	statusImage.innerHTML = "<img src='calculate.jpg' id='blinkImage'/>";
 	voiceoutput("We understand the urgency of your request. Processing your request to identify the right agent to service your request.");
 	window.setTimeout(function(){
-		statusImage.innerHTML = "<img src='call.jpg' id='blinkImage'/>";
+		statusImage.innerHTML = "<img src='call.JPG' id='blinkImage'/>";
 		if(isPlatinum){
 			voiceoutput("Thank you for your patience. Our Tier 1 support executive will assist you shortly.");
 		} else{
