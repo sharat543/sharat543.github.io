@@ -78,6 +78,16 @@
 		"id":"15",
 		"name":"compliance",
 		"site":"https://us-east-1.online.tableau.com/t/takrd/views/C16021_PRO_View_SIT_Workbook/CompletionComplianceRates?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no"
+	},
+	{
+		"id":"16",
+		"name":"executive",
+		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Home"
+	},
+	{
+		"id":"17",
+		"name":"incident resolution",
+		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/IncidentMetrics"
 	}
 		
 ]}
