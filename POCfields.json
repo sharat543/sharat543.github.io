@@ -52,5 +52,11 @@
 		"name":"Aging Days",
 		"choosetype":"select",
 		"db":"tickets"
+	},
+	{
+		"id":"Trend View By",
+		"name":"Trend View By",
+		"choosetype":"filter",
+		"db":"incidents"
 	}
 ]}

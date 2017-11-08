@@ -97,6 +97,11 @@
 	{
 		"id":"greater than 60",
 		"name":">60",
+		"db":"tickets"
+	},
+	{
+		"id":"Forecast",
+		"name":"Forecast",
 		"db":"incidents"
 	}
 
