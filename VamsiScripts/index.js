@@ -159,7 +159,7 @@ var response;
 function openDashboard(data){
 	dashboardName = data;
 	if(dashboardName != ""){
-		voiceoutput("Please wait while we load your dashboard")
+		voiceoutput("Please wait, while we load your dashboard")
 	}
 	else{
 		voiceoutput("Provide the dashboard name that you want to view.")
