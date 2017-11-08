@@ -15,7 +15,7 @@ var response;
             require(["Speech.Browser.Sdk"], function(SDK) {
                 onComplete(SDK);
 				$("#mobileNo").prop("disabled", true);
-				voiceoutput("Welcome. Provide the dashboard name that you want to view.")
+				voiceoutput("Welcome. Provide the dashboard name that you want to view.");
 				if (!recognizer || previousSubscriptionKey != key.value) {
                     previousSubscriptionKey = key.value;
                     Setup();
