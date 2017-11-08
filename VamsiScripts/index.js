@@ -158,7 +158,8 @@ var response;
 	
 function openDashboard(data){
 	dashboardName = data;
-	if(dashboardName != ""){
+	console.log("Dashboard name is " + dashboardName);
+	if(dashboardName != "" && dashboardName != null){
 		voiceoutput("Please wait, while we load your dashboard")
 	}
 	else{
