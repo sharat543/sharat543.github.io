@@ -6,7 +6,7 @@ var input;
 var voices = speechSynthesis.getVoices();
 var isPlatinum = false;
 var mobileNo;
-var dashboardName;
+var dashboardName = "";
 var response;
 
 // On doument load resolve the SDK dependecy
@@ -156,8 +156,7 @@ var response;
             stopBtn.disabled = true;
         }
 	
-function openDashboard(data){
-	alert();
+function openDashboard(data){	
 	dashboardName = data;
 	console.log("Dashboard name is " + dashboardName);
 	if(dashboardName != "" && dashboardName != null){
