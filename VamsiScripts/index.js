@@ -157,6 +157,7 @@ var response;
         }
 	
 function openDashboard(data){
+	alert();
 	dashboardName = data;
 	console.log("Dashboard name is " + dashboardName);
 	if(dashboardName != "" && dashboardName != null){
