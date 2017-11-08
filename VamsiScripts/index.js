@@ -156,7 +156,7 @@ var response;
             stopBtn.disabled = true;
         }
 	
-function submitComplaint(data){
+function openDashboard(data){
 	dashboardName = data;
 	if(dashboardName != ""){
 		voiceoutput("Loading your dashboard.Please wait.....")
