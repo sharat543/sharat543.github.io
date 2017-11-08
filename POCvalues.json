@@ -95,33 +95,9 @@
 		"db":"sales distribution"
 	},
 	{
-		"id":"one",
-		"name":"1",
-		"db":"patient"
-	},
-	{
-		"id":"two",
-		"name":"2",
-		"db":"patient"
-	},
-	{
-		"id":"three",
-		"name":"3",
-		"db":"patient"
-	},
-	{
-		"id":"Consumer Products",
-		"name":"Consumer Products",
+		"id":"greater than 60",
+		"name":">60",
 		"db":"incidents"
-	},
-	{
-		"id":"Consumer Products",
-		"name":"Consumer Products",
-		"db":"incident trend"
-	},
-	{
-		"id":"Consumer Products",
-		"name":"Consumer Products",
-		"db":"incident summary"
 	}
+
 ]}

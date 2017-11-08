@@ -48,28 +48,9 @@
 		"db":"sales distribution"
 	},
 	{
-		"id":"Cycle Number",
-		"name":"Cycle Number",
-		"choosetype":"filter",
-		"db":"patient"
-	},
-	{
-		"id":"Module",
-		"name":"Module",
-		"choosetype":"filter",
+		"id":"Aging Days",
+		"name":"Aging Days",
+		"choosetype":"select",
 		"db":"incidents"
-	},
-	{
-		"id":"Module",
-		"name":"Module",
-		"choosetype":"filter",
-		"db":"incident trend"
-	},
-	{
-		"id":"Module",
-		"name":"Module",
-		"choosetype":"filter",
-		"db":"incident summary"
 	}
-
 ]}

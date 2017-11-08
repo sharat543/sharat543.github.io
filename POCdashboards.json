@@ -46,48 +46,23 @@
 	},
 	{
 		"id":"9",
-		"name":"patient",
-		"site":"https://us-east-1.online.tableau.com/t/takrd/views/C16021_PRO_View_SIT_Workbook/PRO-PatientView?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"10",
-		"name":"incidents",
-		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"11",
-		"name":"incident summary",
-		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"12",
-		"name":"incident trend",
-		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/IncidentsTrendsSummary?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"13",
-		"name":"service requests",
-		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"14",
-		"name":"service request",
-		"site":"https://tableau.internal.deloitte.com/views/AnthemLODashboard/Home?:embed=y&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"15",
-		"name":"compliance",
-		"site":"https://us-east-1.online.tableau.com/t/takrd/views/C16021_PRO_View_SIT_Workbook/CompletionComplianceRates?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no"
-	},
-	{
-		"id":"16",
 		"name":"executive",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Home"
 	},
 	{
-		"id":"17",
+		"id":"10",
 		"name":"incident resolution",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/IncidentMetrics"
+	},
+	{
+		"id":"11",
+		"name":"incidents",
+		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
+	},
+	{
+		"id":"12",
+		"name":"tickets",
+		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
 	}
 		
 ]}
