@@ -110,7 +110,7 @@ var response;
          
 
             startBtn.addEventListener("click", function () {
-,                if (!recognizer || previousSubscriptionKey != key.value) {
+                if (!recognizer || previousSubscriptionKey != key.value) {
                     previousSubscriptionKey = key.value;
                     Setup();
                 }
@@ -121,7 +121,7 @@ var response;
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
             });
-,
+
             stopBtn.addEventListener("click", function () {
                 RecognizerStop(SDK);
                 startBtn.disabled = false;
