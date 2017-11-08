@@ -15,7 +15,7 @@ var response;
             require(["Speech.Browser.Sdk"], function(SDK) {
                 onComplete(SDK);
 				$("#mobileNo").prop("disabled", true);
-				voiceoutput("Welcome. Provide the dashboard name that you want to view.")
+				voiceoutput("Welcome. Provide the dashboard name that you want to view.");
 				if (!recognizer || previousSubscriptionKey != key.value) {
                     previousSubscriptionKey = key.value;
                     Setup();
@@ -170,7 +170,17 @@ function openDashboard(data){
 		RecognizerStart(SDK, recognizer);
 	}
 }
-	
+
+function voiceoutput(text){
+
+            if('speechSynthesis' in window){
+			var speech = new SpeechSynthesisUtterance(text);
+			speech.lang = 'en-US';
+			speech.voice = voices[4]
+			window.speechSynthesis.speak(speech);			
+           
+			}
+        } 
 		
 /*function blink(){
     $('#blinkImage').delay(100).fadeTo(100,0.5).delay(100).fadeTo(100,1, blink);
