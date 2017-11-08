@@ -68,6 +68,11 @@
 		"id":"13",
 		"name":"incident",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
+	},
+	{
+		"id":"14",
+		"name":"change",
+		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Changerequest"
 	}
 		
 ]}
