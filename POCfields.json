@@ -51,6 +51,6 @@
 		"id":"Aging Days",
 		"name":"Aging Days",
 		"choosetype":"select",
-		"db":"incidents"
+		"db":"tickets"
 	}
 ]}
