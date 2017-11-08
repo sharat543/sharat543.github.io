@@ -63,6 +63,11 @@
 		"id":"12",
 		"name":"tickets",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
+	},
+	{
+		"id":"13",
+		"name":"incident",
+		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
 	}
 		
 ]}

@@ -58,5 +58,11 @@
 		"name":"Trend View By",
 		"choosetype":"filter",
 		"db":"incidents"
+	},
+	{
+		"id":"Trend View By",
+		"name":"Trend View By",
+		"choosetype":"filter",
+		"db":"incident"
 	}
 ]}
