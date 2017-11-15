@@ -56,22 +56,17 @@
 	},
 	{
 		"id":"11",
-		"name":"incidents",
-		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
-	},
-	{
-		"id":"12",
 		"name":"tickets",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
 	},
 	{
-		"id":"13",
-		"name":"incident",
+		"id":"12",
+		"name":"incident history",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Incidents"
 	},
 	{
-		"id":"14",
-		"name":"variance",
+		"id":"13",
+		"name":"change",
 		"site":"https://tableau.internal.deloitte.com/views/AMSIDashboard/Changerequest"
 	}
 		

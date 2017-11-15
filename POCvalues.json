@@ -102,12 +102,6 @@
 	{
 		"id":"Forecast",
 		"name":"Forecast",
-		"db":"incidents"
-	},
-	{
-		"id":"Forecast",
-		"name":"Forecast",
-		"db":"incident"
+		"db":"incident history"
 	}
-
 ]}
