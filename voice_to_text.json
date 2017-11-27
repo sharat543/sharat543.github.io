@@ -23,6 +23,9 @@
       "name": "Academic Year"
     },
     {
+      "name": "Aging Days"
+    },
+    {
       "name": "Basin"
     },
     {
@@ -48,6 +51,9 @@
     },
     {
       "name": "Storm Name"
+    },
+    {
+      "name": "Trend View By"
     },
     {
       "name": "Year"
@@ -958,6 +964,66 @@
           "entity": "Dashboard",
           "startPos": 20,
           "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "please show me the incident resolution metrics",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 19,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "can you show the effort variance for change",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 17,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "can you show me the tickets having aging greater than 60 days",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Aging Days",
+          "startPos": 41,
+          "endPos": 55
+        },
+        {
+          "entity": "Dashboard",
+          "startPos": 20,
+          "endPos": 26
+        }
+      ]
+    },
+    {
+      "text": "can you show me the incident history",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 20,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "can you show me the change in effort",
+      "intent": "Filter",
+      "entities": [
+        {
+          "entity": "Dashboard",
+          "startPos": 20,
+          "endPos": 25
         }
       ]
     }
