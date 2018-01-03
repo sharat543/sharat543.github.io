@@ -25,7 +25,7 @@
 <div style="float: center;margin-top: 90px;margin-left: 40px;">
     <table width="100%">
         <tr>            
-            <td ><input  type="hidden" id="key" type="text" size="40" value="fa38fe4d5b4d45deaa71730fd2e50da8" v></td>
+            <td ><input  type="hidden" id="key" type="text" size="40" value="617b7a295ec54e6da5a018d641b24396" v></td>
         </tr>
      
         <tr>
@@ -236,8 +236,8 @@
 
             if('speechSynthesis' in window){
 			var speech = new SpeechSynthesisUtterance(text);
-			speech.lang = 'en-US';
-			speech.voice = voices[4]
+			speech.lang = 'en-GB';
+			speech.voice = voices[1];
 			window.speechSynthesis.speak(speech);
 			if (flag==1)
 			{
@@ -316,11 +316,11 @@
 							else if (data.entities[t].type === "Dashboard" ) 
 							{ db = data.entities[t].entity; }
 							else if (data.entities[t].type != "builtin.datetimeV2.daterange" &&  data.entities[t].type != "Dashboard" )
-							{ fld = data.entities[t].type; val = data.entities[t].entity; } 
+							{ fld = data.entities[t].type; val = data.entities[t].entity;} 
 						}
 
 						var var1 = dashboardcheck(db);
-
+						
 						if ( var1 === 0 ) 
 						{ 
 						voiceoutput("Please provide a valid dashboard name",0); 
@@ -338,6 +338,7 @@
 							}
 							else
 							{
+							
 							initViz(db,fld,val,urlvalue);
 							}
 						}
@@ -443,7 +444,7 @@
 			{	
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
-				
+				//alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
 					if ( activeSheet.getSheetType() === 'dashboard' )
@@ -478,22 +479,27 @@
 				{
 				voiceoutput("Product 1 occupies fourth position in terms of market share. and sales have decreased by 0.1 million compared to the previous period",2);
 				}
-				else if ( db === "incidents")
+				else if ( db === "incidents" || db === "incident")
 				{
-				voiceoutput("At the start of July, we have 43 incidents, 729 got added to queue and we resolved 718 of them. Currently working on 54 incidents",2);
+				voiceoutput("For the month of Aug, there is an increase in medium and low priority incidents while high priority incidents have witnessed a decrease compared to last month",2);
 				}
-				else if ( db === "incident summary")
+				else if ( db === "executive")
 				{
-				voiceoutput("All the incidents created for this module have been closed. There are no pending incidents for the selected time period",2);
+				voiceoutput("Welcome to the executive dashboard. The application availability is 100% and critical incidents caused by change are 0",2);
 				}
-				else if ( db === "incident trend")
+				else if ( db === "incident resolution")
 				{
-				voiceoutput("The root cause analysis says scheduling is the major reason for most of the incidents",2);
+				voiceoutput("The average resolution time is 43 hours. Out of the total 29198 incidents, 1604 did not meet SLA and 27,594 of them have met SLA",2);
 				}
-				else if ( db === "service requests" || db === "service request")
+				else if ( db === "tickets")
 				{
-				voiceoutput("207 Service requests are open at beginning, 633 got newly created, 593 got closed and now working on 247 service requests",2);
+				voiceoutput("There are 52 tickets aging greater than 60 days",2);
 				}
+				else if ( db === "variance")
+				{
+				voiceoutput("The effort variance efficiency is 90% for the selected period",2);
+				}
+				
 		}
 		
 		<!-- added by Sarat -->
@@ -506,7 +512,7 @@
 			type : 'GET',
 			success: function(data) {
 				for (var c = 0; c < data['values'].length; c++) {
-				var jsonvaluelow = data['values'][c]['name'].toLowerCase();
+				var jsonvaluelow = data['values'][c]['id'].toLowerCase();
 				var valuelow = a.toLowerCase();
 				if (jsonvaluelow === valuelow)
 				{jsonvalue = data['values'][c]['name'];}
@@ -621,7 +627,7 @@ color:#313131;
 .head1{
 position:absolute;
 top:1.9%;
-left:15%;
+left:17%;
 font-family:Description;
 font-size:20.5px;
 color:#313131;
@@ -630,7 +636,7 @@ color:#313131;
 .head2{
 position:absolute;
 top:4.85%;
-left:15%;
+left:17%;
 font-family:Description;
 font-size:20.5px;
 color:#313131;
@@ -639,7 +645,7 @@ color:#313131;
 .head3{
 position:absolute;
 top:8%;
-left:15%;
+left:17%;
 font-family:Description;
 font-size:20.5px;
 color:#313131;
