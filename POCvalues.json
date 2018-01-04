@@ -103,5 +103,20 @@
 		"id":"Forecast",
 		"name":"Forecast",
 		"db":"incident history"
+	},
+	{
+		"id":"Jeans",
+		"name":"Jeans",
+		"db":"sankey"
+	},
+	{
+		"id":"Shirts",
+		"name":"Shirts",
+		"db":"sankey"
+	},
+	{
+		"id":"Trousers",
+		"name":"Trousers",
+		"db":"sankey"
 	}
 ]}

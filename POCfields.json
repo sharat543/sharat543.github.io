@@ -58,5 +58,11 @@
 		"name":"Trend View By",
 		"choosetype":"filter",
 		"db":"incident history"
+	},
+	{
+		"id":"Product",
+		"name":"Product",
+		"choosetype":"filter",
+		"db":"sankey"
 	}
 ]}
