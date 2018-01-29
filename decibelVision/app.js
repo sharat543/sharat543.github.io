@@ -178,6 +178,7 @@ app.closeCam  = function(){
          }
 
       speak(app.$.labelInfo.innerHTML);
+	  content.style.display = "block"; 
 	  initViz(app.$.labelInfo.innerHTML);
   }
   
