@@ -159,6 +159,7 @@ app.closeCam  = function(){
           speechSynthesis.speak(msg);
       }
   }
+  
 
   function filterProduct(productId){
 
@@ -177,7 +178,58 @@ app.closeCam  = function(){
          }
 
       speak(app.$.labelInfo.innerHTML);
+	  initViz(app.$.labelInfo.innerHTML);
   }
+  
+//added by Sarat
+  var viz,url,sheet,workbook,sharray;
+  if (viz) { // If a viz object exists, delete it.
+             viz.dispose();
+            }
+  var counter=0;
+  
+  function initViz(v)
+		{
+			if (viz) { viz.dispose(); }
+			viz=0;
+            var containerDiv = document.getElementById("vizContainer"),
+            options = {
+                   	hideTabs: true,
+					onFirstInteractive: function () {
+									workbook = viz.getWorkbook();
+									activeSheet = workbook.getActiveSheet();
+									if (activeSheet.getSheetType() === 'dashboard')
+									{
+									sharray = activeSheet.getWorksheets();
+									}
+									else
+									{
+									sharray = null;
+									}
+									selectfilter(v);
+									}	
+               	      };
+			 
+			
+			url = "https://public.tableau.com/shared/PSRTW34J2?:display_count=yes";
+            
+			viz = new tableau.Viz(containerDiv, url, options);
+
+        }
+		
+
+		function selectfilter(value) {
+				
+				if ( activeSheet.getSheetType() === 'dashboard' )
+					{
+					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync("Product", value, tableau.FilterUpdateType.REPLACE); }
+					}
+					else
+					{
+					activeSheet.applyFilterAsync("Product", value, tableau.FilterUpdateType.REPLACE);
+					}					
+								
+		}
 
   app.videoError = function (e) {
     app.$.videoError.innerHTML = 'Error accessing webcam: ' + (e.detail.message || e.detail.name || '');
