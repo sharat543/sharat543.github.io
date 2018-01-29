@@ -165,7 +165,7 @@ app.closeCam  = function(){
      productId = productId.toLowerCase();
 
       if(productId.search("scotc")>-1 && productId.search("glue")>-1){
-             app.$.labelInfo.innerHTML = "Scotch Glue Stick !";
+             app.$.labelInfo.innerHTML = "Jeans";
          }else if(productId.search("highlan")>-1 && productId.search("self")>-1){
              app.$.labelInfo.innerHTML = "Highland Self-Stick Removable Notes !";
          }else if(productId.search("camli")>-1 && productId.search("pencil")>-1){
