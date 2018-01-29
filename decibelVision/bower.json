@@ -1,0 +1,29 @@
+{
+  "name": "cloud-vision-api-playground",
+  "version": "0.0.1",
+  "homepage": "",
+  "authors": [
+    "BHARAT"
+  ],
+  "description": "Testing the Google Vision API",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "vision",
+    "recognition",
+    "google"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.2.3",
+    "user-media": "Scarygami/user-media#~0.1.0",
+    "discovery-api-elements": "Scarygami/discovery-api-elements#~0.4.0"
+  }
+}

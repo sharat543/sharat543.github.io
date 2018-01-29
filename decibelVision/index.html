@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="elements/elements.html">
+    <link rel="stylesheet" href="assets/css/main.css">
+  </head>
+
+  <body unresolved>
+
+       <input type="file" id="upload" accept="image/*">
+      <!--     Container part -->
+    <template is="dom-bind" id="app">
+
+        <!--      Header part -->
+      <div id="header">
+          <img src="assets/Decibel.png" class="logo_decibel" alt="Decibel" height="60px" Width="180px" style="z-index:999;">
+        <div class="title">
+            <h2 class="head1"> Vision Enabled </h2>
+            <h2 class="head2"> Cognitive  </h2>
+            <h2 class="head3"> Platform  </h2>
+        </div>
+          <img src="assets/deloitte-logo-print.png" class="logo_deloitte" alt="Deloitte" style="z-index:999;">
+
+      </div>
+
+
+      <discovery-api-elements
+        name="vision"
+        version="v1"
+        doc-url="https://vision.googleapis.com/$discovery/rest?version=v1"
+        no-client></discovery-api-elements>
+
+      <vision-images-annotate
+        id="request"
+        on-success="apiResponse"
+        on-error="apiError"
+        key="[[apiKey]]"
+      ></vision-images-annotate>
+
+     <div id="content">
+         <div id="camBtn">
+
+                 <center>
+                  <img src="assets/mic.png" id="speakAgainsmall" class="sabutton" on-click="openCam"  title="Click to take photo">
+                 </center>
+
+         </div>
+            <div class="cam-container" id="cam">
+              <div id="videobox">
+                <video id="video"
+                       is="user-media"
+                       streaming="{{streaming}}"
+                       capture-mode flip
+                       on-user-media-error="videoError"
+                       on-capture-error="captureError"></video>
+                <span id="videoError" hidden$="[[streaming]]">Trying to access webcam...</span>
+              </div>
+<!--
+                <div id="settings">
+                    <template is="dom-repeat" items="{{features}}">
+                      <paper-toggle-button checked="{{item.active}}">[[item.name]]</paper-toggle-button>
+                    </template>
+                    <div></div>
+                    <div>
+                      <span>Results per feature</span>
+                      <paper-slider min="1" max="10" value="{{maxResults}}" editable></paper-slider>
+                    </div>
+                </div>
+-->
+              <span class="cam-close" id="cam-close-btn"  on-click="closeCam">X</span>
+              <span class="cam-labelInfo"  id="labelInfo"></span>
+              <span class="cam-btn" on-click="takePhoto" hidden$="[[!streaming]]"></span>
+
+            </div>
+<!--
+            <div class="column">
+              <div><img id="chosenPhoto"></div>
+              <pre id="results"></pre>
+            </div>
+-->
+     </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+
+</html>
