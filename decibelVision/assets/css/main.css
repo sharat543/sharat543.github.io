@@ -176,10 +176,10 @@
 			position: absolute;
 			top: 25%;
 			left: 25%;
-			width: 50%;
-			height: 50%;
+			width: 75%;
+			height: 75%;
 			padding: 16px;
-			border: 16px solid orange;
+			border: 2px solid blue;
 			background-color: white;
 			z-index:1002;
 			overflow: auto;
