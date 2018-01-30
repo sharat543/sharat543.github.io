@@ -187,8 +187,9 @@ app.closeCam  = function(){
   if (viz) { // If a viz object exists, delete it.
              viz.dispose();
             }
-  var counter=0;
-  
+			
+  var isopen=0;
+ 
   function initViz(v)
 		{
 			if (viz) { viz.dispose(); }
@@ -217,9 +218,18 @@ app.closeCam  = function(){
 			viz = new tableau.Viz(containerDiv, url, options);
 			document.getElementById('vizContainer').style.display='block';
 			document.getElementById('fade').style.display='block';
+			isopen = 1;
 
         }
 		
+		document.onkeydown = function(evt) {
+    	evt = evt || window.event;
+    		if (evt.keyCode == 27 && isopen == 1) {
+        		document.getElementById('vizContainer').style.display='none';
+				document.getElementById('fade').style.display='none';
+				isopen = 0;
+    		}
+		}; 
 
 		function selectfilter(value) {
 				
@@ -233,6 +243,7 @@ app.closeCam  = function(){
 					}					
 								
 		}
+		
 
   app.videoError = function (e) {
     app.$.videoError.innerHTML = 'Error accessing webcam: ' + (e.detail.message || e.detail.name || '');
