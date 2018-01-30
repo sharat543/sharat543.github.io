@@ -213,7 +213,8 @@ app.closeCam  = function(){
 			 
 			
 			url = "https://public.tableau.com/shared/PSRTW34J2?:display_count=yes";
-            
+            document.getElementById('vizContainer').style.display='block';
+			document.getElementById('fade').style.display='block'
 			viz = new tableau.Viz(containerDiv, url, options);
 
         }
