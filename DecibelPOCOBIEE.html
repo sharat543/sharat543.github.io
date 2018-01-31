@@ -359,7 +359,7 @@
 			$.ajax({
 			async: false,
 			dataType : 'json',
-			url: "https://sharat543.github.io/POCdashboards.json",
+			url: "https://sharat543.github.io/OBIEEPOC.json",
 			type : 'GET',
 			success: function(data) {
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
@@ -400,7 +400,7 @@
 		
 		function initViz(d,f,v,u)
 		{
-			$("#vizContainer").load("http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Cohorts%20Composition&NQUser=ofsaatest&NQPassword=Welcome123");
+			$("#vizContainer").load(u);
 		}
 
         
