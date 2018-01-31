@@ -178,8 +178,8 @@
 			left: 10%;
 			width: 80%;
 			height: 80%;
-			padding: 16px;
-			border: 2px solid blue;
+			padding: 5px;
+			border: 1px solid blue;
 			background-color: white;
 			z-index:1002;
 			overflow: auto;
