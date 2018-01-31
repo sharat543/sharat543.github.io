@@ -174,11 +174,11 @@
 		.vizContainer {
 			display: none;
 			position: absolute;
-			top: 6%;
+			top: 7%;
 			left: 7%;
-			width: 85%;
-			height: 85%;
-			padding: 5px;
+			width: 87%;
+			height: 86%;
+			padding: 2px;
 			border: 1px solid blue;
 			background-color: white;
 			z-index:1002;
