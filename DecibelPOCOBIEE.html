@@ -401,9 +401,9 @@
 		
 		function initViz(d,f,v,u)
 		{
-			$(document).ready(function(){
-			$("#vizContainer").attr("src","https://www.google.co.in");
-			})
+		$.getJSON('http://anyorigin.com/go?url=https%3A//www.google.co.in&callback=?', function(data){
+		$('#vizContainer').html(data.contents);
+});
 		}
 
         
