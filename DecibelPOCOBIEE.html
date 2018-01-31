@@ -401,9 +401,13 @@
 		
 		function initViz(d,f,v,u)
 		{
-		$.getJSON('http://anyorigin.com/go?url=https%3A//www.google.co.in&callback=?', function(data){
-		$('#vizContainer').html(data.contents);
-});
+			$.ajax({
+          crossOrigin: true,
+          url: 'https://www.google.com',
+          success: function(data) {
+            $( '#vizContainer' ).html(data);
+          }
+        });
 		}
 
         
