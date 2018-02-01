@@ -1,0 +1,122 @@
+{"values":[
+	{
+		"id":"ALEX",
+		"name":"ALEX",
+		"db":"storms"
+	},
+	{
+		"id":"BONNIE",
+		"name":"BONNIE",
+		"db":"storms"
+	},
+	{
+		"id":"COLIN",
+		"name":"COLIN",
+		"db":"storms"
+	},
+	{
+		"id":"Atlantic",
+		"name":"Atlantic",
+		"db":"storms"
+	},
+	{
+		"id":"East Pacific",
+		"name":"East Pacific",
+		"db":"storms"
+	},
+	{
+		"id":"West Pacific",
+		"name":"West Pacific",
+		"db":"storms"
+	},
+	{
+		"id":"Central",
+		"name":"Central",
+		"db":"mobile"
+	},	
+	{
+		"id":"East",
+		"name":"East",
+		"db":"mobile"
+	},
+	{
+		"id":"South",
+		"name":"South",
+		"db":"mobile"
+	},
+	{
+		"id":"West",
+		"name":"West",
+		"db":"mobile"
+	},
+	{
+		"id":"Arizona",
+		"name":"Arizona",
+		"db":"mobile"
+	},	
+	{
+		"id":"California",
+		"name":"California",
+		"db":"mobile"
+	},
+	{
+		"id":"Florida",
+		"name":"Florida",
+		"db":"mobile"
+	},
+	{
+		"id":"2013",
+		"name":"2013",
+		"db":"college"
+	},
+	{
+		"id":"2014",
+		"name":"2014",
+		"db":"college"
+	},
+	{
+		"id":"Men",
+		"name":"Men",
+		"db":"college"
+	},
+	{
+		"id":"Women",
+		"name":"Women",
+		"db":"college"
+	},
+	{
+		"id":"Product One",
+		"name":"Product 1",
+		"db":"geographies"
+	},
+	{
+		"id":"Product One",
+		"name":"Product 1",
+		"db":"sales distribution"
+	},
+	{
+		"id":"greater than 60",
+		"name":">60",
+		"db":"tickets"
+	},
+	{
+		"id":"Forecast",
+		"name":"Forecast",
+		"db":"incident history"
+	},
+	{
+		"id":"Jeans",
+		"name":"Jeans",
+		"db":"sankey"
+	},
+	{
+		"id":"Shirts",
+		"name":"Shirts",
+		"db":"sankey"
+	},
+	{
+		"id":"Trousers",
+		"name":"Trousers",
+		"db":"sankey"
+	}
+]}

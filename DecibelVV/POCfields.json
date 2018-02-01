@@ -1,0 +1,68 @@
+{"fields":[
+	{
+		"id":"Storm Name",
+		"name":"Storm Name",
+		"choosetype":"select",
+		"db":"storms"
+	},
+	{
+		"id":"Basin",
+		"name":"Basin",
+		"choosetype":"filter",
+		"db":"storms"
+	},
+	{
+		"id":"State",
+		"name":"State",
+		"choosetype":"select",
+		"db":"mobile"
+	},
+	{
+		"id":"Region",
+		"name":"Region",
+		"choosetype":"filter",
+		"db":"mobile"
+	},
+	{
+		"id":"Academic Year",
+		"name":"Academic Year",
+		"choosetype":"filter",
+		"db":"college"
+	},
+	{
+		"id":"Gender",
+		"name":"Gender",
+		"choosetype":"filter",
+		"db":"college"
+	},
+	{
+		"id":"Product",
+		"name":"Product",
+		"choosetype":"filter",
+		"db":"geographies"
+	},
+	{
+		"id":"Product",
+		"name":"Product",
+		"choosetype":"filter",
+		"db":"sales distribution"
+	},
+	{
+		"id":"Aging Days",
+		"name":"Aging Days",
+		"choosetype":"select",
+		"db":"tickets"
+	},
+	{
+		"id":"Trend View By",
+		"name":"Trend View By",
+		"choosetype":"filter",
+		"db":"incident history"
+	},
+	{
+		"id":"Product",
+		"name":"Product",
+		"choosetype":"filter",
+		"db":"sankey"
+	}
+]}
