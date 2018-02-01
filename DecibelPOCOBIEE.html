@@ -296,6 +296,8 @@
 		var db;
 		var fld;
 		var val;
+		var uid;
+		var pwd;
 		
 		
         function UpdateRecognizedPhrase(json) {
@@ -341,7 +343,7 @@
 							else
 							{
 							
-							initViz(db,fld,val,urlvalue);
+							initViz(db,fld,val,urlvalue,uid,pwd);
 							}
 						}
 					}
@@ -365,7 +367,7 @@
 			success: function(data) {
 				for (var e1 = 0; e1 < data['dashboards'].length; e1++) {
 				if (e === data['dashboards'][e1]['name'])
-				{dbvalue = dbvalue + 1; urlvalue = data['dashboards'][e1]['site'];}
+				{dbvalue = dbvalue + 1; urlvalue = data['dashboards'][e1]['site']; uid = data['dashboards'][e1]['uid']; pwd = data['dashboards'][e1]['pwd'];}
 				else { dbvalue = dbvalue + 0; }
 				}
 			}});
@@ -399,9 +401,9 @@
 			
 		var counter=0;
 		
-		function initViz(d,f,v,u)
+		function initViz(d,f,v,u,id,pwd)
 		{
-		 window.open(u,'_blank');
+		 window.open(u + "&NQUser=" + id + "&NQPassword=" + pwd,'_blank');
 		 voiceoutput("Opening" + d + "dashboard",2);
 		}
 
