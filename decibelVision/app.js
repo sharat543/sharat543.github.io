@@ -168,11 +168,11 @@ app.closeCam  = function(){
       if(productId.search("scotc")>-1 && productId.search("glue")>-1){
              app.$.labelInfo.innerHTML = "Scotch Glue Stick";
          }else if(productId.search("highlan")>-1 && productId.search("self")>-1){
-             app.$.labelInfo.innerHTML = "Highland Self-Stick Removable Notes !";
+             app.$.labelInfo.innerHTML = "Sticky Notes";
          }else if(productId.search("camli")>-1 && productId.search("pencil")>-1){
              app.$.labelInfo.innerHTML = "Camlin Black Pencils !";
          }else if(productId.search("camli")>-1 && (productId.search("board")>-1 || productId.search("marker")>-1)){
-             app.$.labelInfo.innerHTML = "Camlin White Board Marker !";
+             app.$.labelInfo.innerHTML = "Marker";
          }else{
               app.$.labelInfo.innerHTML = productId + ' We dont have this product in list ';
          }
@@ -213,7 +213,7 @@ app.closeCam  = function(){
                	      };
 			 
 			
-			url = "https://public.tableau.com/shared/FXDHZBZYR?:toolbar=no&:display_count=yes";
+			url = "https://public.tableau.com/shared/JY5T7H9JW?:toolbar=no&:display_count=yes";
 
 			viz = new tableau.Viz(containerDiv, url, options);
 			document.getElementById('vizContainer').style.display='block';
