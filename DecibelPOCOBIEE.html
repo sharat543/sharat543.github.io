@@ -406,13 +406,11 @@
 			if ( f == 0 && v == 0)			
 			{
 				window.open(u + "&NQUser=" + id + "&NQPassword=" + p,'_blank');
-				alert(u);
 				voiceoutput("Opening" + d + "dashboard",2);
 			}
 			else
 			{
 				window.open(u + "&NQUser=" + id + "&NQPassword=" + p + "&P0=1&P1=eq&P2=" + f + "&P3=1+" + v,'_blank');
-				alert(u);
 				voiceoutput("Opening" + d + "dashboard and applying requested filters",2);
 			}
 		 //$('#vizContainer').load('https://www.google.co.in');
