@@ -218,6 +218,9 @@ app.closeCam  = function(){
 			viz = new tableau.Viz(containerDiv, url, options);
 			document.getElementById('vizContainer').style.display='block';
 			document.getElementById('fade').style.display='block';
+			app.$.cam.style.display ='none';
+			app.$.camBtn.style.display = 'block';
+			app.$.header.style.display = 'block';
 			isopen = 1;
 
         }
