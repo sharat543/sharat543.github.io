@@ -125,6 +125,16 @@
 		"db":"data quality"
 	},
 	{
+		"id":"Italy",
+		"name":"Italy",
+		"db":"data quality"
+	},
+	{
+		"id":"Germany",
+		"name":"Germany",
+		"db":"data quality"
+	},
+	{
 		"id":"Email",
 		"name":"Email",
 		"db":"data quality"
