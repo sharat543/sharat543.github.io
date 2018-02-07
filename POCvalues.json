@@ -123,5 +123,10 @@
 		"id":"France",
 		"name":"France",
 		"db":"data quality"
+	},
+	{
+		"id":"Email",
+		"name":"Email",
+		"db":"data quality"
 	}
 ]}
