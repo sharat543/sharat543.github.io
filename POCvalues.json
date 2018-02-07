@@ -121,17 +121,17 @@
 	},
 	{
 		"id":"France",
-		"name":"France",
+		"name":"FR",
 		"db":"data quality"
 	},
 	{
 		"id":"Italy",
-		"name":"Italy",
+		"name":"IT",
 		"db":"data quality"
 	},
 	{
 		"id":"Germany",
-		"name":"Germany",
+		"name":"DE",
 		"db":"data quality"
 	}
 ]}
