@@ -68,7 +68,7 @@
 	{
 		"id":"Country",
 		"name":"Country",
-		"choosetype":"select",
+		"choosetype":"filter",
 		"db":"data quality"
 	}
 ]}

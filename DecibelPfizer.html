@@ -445,7 +445,7 @@
 			{	
 				var derivedvalue = valueCase(value);
 				var derivedfield = chooseSelectFilter(field);
-				//alert(derivedfield+derivedvalue);
+				alert(derivedfield+derivedvalue);
 				if (derivedfield === "select") 
 				{ 
 					if ( activeSheet.getSheetType() === 'dashboard' )
@@ -462,7 +462,7 @@
 					
 					if ( activeSheet.getSheetType() === 'dashboard' )
 					{
-					for (var j=0; j < sharray.length; j++) { alert(derivedfield+derivedvalue);sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 					}
 					else
 					{
