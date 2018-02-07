@@ -133,10 +133,5 @@
 		"id":"Germany",
 		"name":"Germany",
 		"db":"data quality"
-	},
-	{
-		"id":"Email",
-		"name":"Email",
-		"db":"data quality"
 	}
 ]}

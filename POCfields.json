@@ -70,11 +70,5 @@
 		"name":"Country",
 		"choosetype":"filter",
 		"db":"data quality"
-	},
-	{
-		"id":"Data Type",
-		"name":"Data Type",
-		"choosetype":"filter",
-		"db":"data quality"
 	}
 ]}
