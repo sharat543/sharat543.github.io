@@ -69,6 +69,6 @@
 		"id":"Country",
 		"name":"Country",
 		"choosetype":"filter",
-		"db":"dq"
+		"db":"data quality"
 	}
 ]}
