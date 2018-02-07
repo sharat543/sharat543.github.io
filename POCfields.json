@@ -66,8 +66,8 @@
 		"db":"sankey"
 	},
 	{
-		"id":"Country",
-		"name":"Country",
+		"id":"Country 2",
+		"name":"Country 2",
 		"choosetype":"filter",
 		"db":"data quality"
 	}
