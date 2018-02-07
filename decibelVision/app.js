@@ -221,6 +221,7 @@ app.closeCam  = function(){
 			app.$.cam.style.display ='none';
 			app.$.camBtn.style.display = 'block';
 			app.$.header.style.display = 'block';
+			app.$.labelInfo.innerHTML = "";
 			isopen = 1;
 
         }
