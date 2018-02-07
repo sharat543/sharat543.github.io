@@ -405,6 +405,7 @@
 					onFirstInteractive: function () {
 									workbook = viz.getWorkbook();
 									activeSheet = workbook.getActiveSheet();
+									//alert(activeSheet.getSheetType());
 									if (activeSheet.getSheetType() === 'dashboard')
 									{
 									sharray = activeSheet.getWorksheets();
@@ -458,9 +459,10 @@
 				}
 				else if (derivedfield === "filter")
 				{
+					
 					if ( activeSheet.getSheetType() === 'dashboard' )
 					{
-					for (var j=0; j < sharray.length; j++) { sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
+					for (var j=0; j < sharray.length; j++) { alert(derivedfield+derivedvalue);sharray[j].applyFilterAsync(field, derivedvalue, tableau.FilterUpdateType.REPLACE); }
 					}
 					else
 					{
