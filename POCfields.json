@@ -64,5 +64,11 @@
 		"name":"Product",
 		"choosetype":"filter",
 		"db":"sankey"
+	},
+	{
+		"id":"Country",
+		"name":"Country",
+		"choosetype":"filter",
+		"db":"dq"
 	}
 ]}
