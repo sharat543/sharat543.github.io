@@ -1,0 +1,52 @@
+{"dashboards":[
+	{
+		"id":"0",
+		"name":"post stage reassignment",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Post%20Stage%20Reassignment",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	},
+	{
+		"id":"1",
+		"name":"allowance and provision",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Allowance%20and%20Provision",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	},
+	{
+		"id":"2",
+		"name":"cohorts composition",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Cohorts%20Composition",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	},
+	{
+		"id":"3",
+		"name":"trend analysis",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Trend%20Analysis",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	},
+	{
+		"id":"4",
+		"name":"credit quality analysis",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Credit%20Quality%20Analysis",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	},
+	{
+		"id":"5",
+		"name":"concentration analysis",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Concentration%20Analysis",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	},
+	{
+		"id":"6",
+		"name":"reconciliations",
+		"site":"http://ussltcovm205.solutions.glbsnet.com:9704/analytics/saw.dll?Dashboard&PortalPath=%2Fshared%2FIFRS%209%2F_portal%2FB.IFRS%209%20Expected%20Credit%20Loss&page=Reconciliations",
+		"uid":"ofsaatest",
+		"pwd":"Welcome123"
+	}
+]
+}
