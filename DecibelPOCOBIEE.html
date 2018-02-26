@@ -413,7 +413,8 @@
 				var obieeval = valueCase(v);
 				var abc = u + "&NQUser=" + id + "&NQPassword=" + p + "&P0=1&P1=eq&P2=" + f + "&P3=1+" + obieeval;
 				alert(abc);
-				window.open(u + "&NQUser=" + id + "&NQPassword=" + p + "&P0=1&P1=eq&P2=" + f + "&P3=1+" + obieeval,'_blank');
+				window.open(abc,'_blank');
+				//window.open(u + "&NQUser=" + id + "&NQPassword=" + p + "&P0=1&P1=eq&P2=" + f + "&P3=1+" + obieeval,'_blank');
 				voiceoutput("Opening" + d + "dashboard and applying requested filters",2);
 			}
 		 //$('#vizContainer').load('https://www.google.co.in');
