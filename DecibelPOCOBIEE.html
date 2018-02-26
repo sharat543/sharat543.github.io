@@ -411,6 +411,8 @@
 			else
 			{
 				var obieeval = valueCase(v);
+				var abc = u + "&NQUser=" + id + "&NQPassword=" + p + "&P0=1&P1=eq&P2=" + f + "&P3=1+" + obieeval,'_blank';
+				alert(abc);
 				window.open(u + "&NQUser=" + id + "&NQPassword=" + p + "&P0=1&P1=eq&P2=" + f + "&P3=1+" + obieeval,'_blank');
 				voiceoutput("Opening" + d + "dashboard and applying requested filters",2);
 			}
