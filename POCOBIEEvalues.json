@@ -3,5 +3,20 @@
 		"id":"Credit",
 		"name":"CREDIT",
 		"db":"credit quality analysis"
+	},
+	{
+		"id":"Consumer Term Loans",
+		"name":"Consumer Term Loans",
+		"db":"credit quality analysis"
+	},
+	{
+		"id":"Corporate Card",
+		"name":"Consumer Term Loans",
+		"db":"credit quality analysis"
+	},
+	{
+		"id":"Gold Card",
+		"name":"Consumer Term Loans",
+		"db":"credit quality analysis"
 	}
 ]}
